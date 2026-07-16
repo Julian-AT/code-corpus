@@ -1,10 +1,10 @@
 ## Executive summary
 
-I set out to answer a focused engineering question: how far can I take my own repository history toward a private local coding assistant while preserving provenance, evaluation boundaries, and operational control?
+I set out to answer a focused engineering question: how far can I take my own repository history toward a local coding agent while preserving provenance, evaluation boundaries, and operational control?
 
-I built and verified the complete systems path: repository discovery, contribution attribution, privacy filtering, repository-level splitting, deduplication, MLX-VLM LoRA training, PEFT and GGUF conversion, Ollama packaging, and Codex integration. The pipeline audited 60 repositories, matched 3,018 of my commits, retained 8,361 deduplicated rows from 53 repositories, and produced a local Gemma 4 E4B adapter under the tag `gemma4-e4b-julian:latest`.
+I built and verified the complete systems path: repository discovery, contribution attribution, privacy filtering, repository-level splitting, deduplication, MLX-VLM LoRA training, PEFT and GGUF conversion, Ollama packaging, and Codex integration. The current corpus audit covers 60 repositories, matches 3,018 of my commits, and retains 18,361 deduplicated rows from 58 repositories. I published that audited dataset on [Hugging Face](https://huggingface.co/datasets/JulianAT/personal-codex-model) and deployed the local compatibility adapter as `gemma4-e4b-julian:latest`.
 
-<ReportCallout label="Engineering scope" tone="info">The published adapter is a deliberate one-step compatibility checkpoint. I use it to validate the data contract, training path, tensor conversion, runtime, tool interface, and agent loop as one reproducible system. Held-out model-quality benchmarking is a separate evaluation layer.</ReportCallout>
+<ReportCallout label="Engineering scope" tone="info">The local adapter is a deliberate one-step compatibility checkpoint created before the current Hugging Face dataset revision. I use it to validate the data contract, training path, tensor conversion, runtime, tool interface, and agent loop as one reproducible system. I do not present it as a completed adaptation result on the current 18,361-row corpus; held-out model-quality benchmarking remains a separate evaluation layer.</ReportCallout>
 
 <DataTable
   label="Table 1. Current pipeline state."
@@ -12,7 +12,7 @@ I built and verified the complete systems path: repository discovery, contributi
   head={["Stage", "State", "Evidence", "Meaning"]}
   rows={[
     ["Repository provenance", "Complete", "60 processed", "My contribution history measured"],
-    ["Dataset build", "Complete", "8,361 rows", "Filtered corpus reproducible"],
+    ["Dataset build", "Complete", "18,361 rows", "Published corpus reproducible"],
     ["Training compatibility", "*Passed*", "return code 0", "MLX LoRA path verified"],
     ["Adapter packaging", "*Passed*", "343 tensor pairs", "PEFT and GGUF exports verified"],
     ["Local deployment", "*Passed*", "Ollama + Codex", "Agent workflow operational"],
@@ -21,7 +21,7 @@ I built and verified the complete systems path: repository discovery, contributi
 
 The current evidence supports three concrete conclusions:
 
-- **I can trace every stage.** Repository selection, contribution history, filtering, deduplication, split assignment, token counts, model revision, adapter metadata, converter revision, and runtime checks all have machine-readable records.
+- **I can trace every stage.** Repository selection, contribution history, filtering, deduplication, split assignment, token counts, dataset revision, model revision, adapter metadata, converter revision, and runtime checks all have machine-readable records.
 - **The local agent path works end to end.** My Ollama model selected a native tool, cleared explicit latency and throughput thresholds, and completed a real file-edit task whose test passed.
 - **The measurement boundary is explicit.** I report systems compatibility and deployment behavior here. I keep held-out model-quality claims separate until they are backed by a controlled base-versus-adapter evaluation.
 
@@ -70,33 +70,36 @@ TypeScript dominates my historical contribution profile, followed by Python. Lan
   width={1823}
   height={983}
   label="Figure 3. Language distribution by changed lines."
-  caption="Added plus removed lines for every retained language. The profile explains why the resulting corpus is primarily TypeScript and Python."
+  caption="Added plus removed lines for every retained language in my contribution history. This is a provenance view, not the retained-dataset row mix; documentation and configuration formats become more prominent after corpus construction."
 />
 
 The statistics exclude binary changes, ignored current paths, configured generated and vendored directories, lockfiles, minified files, and unsupported extensions. Deleted historical paths can only be filtered by their historical name and extension because today's ignore rules no longer exist at that commit.
 
 ## Dataset construction
 
-I transform eligible files into prefix-and-completion rows while preserving repository, path, language, and source metadata. From 5,501 considered files, the builder selected 5,455 and produced 9,443 candidate chunks. Exact SHA-256 deduplication removed 533 rows; MinHash near-deduplication removed another 549. The retained corpus contains 8,361 rows and approximately 4.97 million lexical tokens.
+I transform eligible files into prefix-and-completion rows while preserving repository, path, language, and source metadata. From 8,970 considered files, the builder selected 8,924 source candidates spanning 7,913 files and produced 20,858 candidate chunks. Exact SHA-256 deduplication removed 1,470 rows; MinHash near-deduplication removed another 1,027. The retained corpus contains 18,361 rows, 12,472,126 lexical tokens, 1,305,187 emitted lines, and 50.52 MiB of UTF-8 source text.
 
 <DataTable
   label="Table 3. Dataset ledger."
   caption="Canonical source: datasets/raw-max/statistics.json."
   head={["Measure", "Value", "Control"]}
   rows={[
-    ["Repositories with rows", "53", "48 train, 5 valid"],
-    ["Files selected", "5,455", "5,501 considered"],
-    ["Candidate chunks", "9,443", "896-token target"],
-    ["Exact duplicates removed", "533", "SHA-256"],
-    ["Near duplicates removed", "549", "MinHash at 0.85"],
-    ["Rows retained", "*8,361*", "7,172 train, 1,189 valid"],
-    ["Lexical tokens", "4,968,790", "all retained rows"],
+    ["Repositories with rows", "58", "52 train, 6 valid"],
+    ["Source files", "7,913", "8,924 selected candidates"],
+    ["Candidate chunks", "20,858", "896-token target"],
+    ["Exact duplicates removed", "1,470", "SHA-256"],
+    ["Near duplicates removed", "1,027", "MinHash at 0.85"],
+    ["Rows retained", "*18,361*", "15,226 train, 3,135 valid"],
+    ["Lexical tokens", "12,472,126", "all retained rows"],
+    ["Emitted source", "1,305,187 lines", "50.52 MiB UTF-8"],
   ]}
 />
 
+<DatasetLanguageProfile />
+
 ### Split integrity
 
-I assign train and validation data at repository granularity, so no repository contributes to both sides. The current split uses 48 training repositories and five validation repositories, producing 7,172 training rows and 1,189 validation rows. The generated dataset passed its own `datasets.load_dataset(...)` self-test with both split counts intact.
+I assign train and validation data at repository granularity, so no repository contributes to both sides. The current split uses 52 training repositories and six validation repositories, producing 15,226 training rows and 3,135 validation rows. The generated dataset passed its own `datasets.load_dataset(...)` self-test, and I reloaded the published Parquet splits at Hugging Face revision `9f9829f9dbd75400595ea2e211e291fbcc47ba0f` with both counts intact.
 
 This boundary matters. A row-level random split could place near-identical conventions, modules, or neighboring file regions from the same project on both sides. Repository-level isolation gives me a more credible basis for held-out evaluation.
 
@@ -106,7 +109,7 @@ This boundary matters. A row-level random split could place near-identical conve
 
 I reject configured sensitive paths such as environment files, private keys, credentials, and identity keys. The builder also applies high-confidence credential signatures, file-size limits, Git ignore rules, generated-directory rules, and supported-extension checks. In this build, it rejected 31 sensitive-path hits and one OpenAI-key signature. I treat this as a precision-oriented safety layer, not as publication clearance.
 
-<ReportCallout label="Privacy boundary" tone="info">I keep raw repositories, dataset rows, and adapter weights local and exclude them from Git. I publish aggregate evidence only, and the original source licenses continue to govern every retained file.</ReportCallout>
+<ReportCallout label="Publication boundary" tone="info">I keep raw repository checkouts, adapter weights, local paths, and credentials out of the publication. The public Hugging Face repository contains explicitly staged and scanned Parquet rows, a dataset card, schema metadata, and sanitized statistics; some approved rows originate from repositories that were private at collection time. Automated filtering reduces obvious risk but does not replace manual review, and every source license continues to apply.</ReportCallout>
 
 ## Model and adapter
 
@@ -149,6 +152,24 @@ Before allocating a longer training window, I ran a deliberate one-step gate acr
   ]}
 />
 
+### Reference environment
+
+I captured the current workstation profile alongside the report so the hardware and software assumptions are explicit. Run-specific telemetry still comes from the immutable training and deployment records; this snapshot documents the reference system used to operate and verify the project without publishing device identifiers.
+
+<DataTable
+  label="Table 6. Reference workstation snapshot."
+  caption="Captured 2026-07-16; canonical source: report/environment.json."
+  head={["Layer", "Measured version or capacity"]}
+  rows={[
+    ["Hardware", "Apple M4 Pro · 14 cores · 24 GB unified memory"],
+    ["Operating system", "macOS 26.5.1 (25F80)"],
+    ["Python", "3.14.2"],
+    ["MLX / MLX-VLM", "0.32.0 / 0.6.4"],
+    ["Ollama", "0.32.0"],
+    ["Codex CLI", "0.144.5"],
+  ]}
+/>
+
 ## Verified deployment
 
 MLX adapters cannot be attached directly to Ollama's Gemma 4 base, so I built an explicit conversion boundary. My deployment stage validates the MLX package, transposes and renames paired LoRA factors into PEFT Safetensors, converts the PEFT adapter to GGUF with a pinned llama.cpp revision, and creates an Ollama model with a 32,768-token context window.
@@ -156,7 +177,7 @@ MLX adapters cannot be attached directly to Ollama's Gemma 4 base, so I built an
 The resulting GGUF adapter contains 343 tensor pairs and is 38,926,080 bytes. I pin llama.cpp revision `b15ca938ad00aa6b3ee6c2edda7363fd02826b18` and record the source adapter, PEFT metadata, output hash, Modelfile, runtime metrics, and Codex result as deployment evidence.
 
 <DataTable
-  label="Table 6. Packaging chain."
+  label="Table 7. Packaging chain."
   caption="Each stage has a durable local artifact and a recorded revision or hash."
   head={["Stage", "Artifact", "Recorded proof"]}
   rows={[
@@ -198,12 +219,26 @@ I keep preparation, training, evaluation, and deployment as separate stages. Eve
 
 ### Build the corpus
 
+These commands rebuild the pipeline from repositories visible to the authenticated GitHub account. They do not recreate my exact private source snapshot for another user; the immutable Hugging Face revision below is the reproducible public data boundary.
+
 <CitationBlock code={`uv sync --extra train --extra deploy
 gh auth status
 
 uv run python fetch_repos.py
 uv run python stats.py
 uv run python build_dataset.py`} />
+
+### Load the published revision
+
+<CitationBlock code={`uv run python - <<'PY'
+from datasets import load_dataset
+
+dataset = load_dataset(
+    "JulianAT/personal-codex-model",
+    revision="9f9829f9dbd75400595ea2e211e291fbcc47ba0f",
+)
+print({name: len(split) for name, split in dataset.items()})
+PY`} />
 
 ### Recreate the compatibility adapter
 
@@ -227,15 +262,17 @@ I set context limits in both the Ollama Modelfile and the Codex client. Ollama c
 ### Evidence map
 
 <DataTable
-  label="Table 7. Canonical evidence map."
+  label="Table 8. Canonical evidence map."
   caption="Generated presentation files never override these machine-readable sources."
   head={["Question", "Canonical file"]}
   rows={[
     ["What did I contribute?", "stats/stats.json"],
     ["What entered the corpus?", "datasets/raw-max/statistics.json"],
+    ["What was published?", "HF dataset revision 9f9829f9…"],
     ["How was training invoked?", "runs/.../run.json + train.log"],
     ["Which model revision was used?", "config.yaml + plan.json"],
     ["Did deployment pass?", "deployment/.../verification.json"],
+    ["Which environment was recorded?", "report/environment.json"],
     ["What identity is embedded?", "deployment/system-prompt.txt"],
   ]}
 />
@@ -246,7 +283,7 @@ I keep the claims in this report aligned with the measurements they come from.
 
 - **The published checkpoint is a systems-validation artifact.** Its measurements establish compatibility, conversion correctness, and runtime behavior; they are not a held-out coding-quality benchmark.
 - **Repository history is correlated.** Thousands of commits do not represent thousands of independent programming tasks. Repeated frameworks, scaffolds, and project conventions reduce effective diversity.
-- **Filtering is not publication clearance.** Secret signatures and sensitive-path rules reduce obvious risk, but privacy, copyright, and repository licenses still require explicit review.
+- **Filtering is not publication clearance.** Secret signatures and sensitive-path rules reduce obvious risk. I explicitly approved the staged public dataset, but privacy, copyright, and repository licenses still require ongoing review.
 - **Performance is machine-specific.** I measured throughput, latency, and peak memory on my local Apple Silicon environment; other hardware will produce different results.
 - **The Codex gate is an integration test.** It verifies the agent loop under a controlled edit-and-test task rather than claiming broad software-engineering capability.
 

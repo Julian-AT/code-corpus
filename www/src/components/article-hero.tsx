@@ -10,7 +10,7 @@ export function ArticleHero() {
     <header className="mt-12 flex flex-col items-center gap-8 text-center">
       <div className="flex flex-col items-center gap-8 text-center">
         <p className="font-sans text-[15px] font-bold leading-[21px] text-ink">
-          Applied AI systems · Apple Silicon
+          Applied AI systems · Reproducible ML engineering
         </p>
         <h1 className="max-w-4xl text-balance font-sans text-[32px] font-bold leading-[1.1] text-ink lg:text-[52px] lg:leading-[57.2px]">
           {ARTICLE.title}
@@ -27,7 +27,7 @@ export function ArticleHero() {
       >
         <Image
           src={HERO_IMAGE_URL}
-          alt={ARTICLE.title}
+          alt="Repository history flowing through an audited corpus, Gemma 4 LoRA adapter, GGUF conversion, and a verified Ollama and Codex runtime"
           fill
           priority
           sizes="(max-width: 820px) 100vw, 820px"

@@ -137,6 +137,11 @@ def test_raw_dataset_writes_and_loads_hugging_face_directory(tmp_path: Path) -> 
     assert statistics["self_test"]["status"] == "passed"
     assert len(loaded["train"]) + len(loaded["valid"]) == 2
     assert {row["repo"] for split in loaded.values() for row in split} == {"alpha", "beta"}
+    card = (settings.output_root / "raw-max" / "README.md").read_text(encoding="utf-8")
+    assert "pretty_name: Personal Codex Model Training Corpus" in card
+    assert "task_ids:\n- language-modeling" in card
+    assert "# Personal Codex Model Training Corpus" in card
+    assert "—" not in card
 
 
 def test_quality_dataset_keeps_personal_code_without_leaking_single_repo(tmp_path: Path) -> None:

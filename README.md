@@ -1,6 +1,6 @@
 # Personalized Gemma 4 E4B
 
-This project builds a private, source-traceable code corpus, fine-tunes one pinned Gemma 4 E4B
+This project builds a source-traceable code corpus, fine-tunes one pinned Gemma 4 E4B
 checkpoint with MLX-VLM LoRA, evaluates the adapter against its untouched base, and packages it as
 an offline Ollama model that Codex can use. Public model-card results are report context only; they
 do not influence model selection and are never presented as local measurements.
@@ -21,6 +21,11 @@ tensor pairs. Ollama then passed a native tool-call check at 85.58 decode tokens
 to first token, and Codex fixed and tested a deliberately broken Python fixture through the local
 model. Canonical evidence is in
 [`deployment/gemma4-e4b-julian-latest/verification.json`](deployment/gemma4-e4b-julian-latest/verification.json).
+
+The current public corpus was generated after that compatibility checkpoint. [Hugging Face revision
+`9f9829f9dbd75400595ea2e211e291fbcc47ba0f`](https://huggingface.co/datasets/JulianAT/personal-codex-model/tree/9f9829f9dbd75400595ea2e211e291fbcc47ba0f) contains 18,361 rows from 58 repositories, split into
+15,226 training and 3,135 validation rows. The checkpoint verifies the systems path; it is not
+presented as a completed adaptation result on this newer dataset revision.
 
 ## Requirements
 
@@ -124,20 +129,15 @@ The persistent assistant identity and Julian-specific context live in
 
 ## Report artifacts
 
-`uv run python evaluate.py` regenerates PNG and SVG versions of every figure. Seaborn supplies all
-quantitative chart marks.
-
-- `report/REPORT.md`: report-ready methodology, evidence tables, caveats, and figure references
-- `report/results.json`: canonical local evaluation, training telemetry, and deployment evidence
-- `report/charts/upstream-*.{png,svg}`: sourced, unadapted public model comparisons
-- `report/charts/training-telemetry.{png,svg}`: loss, throughput, and peak-memory traces
-- `report/charts/local-*.{png,svg}`: measured base-versus-adapter results
-- `report/charts/offline-deployment-headroom.{png,svg}`: threshold-normalized Ollama margins
-- `stats/STATS.md` and `stats/charts/`: contribution history and corpus provenance
+- `report/REPORT.md`: current methodology, evidence tables, scope, and reproducibility notes
+- `report/environment.json`: sanitized reference workstation and toolchain snapshot
+- `report/results.json`: generated evaluation-plan state; use only completed observations
+- `stats/STATS.md` and `stats/charts/`: contribution history and aggregate provenance figures
+- `www/`: the publication layer for the current measured record
 
 ## Web report
 
-`www/` is the publication layer for the project. It presents the source-traceable corpus, training, conversion, and deployment record as a responsive Next.js report while keeping private repositories, dataset rows, weights, and local paths out of the rendered page. Its narrative deliberately distinguishes the completed one-step compatibility adapter from the interrupted selection run and the unrun production training.
+`www/` is the publication layer for the project. It presents the source-traceable corpus, dataset publication, compatibility training, conversion, and deployment record as a responsive Next.js report while keeping repository checkouts, weights, local paths, and secrets out of the rendered page. Its narrative explicitly separates the current Hugging Face revision from the earlier compatibility checkpoint.
 
 ```bash
 cd www
@@ -154,9 +154,11 @@ score.
 
 ## Privacy and interpretation
 
-Private source, datasets, and adapters stay local unless you publish them. Secret filtering is a
-high-precision safety layer, not proof that a corpus is publishable. Inspect retained paths and
-honor every source repository's license before sharing any data or weights.
+Raw repository checkouts and adapters stay local unless explicitly published. The Hugging Face
+dataset is an intentional public release of staged, scanned Parquet rows and sanitized metadata;
+some approved rows originated in repositories that were private at collection time. Secret
+filtering is a high-precision safety layer, not proof that a corpus is publishable. Inspect retained
+paths and honor every source repository's license before sharing data or weights.
 
 Local next-line exact match and perplexity measure personalization on held-out repositories; they
 do not establish broad software-engineering ability. Vendor model-card scores are useful context,

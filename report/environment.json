@@ -1,0 +1,20 @@
+{
+  "captured_at": "2026-07-16T16:15:57Z",
+  "scope": "Current reference workstation; run-specific telemetry remains canonical in the recorded training and deployment artifacts.",
+  "hardware": {
+    "model": "MacBook Pro",
+    "chip": "Apple M4 Pro",
+    "cpu_cores": 14,
+    "performance_cores": 10,
+    "efficiency_cores": 4,
+    "unified_memory_gb": 24
+  },
+  "software": {
+    "macos": "26.5.1 (25F80)",
+    "python": "3.14.2",
+    "mlx": "0.32.0",
+    "mlx_vlm": "0.6.4",
+    "ollama": "0.32.0",
+    "codex_cli": "0.144.5"
+  }
+}

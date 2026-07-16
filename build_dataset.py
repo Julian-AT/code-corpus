@@ -83,6 +83,8 @@ class BuildSettings:
     dataset_languages: tuple[str, ...]
     min_validation_repos: int = 1
     hub_repo_id: str = "JulianAT/personal-codex-model"
+    dataset_license_holder: str = "JulianAT"
+    dataset_license_year: int = 2026
 
 
 @dataclass(frozen=True)
@@ -309,6 +311,10 @@ def settings_for(
         dataset_languages=tuple(config_value(config, "project.dataset_languages", ["en"])),
         min_validation_repos=int(config_value(config, "dataset.min_validation_repos", 1)),
         hub_repo_id=str(config_value(config, "hub.repo_id", "JulianAT/personal-codex-model")),
+        dataset_license_holder=str(
+            config_value(config, "project.dataset_license_holder", "JulianAT")
+        ),
+        dataset_license_year=int(config_value(config, "project.dataset_license_year", 2026)),
     )
 
 
@@ -580,6 +586,7 @@ def clean_known_outputs(output: Path) -> None:
             shutil.rmtree(directory)
     for name in (
         "README.md",
+        "LICENSE",
         "dataset_infos.json",
         "statistics.json",
         "train.jsonl",
@@ -639,7 +646,7 @@ def write_artifacts(
         {"name": name, "dtype": str(feature.dtype)} for name, feature in FEATURES.items()
     ]
     metadata = {
-        "pretty_name": f"Personal Code Corpus ({settings.variant})",
+        "pretty_name": "Personal Codex Model Training Corpus",
         "license": settings.dataset_license,
         "language": list(settings.dataset_languages),
         "annotations_creators": ["no-annotation"],
@@ -647,7 +654,28 @@ def write_artifacts(
         "source_datasets": ["original"],
         "size_categories": [size_category(len(rows))],
         "task_categories": ["text-generation"],
-        "tags": ["code", "source-code", "code-completion", "deduplicated", "datasets"],
+        "task_ids": ["language-modeling"],
+        "tags": [
+            "code",
+            "text",
+            "source-code",
+            "code-completion",
+            "code-generation",
+            "causal-language-modeling",
+            "continued-pretraining",
+            "fine-tuning",
+            "coding-assistant",
+            "software-engineering",
+            "repository-level",
+            "multilingual-code",
+            "deduplicated",
+            "provenance-aware",
+            "parquet",
+            "datasets",
+            "typescript",
+            "python",
+            "javascript",
+        ],
         "configs": [
             {
                 "config_name": "default",
@@ -662,10 +690,12 @@ def write_artifacts(
         },
     }
     write_text(output / "README.md", dataset_card(settings, rows, audit, metadata))
+    if settings.dataset_license.casefold() == "mit":
+        write_text(output / "LICENSE", mit_license(settings))
     dataset_info = {
         "default": {
             "builder_name": "parquet",
-            "dataset_name": settings.variant,
+            "dataset_name": settings.hub_repo_id.rsplit("/", 1)[-1],
             "config_name": "default",
             "description": "Repository-walked personal code chunks for completion training.",
             "license": settings.dataset_license,
@@ -749,6 +779,15 @@ def dataset_card(
     lines = line_statistics(rows)
     utf8_mib = sum(len(str(row["text"]).encode("utf-8")) for row in rows) / (1024 * 1024)
     source_files = len({(str(row["repo"]), str(row["path"])) for row in rows})
+    lexical_tokens = sum(int(row["n_tokens"]) for row in rows)
+    language_counts = Counter(str(row["language"]) for row in rows)
+    language_table = "\n".join(
+        f"| {language} | {count:,} | {count / len(rows):.1%} |"
+        for language, count in language_counts.most_common()
+    )
+    split_counts = {
+        str(item["name"]): int(item["num_examples"]) for item in metadata["dataset_info"]["splits"]
+    }
     frontmatter = yaml.safe_dump(
         dict(metadata),
         sort_keys=False,
@@ -758,103 +797,222 @@ def dataset_card(
     quality_rules = ""
     if settings.variant == "quality":
         quality_rules = f"""
-## Quality selection
+### Quality selection
 
-Test and fixture paths are {"dropped" if settings.quality.drop_tests else "kept"}. A file earns
-{settings.quality.history_weight} point when touched by at least
-{settings.quality.min_history_commits} commits, {settings.quality.lifetime_weight} point when its
-git lifetime is at least {settings.quality.min_lifetime_days} days, and
-{settings.quality.personal_weight} points when at least one matching author email touched it. Files
-need a score of {settings.quality.min_score}. Matching emails are configured locally and are not
-published in this card.
+The quality variant {"excludes" if settings.quality.drop_tests else "retains"} test and fixture
+paths. Files are scored from commit count, repository lifetime, and configured author matches. The
+minimum accepted score is {settings.quality.min_score}. Author email values remain local and are not
+published.
 """
+    if settings.dataset_license.casefold() == "mit":
+        license_text = """The packaged dataset is released under the MIT License. The included
+`LICENSE` file contains the complete terms. This dataset-level license does not supersede separate
+licenses, notices, or obligations that may apply to code from contributing repositories. Users are
+responsible for source-specific compliance when redistributing code, releasing trained models, or
+using generated output."""
+    else:
+        license_text = """The dataset uses the Hugging Face `other` license classification because
+no single dataset-wide license supersedes the licenses and obligations of contributing repositories.
+Users are responsible for source-specific compliance before redistribution, commercial use, model
+release, or generated-code reuse."""
     return f"""---
 {frontmatter}
 ---
 
-# Personal code corpus: {settings.variant}
+# Personal Codex Model Training Corpus
 
-This is a repo-walked style/volume corpus, **not a curated accepted-state dataset**. It captures
-files present in local repository checkouts when the builder ran. It does not establish that every
-chunk is correct, reviewed, authored exclusively by one person, or suitable as a preferred answer.
+## Overview
 
-The corpus is intended for code-language modeling, code completion, and controlled personalization
-experiments. It must not be used to infer repository ownership, software quality, security, or the
-identity of an author.
+Personal Codex Model Training Corpus is a provenance-aware, repository-level dataset for causal
+language modeling, code completion, continued pretraining, and coding assistant adaptation. It is
+built from source files present in local Git repository checkouts at a defined collection point.
 
-## Dataset summary
+The dataset prioritizes broad, authentic software-engineering coverage while retaining enough
+metadata to audit every emitted chunk. It is not an instruction dataset, benchmark, or collection
+of verified solutions. Each record represents source text as it existed in a repository checkout,
+after filtering, chunking, secret screening, and global deduplication.
 
-- Rows: {len(rows):,}
-- Emitted lines: {lines["total"]:,} ({lines["nonblank"]:,} nonblank)
-- UTF-8 source text: {utf8_mib:,.1f} MiB
-- Source files with retained chunks: {source_files:,}
-- Repositories with retained rows: {audit["repositories_with_rows"]:,}
-- Completion field: `text`
-- Provenance fields: `repo`, `path`, `language`, `sha`, `chunk_index`, `n_tokens`
-- Split: deterministic repository-level train/valid assignment; a repository never crosses splits
-- Hash: SHA-256 of the emitted chunk text
-- Token counts: deterministic tokenizer-independent lexical estimates used for approximate chunking
+## Dataset profile
+
+| Metric | Value |
+| --- | ---: |
+| Total examples | {len(rows):,} |
+| Training examples | {split_counts.get("train", 0):,} |
+| Validation examples | {split_counts.get("valid", 0):,} |
+| Emitted lines | {lines["total"]:,} |
+| Nonblank emitted lines | {lines["nonblank"]:,} |
+| Approximate lexical tokens | {lexical_tokens:,} |
+| UTF-8 source text | {utf8_mib:,.1f} MiB |
+| Source files with retained chunks | {source_files:,} |
+| Repositories with retained rows | {audit["repositories_with_rows"]:,} |
+
+Line, byte, and token totals measure emitted training chunks. The configured chunk overlap can
+repeat text at chunk boundaries. These figures describe training volume, not unique repository
+lines of code or model-tokenizer counts.
+
+## Language and format distribution
+
+The `language` value is assigned from a controlled extension and exact-filename mapping. Markdown,
+configuration, schema, and build-system files are retained because they are part of real software
+engineering workflows and frequently contain executable examples or machine-consumed structure.
+
+| Language or format | Examples | Share |
+| --- | ---: | ---: |
+{language_table}
+
+## Intended uses
+
+Appropriate uses include:
+
+- continued pretraining or domain adaptation of causal language models
+- code completion and repository-aware coding assistant experiments
+- tokenizer, chunking, deduplication, and corpus composition research
+- retrieval and provenance experiments using repository and path metadata
+- controlled studies of personalization on repository-disjoint validation data
+
+The dataset is not suitable as a correctness benchmark, a secure-code reference, a software
+license classifier, or evidence of authorship and repository ownership.
 
 ## Load the dataset
+
+Install a compatible version of `datasets`, then load the full corpus:
 
 ```python
 from datasets import load_dataset
 
 dataset = load_dataset("{settings.hub_repo_id}")
+print(dataset)
+print(dataset["train"].features)
 ```
 
-Each row has the following stable schema:
+Stream examples without downloading the complete dataset:
 
-- `text`: source-code chunk used as the completion field
-- `repo`, `path`: source provenance within the local corpus
-- `language`: language inferred from the file extension
-- `sha`: SHA-256 of the emitted `text`
-- `chunk_index`: zero-based chunk position within the source file
-- `n_tokens`: tokenizer-independent lexical token estimate
+```python
+from datasets import load_dataset
 
-Line and byte totals describe emitted chunks. Chunk overlap can repeat boundary text, so these are
-training-corpus volume measurements rather than unique repository lines of code.
+stream = load_dataset("{settings.hub_repo_id}", split="train", streaming=True)
+first_example = next(iter(stream))
+```
 
-`raw-max` is bounded by code that actually exists after filtering. A claim of several million rows
-is only credible when the source repositories contain enough retained code; `--max-rows` is a
-ceiling, not a promised row count. This implementation supports at most 1,000,000 rows per variant.
+## Schema
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `text` | string | Source-code or repository-text chunk used as the modeling target. |
+| `repo` | string | Source repository name at collection time. |
+| `path` | string | Repository-relative source path. |
+| `language` | string | Language or format inferred from the configured mapping. |
+| `sha` | string | SHA-256 digest of the emitted `text`. |
+| `chunk_index` | int32 | Zero-based chunk position within the source file. |
+| `n_tokens` | int32 | Tokenizer-independent lexical token estimate. |
+
+## Dataset construction
+
+The builder applies the following deterministic pipeline:
+
+1. Discover configured Git repository checkouts.
+2. Walk supported source, documentation, schema, configuration, and build files.
+3. Exclude ignored, sensitive, generated, vendored, binary, oversized, and unsupported content.
+4. Decode retained files as UTF-8 and reject unreadable or empty payloads.
+5. Reject complete files containing high-confidence credential signatures.
+6. Chunk source text to approximately {settings.chunk_tokens:,} lexical tokens with an overlap of
+   {settings.overlap_tokens:,} lexical tokens.
+7. Remove exact duplicate chunks by SHA-256.
+8. Remove near-duplicate chunks with MinHash LSH.
+9. Assign repositories, rather than individual rows, to deterministic train and validation splits.
+
+This repository-level split prevents a source repository from appearing in both splits. It reduces
+direct leakage from repeated project structure and repository-specific conventions.
 {quality_rules}
-## Deduplication
+## Deduplication and quality controls
 
-Exact duplicate chunks are removed by SHA-256. Near duplicates are removed online with
-`datasketch.MinHashLSH`, {settings.minhash_permutations} permutations, token
-{settings.shingle_tokens}-grams, and a Jaccard threshold of {settings.near_threshold}.
+Near-duplicate detection uses `datasketch.MinHashLSH` with
+{settings.minhash_permutations} permutations, token {settings.shingle_tokens}-grams, and a Jaccard
+threshold of {settings.near_threshold}. The current build retained
+{audit["dedup_report"]["rows_kept"]:,} chunks after dropping
+{audit["dedup_report"]["exact_duplicates_dropped"]:,} exact duplicates and
+{audit["dedup_report"]["near_duplicates_dropped"]:,} near duplicates.
 
-## Exclusions and limitations
+The file walk excludes Git metadata, ignored paths, dependency and environment directories, build
+outputs, vendored and generated directories, lockfiles, minified files, symlinks, binary or
+non-UTF-8 payloads, files above {settings.rules.max_file_bytes:,} bytes, and unsupported formats.
+Credential screening covers high-confidence private-key, platform-token, cloud-key, API-key, and
+JWT patterns.
 
-The walk excludes gitignored paths, `.git`, dependency/environment directories, build outputs,
-vendored/generated directories and filename patterns, lockfiles, minified files, symlinks, binaries,
-non-UTF-8 files, unsupported extensions, and files above {settings.rules.max_file_bytes:,} bytes.
-The quality variant may additionally exclude tests, fixtures, and low-history files.
+These controls reduce common leakage and duplication risks. They do not constitute a formal proof
+that every row is safe, original, correct, or free of sensitive information.
 
-Repository licenses and obligations still apply to the source code. The dataset-level `other`
-license value does not replace per-repository licenses. Paths and code can contain sensitive data;
-inspect the artifacts before publishing. MinHash is approximate, lexical token counts are not model
-token counts, current checkouts omit deleted historical code, and repository-level splitting can
-produce an empty validation split when fewer than two repositories contribute rows.
+## Provenance, privacy, and licensing
 
-This corpus can contain insecure, incomplete, duplicated, outdated, or otherwise low-quality code.
-It is not a benchmark and has no correctness labels. The secret scanner uses a conservative set of
-high-confidence patterns and is not proof that the corpus is free of private or identifying data.
+Every record retains repository, path, language, chunk position, and content-hash metadata. This
+supports traceability inside the published corpus without publishing local checkout locations or
+builder credentials.
 
-## Reproducibility and audit
+Some contributing repositories were private at collection time. Public publication was explicitly
+enabled by the dataset maintainer. Users should still treat repository names, paths, comments, and
+source text as potentially identifying information.
 
-`statistics.json` records row counts, split assignments, language distribution, filter decisions,
-deduplication totals, and build parameters. Splits are deterministic for the recorded seed. Source
-repository checkouts and the builder configuration are deliberately not included in the Hub repo.
+{license_text}
 
-## Hub files
+## Limitations
 
-- `data/*.parquet`: Hugging Face loader source
-- `dataset_infos.json`, `statistics.json`: schema, counts, filters, and dedup audit
+- Source is collected from working-tree snapshots, not from deleted Git history.
+- Repository contents can include incomplete, insecure, outdated, experimental, or generated-like
+  code that survives the configured filters.
+- Extension-based language labels do not perform parser-level language verification.
+- Lexical token estimates are not equivalent to tokens from a production model tokenizer.
+- MinHash is approximate and can retain related text or remove independently written similar text.
+- Chunk overlap increases emitted volume and can repeat boundary lines.
+- The dataset contains no correctness, security, quality, preference, or authorship labels.
+- Repository-disjoint validation measures transfer across included repositories, not general coding
+  ability across unrelated ecosystems.
 
-The local build also creates Arrow and JSONL representations for training. They are intentionally
-excluded from Hub publication because they duplicate the Parquet data.
+## Reproducibility and audit artifacts
+
+`statistics.json` records build parameters, split assignments, row and token counts, language
+distribution, filter decisions, and deduplication totals. `dataset_infos.json` records the feature
+schema and split sizes. The Parquet shards are the canonical Hub loader source.
+
+The Hub publication intentionally omits local Arrow and JSONL copies because they duplicate the
+Parquet payload. It also omits source checkouts, local filesystem paths, author-email configuration,
+and training artifacts.
+
+## Citation
+
+```bibtex
+@misc{{personal_codex_model_training_corpus,
+  author       = {{JulianAT}},
+  title        = {{Personal Codex Model Training Corpus}},
+  year         = {{2026}},
+  howpublished = {{Hugging Face Datasets}},
+  url          = {{https://huggingface.co/datasets/{settings.hub_repo_id}}}
+}}
+```
+"""
+
+
+def mit_license(settings: BuildSettings) -> str:
+    return f"""MIT License
+
+Copyright (c) {settings.dataset_license_year} {settings.dataset_license_holder}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 """
 
 

@@ -4,6 +4,7 @@ import { CitationBlock } from "@/components/citation-block";
 import { DataTable } from "@/components/data-table";
 import { Figure } from "@/components/figure";
 import {
+  DatasetLanguageProfile,
   ReportCallout,
   TokenHistogram,
   VerificationGrid,
@@ -96,6 +97,7 @@ const components: MDXComponents = {
   Figure,
   CitationBlock,
   DataTable,
+  DatasetLanguageProfile,
   ReportCallout,
   TokenHistogram,
   VerificationGrid,

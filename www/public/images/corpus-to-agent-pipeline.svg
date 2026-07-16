@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Source-traceable corpus-to-agent pipeline</title>
+  <desc id="description">Five connected stages show repository history becoming an audited dataset, a Gemma 4 LoRA adapter, a GGUF package, and a verified local coding agent.</desc>
+  <rect width="1200" height="630" fill="#f0eee6"/>
+  <g fill="#141413" font-family="Arial, Helvetica, sans-serif">
+    <text x="80" y="94" font-size="18" font-weight="700" letter-spacing="2.5">SOURCE-TRACEABLE AI ENGINEERING</text>
+    <text x="80" y="150" font-size="42" font-weight="700">Repository history to verified local agent</text>
+    <text x="80" y="187" fill="#5c5b57" font-size="20">Audited data, pinned model contract, measured deployment</text>
+  </g>
+
+  <g stroke="#141413" stroke-width="2" fill="none">
+    <line x1="252" y1="361" x2="274" y2="361"/>
+    <path d="M267 354l7 7-7 7"/>
+    <line x1="474" y1="361" x2="496" y2="361"/>
+    <path d="M489 354l7 7-7 7"/>
+    <line x1="696" y1="361" x2="718" y2="361"/>
+    <path d="M711 354l7 7-7 7"/>
+    <line x1="918" y1="361" x2="940" y2="361"/>
+    <path d="M933 354l7 7-7 7"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g>
+      <rect x="52" y="260" width="200" height="202" rx="18" fill="#faf9f5" stroke="#141413" stroke-width="2"/>
+      <text x="76" y="298" fill="#5c5b57" font-size="14" font-weight="700" letter-spacing="1.8">01 · SOURCE</text>
+      <text x="76" y="345" fill="#141413" font-size="31" font-weight="700">60 repos</text>
+      <text x="76" y="377" fill="#141413" font-size="16">3,018 matched commits</text>
+      <line x1="76" y1="402" x2="228" y2="402" stroke="#d4d1c7"/>
+      <text x="76" y="431" fill="#5c5b57" font-size="14">Full Git provenance</text>
+    </g>
+    <g>
+      <rect x="274" y="260" width="200" height="202" rx="18" fill="#faf9f5" stroke="#141413" stroke-width="2"/>
+      <text x="298" y="298" fill="#5c5b57" font-size="14" font-weight="700" letter-spacing="1.8">02 · CORPUS</text>
+      <text x="298" y="345" fill="#141413" font-size="27" font-weight="700">18,361 rows</text>
+      <text x="298" y="377" fill="#141413" font-size="16">12.47M lexical tokens</text>
+      <line x1="298" y1="402" x2="450" y2="402" stroke="#d4d1c7"/>
+      <text x="298" y="431" fill="#5c5b57" font-size="14">Filter · split · dedupe</text>
+    </g>
+    <g>
+      <rect x="496" y="260" width="200" height="202" rx="18" fill="#faf9f5" stroke="#141413" stroke-width="2"/>
+      <text x="520" y="298" fill="#5c5b57" font-size="14" font-weight="700" letter-spacing="1.8">03 · ADAPTER</text>
+      <text x="520" y="345" fill="#141413" font-size="26" font-weight="700">Gemma 4 E4B</text>
+      <text x="520" y="377" fill="#141413" font-size="16">MLX LoRA · rank 8</text>
+      <line x1="520" y1="402" x2="672" y2="402" stroke="#d4d1c7"/>
+      <text x="520" y="431" fill="#5c5b57" font-size="14">Compatibility gate</text>
+    </g>
+    <g>
+      <rect x="718" y="260" width="200" height="202" rx="18" fill="#faf9f5" stroke="#141413" stroke-width="2"/>
+      <text x="742" y="298" fill="#5c5b57" font-size="14" font-weight="700" letter-spacing="1.8">04 · PACKAGE</text>
+      <text x="742" y="345" fill="#141413" font-size="26" font-weight="700">GGUF LoRA</text>
+      <text x="742" y="377" fill="#141413" font-size="16">343 tensor pairs</text>
+      <line x1="742" y1="402" x2="894" y2="402" stroke="#d4d1c7"/>
+      <text x="742" y="431" fill="#5c5b57" font-size="14">PEFT conversion</text>
+    </g>
+    <g>
+      <rect x="940" y="260" width="208" height="202" rx="18" fill="#141413"/>
+      <text x="964" y="298" fill="#b5b2aa" font-size="14" font-weight="700" letter-spacing="1.8">05 · RUNTIME</text>
+      <text x="964" y="345" fill="#faf9f5" font-size="25" font-weight="700">Ollama + Codex</text>
+      <text x="964" y="377" fill="#faf9f5" font-size="16">85.58 decode tok/s</text>
+      <line x1="964" y1="402" x2="1124" y2="402" stroke="#5c5b57"/>
+      <text x="964" y="431" fill="#b5b2aa" font-size="14">Tool + agent gates passed</text>
+    </g>
+  </g>
+
+  <g fill="#5c5b57" font-family="Arial, Helvetica, sans-serif" font-size="15">
+    <text x="52" y="530">Every transition produces a durable artifact, revision, hash, or measured verification record.</text>
+    <text x="52" y="566">Julian Schmidt · Applied AI systems · Apple Silicon</text>
+  </g>
+</svg>

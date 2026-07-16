@@ -1,5 +1,7 @@
 project:
-  dataset_license: other
+  dataset_license: mit
+  dataset_license_holder: JulianAT
+  dataset_license_year: 2026
   dataset_languages:
     - code
   seed: 42
@@ -54,6 +56,7 @@ dataset:
     - "secrets.*"
   extensions:
     .bash: Shell
+    .bat: Batch
     .c: C
     .cc: C++
     .clj: Clojure
@@ -76,9 +79,11 @@ dataset:
     .hs: Haskell
     .hpp: C++
     .html: HTML
+    .hbs: Handlebars
     .java: Java
     .js: JavaScript
     .json: JSON
+    .jsonl: JSON Lines
     .jsonc: JSON
     .jsx: JavaScript
     .kt: Kotlin
@@ -86,6 +91,7 @@ dataset:
     .lua: Lua
     .m: Objective-C
     .md: Markdown
+    .mdc: Markdown
     .mdx: MDX
     .mm: Objective-C++
     .mjs: JavaScript
@@ -96,11 +102,13 @@ dataset:
     .proto: Protocol Buffer
     .prisma: Prisma
     .py: Python
+    .pyi: Python
     .r: R
     .rb: Ruby
     .rkt: Racket
     .rs: Rust
     .scala: Scala
+    .scss: SCSS
     .sh: Shell
     .sbatch: Shell
     .slurm: Shell
@@ -116,12 +124,22 @@ dataset:
     .tsx: TypeScript
     .txt: Text
     .vue: Vue
+    .webmanifest: Web Manifest
     .xml: XML
     .xsd: XML Schema
     .yaml: YAML
     .yml: YAML
     .zig: Zig
+    .ini: INI
   filenames:
+    .dockerignore: Docker Ignore
+    .editorconfig: EditorConfig
+    .eslintignore: ESLint Ignore
+    .gitattributes: Git Attributes
+    .gitignore: Git Ignore
+    .prettierignore: Prettier Ignore
+    .prettierrc: Prettier
+    .runpodignore: Runpod Ignore
     CMakeLists.txt: CMake
     Containerfile: Dockerfile
     Dockerfile: Dockerfile

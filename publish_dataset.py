@@ -15,7 +15,7 @@ from build_dataset import FEATURES, detected_secret_kind
 from corpuslib import config_value, load_config, resolved_path, write_json
 from datasets import DatasetDict, load_dataset
 
-PUBLISHED_ROOT_FILES = {"README.md", "dataset_infos.json", "statistics.json"}
+PUBLISHED_ROOT_FILES = {"README.md", "LICENSE", "dataset_infos.json", "statistics.json"}
 
 
 def parse_args() -> argparse.Namespace:
@@ -62,6 +62,7 @@ def sanitized_statistics(statistics: dict[str, Any], repo_id: str) -> dict[str, 
     sources = sanitized.setdefault("sources", {})
     sources["repository_root"] = "local repository checkouts (not published)"
     sources["config"] = "local config.yaml (not published)"
+    sanitized["variant"] = "default"
     sanitized["self_test"] = {
         "status": "passed",
         "loader": f'datasets.load_dataset("{repo_id}")',
@@ -87,7 +88,7 @@ def prepare_upload(source: Path, destination: Path, repo_id: str) -> None:
         raise FileNotFoundError("Missing generated dataset artifacts: " + ", ".join(missing))
 
     destination.mkdir(parents=True, exist_ok=True)
-    for name in ("README.md", "dataset_infos.json"):
+    for name in ("README.md", "LICENSE", "dataset_infos.json"):
         shutil.copy2(source / name, destination / name)
     data_directory = destination / "data"
     data_directory.mkdir()
@@ -122,6 +123,10 @@ def validate_upload(folder: Path) -> DatasetDict:
             and local_home in path.read_text(encoding="utf-8")
         ):
             raise ValueError(f"Local home path leaked into publication metadata: {path}")
+        if path.is_file() and path.suffix != ".parquet":
+            text = path.read_text(encoding="utf-8")
+            if "raw-max" in text.casefold():
+                raise ValueError(f"Internal variant name leaked into publication metadata: {path}")
     return dataset
 
 
@@ -148,7 +153,13 @@ def publish(folder: Path, repo_id: str, private: bool) -> str:
         repo_type="dataset",
         folder_path=folder,
         commit_message="Publish validated code corpus",
-        delete_patterns=["README.md", "dataset_infos.json", "statistics.json", "data/**"],
+        delete_patterns=[
+            "README.md",
+            "LICENSE",
+            "dataset_infos.json",
+            "statistics.json",
+            "data/**",
+        ],
     )
     remote = load_dataset(repo_id, token=True, download_mode="force_redownload")
     local = load_dataset(str(folder))

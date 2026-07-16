@@ -3,7 +3,12 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TableOfContents } from "@/components/table-of-contents";
 import Article from "@/content/report.mdx";
-import { ARTICLE, SITE_URL, TOC_SECTIONS } from "@/lib/constants";
+import {
+  ARTICLE,
+  HERO_IMAGE_URL,
+  SITE_URL,
+  TOC_SECTIONS,
+} from "@/lib/constants";
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -12,7 +17,12 @@ const articleJsonLd = {
   description: ARTICLE.description,
   datePublished: ARTICLE.datePublished,
   dateModified: ARTICLE.dateModified,
-  author: ARTICLE.authors.map((name) => ({ "@type": "Person", name })),
+  author: ARTICLE.authors.map((name) => ({
+    "@type": "Person",
+    name,
+    url: "https://julianschmidt.cv",
+  })),
+  image: new URL(HERO_IMAGE_URL, SITE_URL).toString(),
   mainEntityOfPage: SITE_URL,
 };
 

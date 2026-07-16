@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Julian Schmidt",
   },
   description: ARTICLE.description,
-  applicationName: "Private coding model engineering report",
+  applicationName: "Source-traceable coding agent engineering report",
   authors: [{ name: "Julian Schmidt", url: "https://julianschmidt.cv" }],
   creator: "Julian Schmidt",
   keywords: [
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: HERO_IMAGE_URL,
-        width: 1247,
-        height: 528,
+        width: 1200,
+        height: 630,
         alt: ARTICLE.title,
       },
     ],

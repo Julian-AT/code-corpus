@@ -1,11 +1,77 @@
 import type { ReactNode } from "react";
 import { FIGURE_MAX_WIDTH, PROSE_MAX_WIDTH } from "@/lib/constants";
 
+export function DatasetLanguageProfile() {
+  const languages = [
+    {
+      label: "Markdown",
+      value: "6,559",
+      share: "35.7%",
+      width: "w-[35.7%]",
+    },
+    {
+      label: "TypeScript",
+      value: "6,170",
+      share: "33.6%",
+      width: "w-[33.6%]",
+    },
+    { label: "JSON", value: "2,828", share: "15.4%", width: "w-[15.4%]" },
+    { label: "Python", value: "1,532", share: "8.3%", width: "w-[8.3%]" },
+    {
+      label: "Other formats",
+      value: "1,272",
+      share: "6.9%",
+      width: "w-[6.9%]",
+    },
+  ] as const;
+
+  return (
+    <figure
+      className={`mx-auto my-12 w-full ${FIGURE_MAX_WIDTH} rounded-2xl border border-code-border p-5 sm:p-7`}
+    >
+      <div className="flex flex-wrap items-end justify-between gap-3 border-b border-code-border pb-5">
+        <div>
+          <p className="font-sans text-[13px] font-semibold text-muted-ink">
+            Published corpus composition
+          </p>
+          <h3 className="mt-2 font-sans text-[25px] font-semibold leading-[1.2] text-ink">
+            Documentation and TypeScript account for most retained rows
+          </h3>
+        </div>
+        <p className="font-mono text-[13px] text-muted-ink">18,361 total rows</p>
+      </div>
+      <div className="mt-6 space-y-5">
+        {languages.map((language) => (
+          <div key={language.label}>
+            <div className="mb-2 grid grid-cols-[1fr_auto_auto] items-center gap-4 font-sans text-[14px]">
+              <span className="text-ink">{language.label}</span>
+              <span className="font-semibold tabular-nums text-ink">
+                {language.value}
+              </span>
+              <span className="w-12 text-right tabular-nums text-muted-ink">
+                {language.share}
+              </span>
+            </div>
+            <div className="h-3 overflow-hidden rounded-full bg-code-bg">
+              <div className={`h-full rounded-full bg-ink ${language.width}`} />
+            </div>
+          </div>
+        ))}
+      </div>
+      <figcaption className="mt-5 font-sans text-[14px] leading-[16.8px] tracking-[0.15px] text-muted-ink">
+        Row counts from the published Hugging Face revision and its matching
+        <code> datasets/raw-max/statistics.json</code>. “Other formats” combines
+        the remaining 31 language and repository-file labels.
+      </figcaption>
+    </figure>
+  );
+}
+
 export function TokenHistogram() {
   const buckets = [
-    { label: "0 to 255", value: "1,891", width: "w-[38%]" },
-    { label: "256 to 511", value: "1,495", width: "w-[30%]" },
-    { label: "512 to 1,023", value: "4,975", width: "w-full" },
+    { label: "0 to 255", value: "2,847", width: "w-[21.9%]" },
+    { label: "256 to 511", value: "2,515", width: "w-[19.3%]" },
+    { label: "512 to 1,023", value: "12,999", width: "w-full" },
   ] as const;
 
   return (
@@ -21,7 +87,7 @@ export function TokenHistogram() {
             Most rows use the upper half of the context budget
           </h3>
         </div>
-        <p className="font-mono text-[13px] text-muted-ink">8,361 total rows</p>
+        <p className="font-mono text-[13px] text-muted-ink">18,361 total rows</p>
       </div>
       <div className="mt-6 space-y-5">
         {buckets.map((bucket) => (

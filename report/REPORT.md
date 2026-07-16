@@ -1,92 +1,153 @@
-# Personal-code MLX LoRA comparison
+# From Repository History to a Verified Local Coding Agent
 
-Generated: 2026-07-16T12:52:12+00:00  
-Canonical evaluation data: [`results.json`](results.json)
+I built a source-traceable pipeline that turns my Git history into an audited code corpus, validates a pinned Gemma 4 E4B LoRA path on Apple Silicon, converts the adapter to GGUF, and verifies it through Ollama and Codex. This report contains only measured results and explicitly separates the current published dataset from the earlier compatibility checkpoint.
 
-## Status
+## Executive record
 
-0 completed, 8 pending, 0 errored evaluations. “Pending” is intentional:
-the report never substitutes estimates for unrun training or evaluation.
+| Stage | Status | Measured evidence |
+| --- | --- | --- |
+| Repository provenance | Complete | 60 repositories; 3,018 matched commits |
+| Published dataset | Complete | 18,361 rows from 58 repositories |
+| MLX LoRA compatibility | Passed | One iteration; return code 0 |
+| Adapter conversion | Passed | 343 PEFT/GGUF tensor pairs |
+| Ollama runtime | Passed | 85.583 decode tokens/s; 0.301 s TTFT |
+| Codex integration | Passed | File edited and test passed |
 
-## Personal contribution statistics
+The local adapter is a one-step compatibility artifact created before the current dataset revision. It verifies the training, conversion, packaging, native-tool, and agent integration contracts. It is not a completed adaptation result on the current 18,361-row corpus, and I do not make held-out coding-quality claims from it.
 
-| Commits | Added | Removed | Net LOC | Source |
-| --- | --- | --- | --- | --- |
-| 223 | 61,030 | 10,886 | 50,144 | [stats.json](../stats/stats.json) → overall |
+## Corpus provenance
 
-## Dataset comparison
+The statistics stage walks complete Git history with rename detection and attributes commits against configured identities. The current aggregate record contains:
 
-| Variant | Rows | Train | Valid | Lexical tokens | Languages | Repos | Source |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| quality | 0 | 0 | 0 | 0 | 0 | 0 | [statistics.json](../datasets/quality/statistics.json) |
-| raw-max | 434 | 215 | 219 | 393,314 | 8 | 2 | [statistics.json](../datasets/raw-max/statistics.json) |
+| Measure | Value |
+| --- | ---: |
+| Repositories processed | 60 |
+| Matched commits | 3,018 |
+| Added lines | 868,278 |
+| Removed lines | 302,760 |
+| Net lines | 565,518 |
+| Changed lines | 1,171,038 |
 
-![Dataset sizes](charts/dataset-sizes.png)
+These are contribution-history measurements, not physical lines in the current checkouts. Canonical evidence: [`stats/stats.json`](../stats/stats.json).
 
-Chart source: each listed `datasets/<variant>/statistics.json`.
+## Published dataset
 
-## Model comparison
+The current corpus matches Hugging Face revision [`9f9829f9dbd75400595ea2e211e291fbcc47ba0f`](https://huggingface.co/datasets/JulianAT/personal-codex-model/tree/9f9829f9dbd75400595ea2e211e291fbcc47ba0f).
 
-| Model | Quantization | Optimization | Dataset | Status | Base TPS | Tuned TPS | TPS Δ | Base PPL | Tuned PPL | Tuned exact | Source |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| gemma-4-e2b-4bit | Q4 | MLX native | raw-max | pending | pending | pending | pending | pending | pending | pending | [results.json](results.json) → evaluations[0] |
-| gemma-4-e2b-4bit | Q4 | MLX native | quality | pending | pending | pending | pending | pending | pending | pending | [results.json](results.json) → evaluations[1] |
-| gemma-4-e2b-5bit | Q5 | MLX native | raw-max | pending | pending | pending | pending | pending | pending | pending | [results.json](results.json) → evaluations[2] |
-| gemma-4-e2b-5bit | Q5 | MLX native | quality | pending | pending | pending | pending | pending | pending | pending | [results.json](results.json) → evaluations[3] |
-| gemma-4-e4b-4bit | Q4 | MLX native | raw-max | pending | pending | pending | pending | pending | pending | pending | [results.json](results.json) → evaluations[4] |
-| gemma-4-e4b-4bit | Q4 | MLX native | quality | pending | pending | pending | pending | pending | pending | pending | [results.json](results.json) → evaluations[5] |
-| gemma-4-e4b-5bit | Q5 | MLX native | raw-max | pending | pending | pending | pending | pending | pending | pending | [results.json](results.json) → evaluations[6] |
-| gemma-4-e4b-5bit | Q5 | MLX native | quality | pending | pending | pending | pending | pending | pending | pending | [results.json](results.json) → evaluations[7] |
+| Measure | Value | Control |
+| --- | ---: | --- |
+| Repositories with rows | 58 | 52 train; 6 validation |
+| Files considered | 8,970 | Extension, path, size, and secret filters |
+| Files selected | 8,924 | 7,913 source files emitted rows |
+| Candidate chunks | 20,858 | 896-token target; 64-token overlap |
+| Exact duplicates removed | 1,470 | SHA-256 |
+| Near duplicates removed | 1,027 | MinHash; threshold 0.85 |
+| Rows retained | 18,361 | 15,226 train; 3,135 validation |
+| Lexical tokens | 12,472,126 | All retained rows |
+| Emitted lines | 1,305,187 | 1,153,093 nonblank |
+| UTF-8 source text | 50.52 MiB | 52,976,638 bytes |
 
-![TPS by model](charts/tps-by-model.png)
+Repository-level splitting prevents one repository from contributing to both train and validation. The local `datasets.load_dataset(...)` self-test and the published Parquet split counts both passed. Canonical local evidence: [`datasets/raw-max/statistics.json`](../datasets/raw-max/statistics.json).
 
-![Base versus tuned TPS](charts/tps-base-vs-tuned.png)
+The builder rejected 31 sensitive-path hits and one high-confidence OpenAI-key signature in this build. The public Hub payload contains explicitly staged and scanned Parquet rows, schema metadata, a dataset card, and sanitized statistics. Raw repository checkouts, local paths, adapter weights, and credentials are excluded. Some approved rows originated in repositories that were private at collection time; automated filtering does not replace manual review, copyright review, or source-license compliance.
 
-![Perplexity by model](charts/perplexity-by-model.png)
+## Model contract
 
-### Edge deployment comparison
+| Property | Value |
+| --- | --- |
+| Training checkpoint | `unsloth/gemma-4-E4B-it-UD-MLX-4bit` |
+| Revision | `f29de68cb284ca208446e647b339569935025ef3` |
+| Upstream lineage | `google/gemma-4-E4B-it` |
+| Runtime base | `gemma4:e4b` |
+| Trainer | MLX-VLM |
+| LoRA | Rank 8; alpha 16; dropout 0 |
+| Sequence limit | 1,024 tokens |
+| Trainable parameters | 19.441488 M (0.254%) |
 
-![Q4 versus Q5 edge throughput](charts/edge-throughput-q4-vs-q5.png)
+Only language-model linear layers receive adapters; vision and audio stacks remain frozen. The model, revision, optimization profile, and runtime lineage are pinned in [`config.yaml`](../config.yaml) and repeated in the run manifest.
 
-![Q4 versus Q5 edge peak memory](charts/edge-memory-q4-vs-q5.png)
+## Compatibility checkpoint
 
-Chart sources: `results.json → evaluations[*].base`, `.tuned`, and `.comparison`.
-The edge charts group like-for-like model families and datasets using
-`evaluations[*].model.quantization_bits` and the tuned throughput and peak-memory measurements.
+| Metric | Measured value |
+| --- | ---: |
+| Iterations | 1 |
+| Training loss | 1.38960338 |
+| Training throughput | 96.345 tokens/s |
+| Trained tokens | 169 |
+| Peak unified memory | 8.906 GB |
+| Wall time | 16.308 s |
+| Return code | 0 |
 
-## Methodology
+Canonical evidence: `runs/gemma-4-e4b-it-4bit-raw-max-smoke/run.json` and its `train.log`.
 
-Configuration source: [`config.yaml`](../config.yaml).
+## Packaging and deployment
 
-Repositories are walked at their checked-out state, filtered by `config.yaml`, chunked to an
-approximate lexical-token target, exact-deduplicated by SHA-256, and near-deduplicated by MinHash.
-The deterministic 95/5 target split is assigned by repository, so no repository appears in both
-train and valid. With fewer than two retained repositories the valid split is empty rather than
-leaking chunks across splits. Dataset parameters and actual split assignments are recorded in each
-variant's `statistics.json`.
+I transpose and rename MLX LoRA factors into PEFT Safetensors, convert the PEFT adapter with pinned llama.cpp revision `b15ca938ad00aa6b3ee6c2edda7363fd02826b18`, and attach the resulting GGUF adapter to the matching Ollama base.
 
-Training uses MLX-VLM LoRA on paired 4-bit (Q4) and 5-bit (Q5) Gemma 4 bases, batch size and
-sequence caps from `config.yaml`, and one model at a time. The checkpoints are MLX-native for local
-Apple Silicon deployment. Vision and audio towers remain frozen; training rows contain text-only
-code prefix/completion pairs. No `bitsandbytes` or CUDA training path is involved. Run inputs, logs,
-adapter paths, and wall times are recorded under `runs/<run>/`.
+| Gate | Measured result | Threshold |
+| --- | ---: | ---: |
+| GGUF tensor pairs | 343 | Structural validation |
+| GGUF size | 38,926,080 bytes | Recorded artifact |
+| Decode throughput | 85.583 tokens/s | At least 20 tokens/s |
+| Time to first token | 0.301 s | At most 5.0 s |
+| Native tool selection | Passed | `read_project_status` |
+| Codex edit-and-test | Passed | `pytest`: 1 passed |
 
-Evaluation samples only `valid.jsonl`. TPS is MLX-VLM's measured generation throughput after the
-configured warm-up runs. Perplexity is exponentiated mean next-token cross-entropy on held-out
-tokens. Next-line exact match compares the first generated line with a withheld source line. The
-exact limits, sample counts, scored tokens, repeated-run dispersion, and peak memory are stored in
-`results.json` for every completed condition.
+Canonical evidence: [`deployment/gemma4-e4b-julian-latest/verification.json`](../deployment/gemma4-e4b-julian-latest/verification.json).
 
-## Limitations
+## Reference environment
 
-- This is a repo-walked corpus, not a curated set of accepted or known-correct solutions.
-- Personal data is small and correlated; results should not be generalized to broad coding ability.
-- LoRA adapts a subset of weights and is not a full-model fine-tune.
-- Throughput and memory are Apple-Silicon-only numbers from the local machine and software stack.
-- Q4 and Q5 bases change memory and numerical behavior; comparisons are only within like-for-like
-  model families, datasets, and the recorded setup.
-- Repository-level splitting avoids direct repository leakage but can leave no validation data for a
-  one-repository corpus.
-- File paths and code may contain secrets or identifying data. Review artifacts before publication.
-- Source-repository licenses continue to govern retained code; dataset metadata does not override
-  them.
+| Layer | Recorded value |
+| --- | --- |
+| Hardware | Apple M4 Pro; 14 cores; 24 GB unified memory |
+| Operating system | macOS 26.5.1 (25F80) |
+| Python | 3.14.2 |
+| MLX / MLX-VLM | 0.32.0 / 0.6.4 |
+| Ollama | 0.32.0 |
+| Codex CLI | 0.144.5 |
+
+This sanitized current workstation snapshot is stored in [`report/environment.json`](environment.json). Historical run artifacts remain authoritative for run-specific telemetry.
+
+## Reproducibility
+
+Rebuild the pipeline from repositories visible to the authenticated GitHub account:
+
+```bash
+uv sync --extra train --extra deploy
+gh auth status
+uv run python fetch_repos.py
+uv run python stats.py
+uv run python build_dataset.py
+```
+
+Those commands reproduce the process, not my exact private source snapshot. Load the immutable public boundary directly:
+
+```python
+from datasets import load_dataset
+
+dataset = load_dataset(
+    "JulianAT/personal-codex-model",
+    revision="9f9829f9dbd75400595ea2e211e291fbcc47ba0f",
+)
+print({name: len(split) for name, split in dataset.items()})
+```
+
+Recreate and deploy the compatibility adapter:
+
+```bash
+uv run python train.py --smoke --execute
+uv run --extra train --extra deploy python deploy_ollama.py \
+  --adapter-path runs/gemma-4-e4b-it-4bit-raw-max-smoke/adapters \
+  --tag gemma4-e4b-julian:latest \
+  --execute
+```
+
+## Evaluation boundary
+
+- The checkpoint verifies systems compatibility, not broad model quality.
+- Repository history is correlated and does not represent independent programming tasks.
+- Secret filtering reduces obvious risk but is not publication clearance.
+- Performance measurements are specific to the recorded Apple Silicon environment.
+- The Codex task is an integration gate, not a general software-engineering benchmark.
+
+The next evidence layer is a controlled base-versus-adapter evaluation on repository-isolated held-out data with fixed sampling, perplexity, next-line exact match, throughput, and peak-memory measurements.

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { GitHubIcon } from "@/components/icons";
 import { MobileMenu } from "@/components/mobile-menu";
 import { GITHUB_URL, PROFILE_IMAGE_URL } from "@/lib/constants";
-import { Button } from "./ui/button";
 
 export function SiteHeader() {
   return (
@@ -47,12 +46,10 @@ export function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View Julian Schmidt on GitHub"
-            tabIndex={-1}
+            className="group/button inline-flex h-8 shrink-0 select-none items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-ink-soft bg-primary bg-clip-padding px-4 py-2 text-sm font-medium text-primary-foreground outline-none transition-all hover:cursor-pointer hover:bg-primary/80 hover:opacity-70 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:translate-y-px"
           >
-            <Button className="inline-flex items-center gap-2 border-ink-soft px-4 py-2 hover:cursor-pointer hover:opacity-70">
-              <GitHubIcon className="h-5 w-5" />
-              GitHub Repository
-            </Button>
+            <GitHubIcon className="h-5 w-5" />
+            GitHub Profile
           </a>
         </div>
 

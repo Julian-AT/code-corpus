@@ -3,6 +3,7 @@ import Link from "next/link";
 import { GitHubIcon } from "@/components/icons";
 import {
   GITHUB_URL,
+  HF_DATASET_URL,
   PORTFOLIO_URL,
   PROFILE_IMAGE_URL,
 } from "@/lib/constants";
@@ -33,6 +34,7 @@ const columns: FooterColumn[] = [
     heading: "Julian",
     links: [
       { label: "GitHub", href: GITHUB_URL },
+      { label: "Hugging Face dataset", href: HF_DATASET_URL },
       { label: "Portfolio", href: PORTFOLIO_URL },
       { label: "Evaluation scope", href: "#evaluation-scope" },
     ],
@@ -63,8 +65,8 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="max-w-xs text-[14px] leading-relaxed text-cream/70">
-              I engineered a source-traceable code corpus, a local LoRA adapter,
-              and a verified Ollama and Codex deployment.
+              I engineered a source-traceable code corpus, published its audited
+              dataset, and verified a local Ollama and Codex deployment.
             </p>
             <a
               href={GITHUB_URL}
@@ -74,7 +76,7 @@ export function SiteFooter() {
               className="inline-flex w-fit items-center gap-2 text-cream/70 transition-colors hover:text-cream"
             >
               <GitHubIcon className="h-5 w-5" />
-              <span className="text-[14px]">Source on GitHub</span>
+              <span className="text-[14px]">GitHub profile</span>
             </a>
             <p className="mt-auto text-[13px] text-cream/60">
               &copy; 2026 Julian Schmidt

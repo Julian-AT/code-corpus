@@ -30,7 +30,7 @@ def generated_dataset(tmp_path: Path) -> Path:
         emails=(),
         rules=FilterRules.from_config(config, max_file_bytes=1024 * 1024),
         quality=QualitySettings(True, 2, 30, 2, 1, 1, 2),
-        dataset_license="other",
+        dataset_license="mit",
         dataset_languages=("code",),
     )
     rows, audit = collect_rows(settings)
@@ -52,6 +52,7 @@ def test_prepare_upload_is_minimal_sanitized_and_loadable(tmp_path: Path) -> Non
     }
     assert files == {
         "README.md",
+        "LICENSE",
         "dataset_infos.json",
         "statistics.json",
         "data/train-00000-of-00001.parquet",
