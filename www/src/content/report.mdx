@@ -1,0 +1,263 @@
+## Executive summary
+
+This project answers a narrow engineering question: can Julian's own repository history be turned into a private, traceable local coding assistant without losing control of provenance, evaluation boundaries, or deployment behavior?
+
+The pipeline now reaches a verified local artifact. It discovered 60 repositories, matched 3,018 personal commits, retained 8,361 deduplicated training rows from 53 repositories, trained a one-step rank-8 LoRA compatibility adapter against a pinned Gemma 4 E4B checkpoint, converted the adapter to GGUF, and attached it to Ollama as `gemma4-e4b-julian:latest`. The deployment passed a native tool call, performance thresholds, and a real Codex edit-and-test task.
+
+<ReportCallout label="Scope of the result" tone="warning">The deployed model is a one-step compatibility artifact. It proves that the data format, training path, tensor conversion, Ollama runtime, tool calling, and Codex loop work together. It does not prove that the model learned Julian's full corpus or improved general coding quality.</ReportCallout>
+
+<DataTable
+  label="Table 1. Current pipeline state."
+  caption="Only measured or directly recorded states are shown."
+  head={["Stage", "State", "Evidence", "Meaning"]}
+  rows={[
+    ["Repository provenance", "Complete", "60 processed", "Personal history measured"],
+    ["Dataset build", "Complete", "8,361 rows", "Filtered corpus reproducible"],
+    ["One-step adapter", "Complete", "return code 0", "Training path compatible"],
+    ["Selection training", "Interrupted", "40 / 7,172", "No completed evaluation adapter"],
+    ["Production training", "Not run", "plan only", "No full-corpus final adapter"],
+    ["Local deployment", "*Passed*", "Ollama + Codex", "Artifact usable as a local agent"],
+  ]}
+/>
+
+Three conclusions are defensible today:
+
+- **The corpus has a real evidence chain.** Repository selection, contribution history, filtering, deduplication, split assignment, token counts, model revision, adapter metadata, conversion revision, and runtime checks all have machine-readable records.
+- **The local deployment path works end to end.** The final Ollama model selected a native tool, cleared latency and throughput thresholds, and completed a file-edit task whose test passed.
+- **Model-quality improvement remains unmeasured.** The honest held-out evaluation requires a completed selection adapter. That run was interrupted before its first recovery checkpoint, so the site does not substitute the smoke artifact or an estimate.
+
+## Corpus provenance
+
+The source material is repository history, not a folder dump. `fetch_repos.py` discovers every visible, non-fork, non-archived repository allowed by configuration. `stats.py` then walks full Git history with rename detection and matches commits against Julian's configured email identities.
+
+The resulting snapshot processed all 60 discovered repositories and attributed 3,018 commits, 868,278 added lines, and 302,760 removed lines. Net contribution is 565,518 lines; total changed lines are 1,171,038. These are contribution-history measures, not a count of the current checkout.
+
+<Figure
+  src="/images/corpus-commits-over-time.png"
+  width={1823}
+  height={983}
+  label="Figure 1. Personal commits over time."
+  caption="Monthly commits matched to Julian's configured identities. Activity rises sharply in 2026, with 2,721 of 3,018 commits recorded that year."
+/>
+
+<Figure
+  src="/images/corpus-lines-over-time.png"
+  width={1823}
+  height={983}
+  label="Figure 2. Lines changed over time."
+  caption="Added, removed, and net lines by month. Large swings are preserved as contribution churn rather than presented as current physical lines of code."
+/>
+
+### Language profile
+
+TypeScript dominates the historical contribution profile, followed by Python. Language commit counts are non-exclusive: one commit is counted once for every retained language it touches.
+
+<DataTable
+  label="Table 2. Leading languages by changed lines."
+  caption="Canonical source: stats/stats.json → by_language."
+  head={["Language", "Commits", "Added", "Removed", "Changed", "Net"]}
+  rows={[
+    ["TypeScript", "1,079", "694,800", "264,736", "959,536", "430,064"],
+    ["Python", "313", "110,038", "19,476", "129,514", "90,562"],
+    ["YAML", "73", "23,322", "9,635", "32,957", "13,687"],
+    ["JavaScript", "138", "21,455", "2,488", "23,943", "18,967"],
+    ["CSS", "123", "11,640", "4,731", "16,371", "6,909"],
+    ["SQL", "48", "3,453", "809", "4,262", "2,644"],
+  ]}
+/>
+
+<Figure
+  src="/images/corpus-language-distribution.png"
+  width={1823}
+  height={983}
+  label="Figure 3. Language distribution by changed lines."
+  caption="Added plus removed lines for every retained language. The profile explains why the resulting corpus is primarily TypeScript and Python."
+/>
+
+The statistics exclude binary changes, ignored current paths, configured generated and vendored directories, lockfiles, minified files, and unsupported extensions. Deleted historical paths can only be filtered by their historical name and extension because today's ignore rules no longer exist at that commit.
+
+## Dataset construction
+
+The dataset builder turns eligible files into prefix-and-completion rows while preserving source metadata. It selected 5,455 of 5,501 considered files, produced 9,443 candidate chunks, then removed 533 exact duplicates and 549 near duplicates. The final dataset contains 8,361 rows and approximately 4.97 million lexical tokens.
+
+<DataTable
+  label="Table 3. Dataset ledger."
+  caption="Canonical source: datasets/raw-max/statistics.json."
+  head={["Measure", "Value", "Control"]}
+  rows={[
+    ["Repositories with rows", "53", "48 train, 5 valid"],
+    ["Files selected", "5,455", "5,501 considered"],
+    ["Candidate chunks", "9,443", "896-token target"],
+    ["Exact duplicates removed", "533", "SHA-256"],
+    ["Near duplicates removed", "549", "MinHash at 0.85"],
+    ["Rows retained", "*8,361*", "7,172 train, 1,189 valid"],
+    ["Lexical tokens", "4,968,790", "all retained rows"],
+  ]}
+/>
+
+### Split integrity
+
+Train and validation are assigned at repository granularity. No repository contributes to both sides. The current split uses 48 training repositories and five validation repositories, producing 7,172 training rows and 1,189 validation rows. The built dataset passed its own `datasets.load_dataset(...)` self-test with both split counts intact.
+
+This boundary matters. A row-level random split would let near-identical conventions, modules, or neighboring file regions from the same project appear on both sides. Repository-level splitting is stricter and makes a later held-out result more meaningful.
+
+<TokenHistogram />
+
+### Safety and quality filters
+
+The builder rejects configured sensitive paths such as environment files, private keys, credentials, and identity keys. It also applies high-confidence credential signatures, file-size limits, Git ignore rules, generated-directory rules, and supported-extension checks. In this build, 31 sensitive-path hits and one OpenAI-key signature were rejected. That is a precision-oriented safety layer, not a guarantee that the retained corpus is publishable.
+
+<ReportCallout label="Privacy boundary" tone="info">The raw repositories, dataset rows, and adapter weights remain local and are excluded from Git. The website publishes aggregate evidence only. Source licenses still govern every retained file.</ReportCallout>
+
+## Model and adapter
+
+The model target is fixed rather than selected from a retrospective leaderboard. Training uses `unsloth/gemma-4-E4B-it-UD-MLX-4bit` at revision `f29de68cb284ca208446e647b339569935025ef3`, with upstream lineage `google/gemma-4-E4B-it`. The matching Ollama deployment base is `gemma4:e4b`.
+
+Only language-model linear layers receive LoRA adapters. Vision and audio stacks stay frozen. The profile uses rank 8, alpha 16, dropout 0, completion-only loss, gradient checkpointing, a 1,024-token sequence cap, and a learning rate of `1e-5`. The intended full profile uses batch size 1 with four-step gradient accumulation and one complete data pass.
+
+<DataTable
+  label="Table 4. Model contract."
+  caption="Values are pinned in config.yaml and recorded again in each run manifest."
+  head={["Property", "Value"]}
+  rows={[
+    ["Family", "Gemma 4 E4B instruction tuned"],
+    ["Training checkpoint", "unsloth/gemma-4-E4B-it-UD-MLX-4bit"],
+    ["Quantization", "4-bit MLX"],
+    ["Trainer", "MLX-VLM"],
+    ["LoRA", "rank 8, alpha 16, dropout 0"],
+    ["Trainable parameters", "19.441488 M"],
+    ["All model parameters", "7,665.78256 M"],
+    ["Trainable share", "0.254%"],
+  ]}
+/>
+
+### The completed compatibility gate
+
+The deployed adapter was trained for exactly one step. The run completed in 16.308 seconds with loss 1.3896, 96.345 training tokens per second, 169 trained tokens, and 8.906 GB peak unified memory. Its purpose was to prove compatibility and memory headroom before committing to a long run.
+
+<DataTable
+  label="Table 5. One-step training telemetry."
+  caption="Canonical sources: the completed smoke run.json and train.log."
+  head={["Metric", "Measured value"]}
+  rows={[
+    ["Iterations", "1"],
+    ["Training loss", "1.38960338"],
+    ["Training throughput", "96.345 tokens/s"],
+    ["Trained tokens", "169"],
+    ["Peak unified memory", "8.906 GB"],
+    ["Wall time", "16.308 s"],
+    ["Return code", "0"],
+  ]}
+/>
+
+### What did not complete
+
+Selection training was configured for 7,172 iterations over training repositories with validation on the 1,189 held-out rows. It reached iteration 40 and was interrupted with return code 130. Recovery checkpoints are written every 1,000 iterations, so there was no selection adapter to evaluate or resume exactly. The distinct production run, which would merge train and validation data after model selection, was prepared but never started.
+
+<ReportCallout label="No quality claim" tone="warning">No base-versus-adapter perplexity, next-line exact match, or held-out generation result is published for the deployed one-step adapter. Those metrics require the completed selection run described in TRAIN.md.</ReportCallout>
+
+## Verified deployment
+
+The MLX adapter cannot be attached directly to Ollama's Gemma 4 base. Deployment therefore validates the MLX package, transposes and renames paired LoRA factors into PEFT Safetensors, converts the PEFT adapter to GGUF with a pinned llama.cpp revision, and creates an Ollama model with a 32,768-token context window.
+
+The final GGUF adapter contains 343 tensor pairs and is 38,926,080 bytes. The conversion uses llama.cpp revision `b15ca938ad00aa6b3ee6c2edda7363fd02826b18`; verification evidence records the source adapter, PEFT metadata, output hash, Modelfile, runtime metrics, and Codex result.
+
+<DataTable
+  label="Table 6. Packaging chain."
+  caption="Each stage has a durable local artifact and a recorded revision or hash."
+  head={["Stage", "Artifact", "Recorded proof"]}
+  rows={[
+    ["MLX training", "adapters.safetensors", "rank, scale, target keys"],
+    ["PEFT export", "adapter_model.safetensors", "SHA-256 + 343 pairs"],
+    ["llama.cpp conversion", "adapter.gguf", "pinned converter revision"],
+    ["Ollama package", "gemma4-e4b-julian:latest", "Modelfile + 32K context"],
+    ["Agent gate", "Codex task fixture", "pytest passed"],
+  ]}
+/>
+
+<VerificationGrid />
+
+The runtime gate required at least 20 decode tokens per second and at most five seconds to first token. The local model measured 85.583 tokens per second and 0.301 seconds to first token. It also selected the named `read_project_status` tool through Ollama's native tool-call interface.
+
+The final gate launched Codex against a deliberately broken Python fixture. The model identified subtraction where addition was required, edited the file, ran the test, and stopped after `1 passed`. The recorded Codex task took 65.778 seconds.
+
+<ReportCallout label="Deployment status" tone="success">Tool use passed. Performance passed. The Codex edit-and-test gate passed. The resulting local model is operational under the exact tag gemma4-e4b-julian:latest.</ReportCallout>
+
+## Personalization
+
+Personalization has two layers with different evidence strength. The LoRA layer is currently only a compatibility gate and should not be treated as learned personal style. The system-prompt layer is explicit and active today.
+
+The persistent prompt identifies Julian Schmidt, his GitHub account `Julian-AT`, his Vienna location, portfolio, primary stack, and representative projects. It instructs the model to be direct, challenge flawed assumptions, inspect before editing, make narrow changes, verify work, avoid speculative abstractions, and keep private facts private. It also prohibits emojis and em dashes in model responses.
+
+The prompt lives in `deployment/system-prompt.txt`. `deploy_ollama.py` reads it from `config.yaml`, rejects an unsafe Modelfile delimiter, embeds it as a multiline `SYSTEM` instruction, and recreates the Ollama tag. This keeps the identity durable across redeployments instead of relying on a hand-edited generated Modelfile.
+
+<CitationBlock code={`You are Julian's local personal AI assistant, based on Gemma 4 E4B.
+
+Use this context when it is relevant. Do not force personal details into unrelated responses.
+
+Be direct, honest, precise, and practical. Treat Julian as technically capable.`} />
+
+The excerpt is intentionally partial. The canonical prompt contains the complete behavior, coding, privacy, and formatting contract.
+
+## Reproducibility
+
+The repository separates preparation, training, evaluation, and deployment. Every heavy command first writes a plan and exact argv. A `COMPLETED` marker appears only after a zero return code and verified adapter output.
+
+### Build the corpus
+
+<CitationBlock code={`uv sync --extra train --extra deploy
+gh auth status
+
+uv run python fetch_repos.py
+uv run python stats.py
+uv run python build_dataset.py`} />
+
+### Recreate the compatibility adapter
+
+<CitationBlock code={`uv run python train.py --smoke --execute
+
+uv run --extra train --extra deploy python deploy_ollama.py \
+  --adapter-path runs/gemma-4-e4b-it-4bit-raw-max-smoke/adapters \
+  --tag gemma4-e4b-julian:latest \
+  --execute`} />
+
+### Use it with Codex
+
+<CitationBlock code={`codex --oss \
+  --local-provider ollama \
+  --model gemma4-e4b-julian:latest \
+  -c model_context_window=32768 \
+  -c model_auto_compact_token_limit=24576`} />
+
+The Ollama Modelfile and Codex client both set context limits. Ollama controls server allocation; Codex controls its own prompt and compaction budget.
+
+### Evidence map
+
+<DataTable
+  label="Table 7. Canonical evidence map."
+  caption="Generated presentation files never override these machine-readable sources."
+  head={["Question", "Canonical file"]}
+  rows={[
+    ["What did Julian contribute?", "stats/stats.json"],
+    ["What entered the corpus?", "datasets/raw-max/statistics.json"],
+    ["How was training invoked?", "runs/.../run.json + train.log"],
+    ["Which model revision was used?", "config.yaml + plan.json"],
+    ["Did deployment pass?", "deployment/.../verification.json"],
+    ["What identity is embedded?", "deployment/system-prompt.txt"],
+  ]}
+/>
+
+## Limits and status
+
+This report is designed to be useful because it states where the evidence stops.
+
+- **No completed model-quality evaluation.** The selection adapter did not finish, so there is no defensible held-out comparison against the untouched base.
+- **One training step is not personalization.** The deployed LoRA proves compatibility, conversion, and runtime behavior. It does not demonstrate learned preferences or code quality.
+- **Repository history is correlated.** Thousands of commits do not imply thousands of independent programming tasks. Repeated frameworks, generated scaffolds, and project conventions reduce effective diversity.
+- **Filtering is not publication clearance.** Secret signatures and sensitive paths reduce obvious risk, but they do not settle privacy, copyright, or repository-license questions.
+- **Metrics are machine-specific.** Throughput, latency, and peak memory were measured on the local Apple Silicon machine and should not be generalized to other hardware.
+- **The Codex gate is a focused integration test.** One edit-and-test fixture proves the agent loop works, not that the model can solve arbitrary software-engineering tasks.
+
+The next scientifically meaningful step is not another deployment screenshot. It is a completed selection run, followed by the fixed held-out evaluation defined in `TRAIN.md`. Only after that result is reviewed should a separate production adapter train on the merged safe corpus.
+
+<ReportCallout label="Current conclusion" tone="info">The project has a professional corpus pipeline and a verified local-agent deployment. The engineering path is complete enough to reproduce. The learning claim is not yet complete enough to publish.</ReportCallout>

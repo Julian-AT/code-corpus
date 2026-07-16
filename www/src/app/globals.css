@@ -1,0 +1,198 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --color-frost: var(--frost);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted-ink: var(--muted-ink);
+  --color-rule: var(--rule);
+  --color-panel: var(--panel);
+  --color-surface: var(--surface);
+  --color-cobalt: var(--cobalt);
+  --color-signal: var(--signal);
+  --color-copper: var(--copper);
+  --color-code-bg: var(--code-bg);
+  --color-code-border: var(--code-border);
+  --color-code-ink: var(--code-ink);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+:root {
+  --frost: #f3f7f8;
+  --ink: #11232d;
+  --ink-soft: #334b57;
+  --muted-ink: #627781;
+  --rule: #c9d7dc;
+  --panel: #e6eef1;
+  --surface: #ffffff;
+  --cobalt: #2359d1;
+  --signal: #55cfcb;
+  --copper: #cf7040;
+  --code-bg: #10232d;
+  --code-border: #28414c;
+  --code-ink: #d9f8f5;
+
+  --background: var(--frost);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--frost);
+  --secondary: var(--panel);
+  --secondary-foreground: var(--ink);
+  --muted: var(--panel);
+  --muted-foreground: var(--muted-ink);
+  --accent: var(--signal);
+  --accent-foreground: var(--ink);
+  --destructive: #a43f34;
+  --destructive-foreground: #ffffff;
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --input: var(--rule);
+  --border: var(--rule);
+  --ring: var(--cobalt);
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--signal) 55%, white);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--cobalt);
+    outline-offset: 3px;
+  }
+}
+
+.telemetry-grid {
+  background-color: var(--ink);
+  background-image:
+    linear-gradient(rgba(111, 167, 184, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 167, 184, 0.09) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.report-shell {
+  background-image: linear-gradient(
+    90deg,
+    transparent calc(100% - 1px),
+    rgba(35, 89, 209, 0.06) calc(100% - 1px)
+  );
+  background-size: 12.5% 100%;
+}
+
+@keyframes evidence-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-enter {
+  animation: evidence-enter 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-enter-delay-1 {
+  animation-delay: 80ms;
+}
+
+.hero-enter-delay-2 {
+  animation-delay: 160ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-enter,
+  .hero-enter-delay-1,
+  .hero-enter-delay-2 {
+    animation: none;
+  }
+}
+
+@media print {
+  .site-navigation,
+  .table-of-contents,
+  .copy-control,
+  footer {
+    display: none !important;
+  }
+
+  body,
+  .telemetry-grid {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  article {
+    max-width: none !important;
+  }
+
+  figure,
+  table,
+  pre {
+    break-inside: avoid;
+  }
+}
