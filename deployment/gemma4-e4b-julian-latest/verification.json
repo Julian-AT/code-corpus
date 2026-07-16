@@ -1,0 +1,46 @@
+{
+  "adapter_path": "/Users/julianschmidt/train-corpus/code-corpus/runs/gemma-4-e4b-it-4bit-raw-max-smoke/adapters",
+  "available_disk_before_gb": 13.271,
+  "base_model": "gemma4:e4b",
+  "codex": {
+    "codex_output_tail": "T/gemma4-codex-smoke-g0mua9ga\n succeeded in 0ms:\nhook: PostToolUse\nhook: PostToolUse Completed\nThe file `calculator.py` has been overwritten successfully with the corrected addition logic.\n\nNow that I have fixed the bug, the final step is to run the test one last time and confirm that it passes, thus completing the request.\nhook: PreToolUse\nhook: PreToolUse Completed\nexec\n/bin/zsh -lc 'pytest test_calculator.py' in /var/folders/ph/k2yb4phs0h76gcqx7ddyf5b80000gn/T/gemma4-codex-smoke-g0mua9ga\nhook: PostToolUse\nhook: PostToolUse Completed\n succeeded in 139ms:\n============================= test session starts ==============================\nplatform darwin -- Python 3.14.2, pytest-9.1.1, pluggy-1.6.0\nrootdir: /private/var/folders/ph/k2yb4phs0h76gcqx7ddyf5b80000gn/T/gemma4-codex-smoke-g0mua9ga\nplugins: anyio-4.14.2\ncollected 1 item\n\ntest_calculator.py .                                                     [100%]\n\n============================== 1 passed in 0.01s ===============================\n\nThe test successfully passed this time (`1 passed`).\n\nI have:\n1.  Identified the failing test in `test_calculator.py`.\n2.  Diagnosed the bug in `calculator.py` (subtraction instead of addition).\n3.  Fixed the bug in `calculator.py` using shell redirection due to tool constraints.\n4.  Verified the fix by running tests and confirming all tests pass.\n\nThe request is now completely resolved. I will inform the user about the steps taken and the successful outcome.\ncodex\nI've successfully fixed the failing test in `calculator.py`.\n\nIt looks like the original implementation was performing subtraction (`left - right`) instead of addition, causing `test_add` to fail. I corrected this line to use the addition operator (`+`).\n\nThe tests now run and pass:\n\n```\n============================== 1 passed in 0.01s ===============================\n```\n\nThe issue is resolved! Let me know if there's anything else you need assistance with in this project.\nhook: Stop\nhook: Stop Completed\ntokens used\n104,165",
+    "duration_seconds": 65.778,
+    "passed": true,
+    "pytest_output": ".                                                                        [100%]\n1 passed in 0.00s"
+  },
+  "generated_at": "2026-07-16T14:44:10+00:00",
+  "gguf_adapter": "/Users/julianschmidt/train-corpus/code-corpus/deployment/gemma4-e4b-julian-latest/adapter.gguf",
+  "modelfile": "/Users/julianschmidt/train-corpus/code-corpus/deployment/gemma4-e4b-julian-latest/Modelfile",
+  "package": {
+    "base_config": "/Users/julianschmidt/.cache/huggingface/hub/models--unsloth--gemma-4-E4B-it-UD-MLX-4bit/snapshots/f29de68cb284ca208446e647b339569935025ef3",
+    "gguf_adapter": "/Users/julianschmidt/train-corpus/code-corpus/deployment/gemma4-e4b-julian-latest/adapter.gguf",
+    "gguf_size_bytes": 38926080,
+    "llama_cpp_revision": "b15ca938ad00aa6b3ee6c2edda7363fd02826b18",
+    "peft_export": {
+      "lora_alpha": 16.0,
+      "output": "/Users/julianschmidt/train-corpus/code-corpus/deployment/gemma4-e4b-julian-latest/peft-adapter",
+      "rank": 8,
+      "sha256": "195a928e3b7ec71c0cbe5f5d93e9f88cfa686559b93aad4d701b97c24f359ccf",
+      "source": "/Users/julianschmidt/train-corpus/code-corpus/runs/gemma-4-e4b-it-4bit-raw-max-smoke/adapters",
+      "tensor_pairs": 343
+    }
+  },
+  "performance_passed": true,
+  "performance_thresholds": {
+    "maximum_ttft_seconds": 5.0,
+    "minimum_decode_tps": 20.0
+  },
+  "smoke": {
+    "runtime": {
+      "decode_tps": 85.583,
+      "eval_count": 2,
+      "ttft_seconds": 0.301
+    },
+    "tool_call": {
+      "name": "read_project_status",
+      "passed": true
+    }
+  },
+  "status": "passed",
+  "tag": "gemma4-e4b-julian:latest"
+}

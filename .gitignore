@@ -1,0 +1,14 @@
+.venv/
+.DS_Store
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.pyright/
+.cache/
+.firecrawl/
+repos/*/
+datasets/*/
+runs/*/
+deployment/*/adapter.gguf
+deployment/*/peft-adapter/
+*.pyc

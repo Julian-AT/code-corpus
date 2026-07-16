@@ -1,0 +1,1942 @@
+{
+  "by_language": {
+    "CSS": {
+      "additions": 11640,
+      "changed_lines": 16371,
+      "commits": 123,
+      "deletions": 4731,
+      "net": 6909
+    },
+    "HTML": {
+      "additions": 1,
+      "changed_lines": 18,
+      "commits": 2,
+      "deletions": 17,
+      "net": -16
+    },
+    "Java": {
+      "additions": 577,
+      "changed_lines": 582,
+      "commits": 8,
+      "deletions": 5,
+      "net": 572
+    },
+    "JavaScript": {
+      "additions": 21455,
+      "changed_lines": 23943,
+      "commits": 138,
+      "deletions": 2488,
+      "net": 18967
+    },
+    "Python": {
+      "additions": 110038,
+      "changed_lines": 129514,
+      "commits": 313,
+      "deletions": 19476,
+      "net": 90562
+    },
+    "SQL": {
+      "additions": 3453,
+      "changed_lines": 4262,
+      "commits": 48,
+      "deletions": 809,
+      "net": 2644
+    },
+    "Shell": {
+      "additions": 943,
+      "changed_lines": 1102,
+      "commits": 19,
+      "deletions": 159,
+      "net": 784
+    },
+    "Swift": {
+      "additions": 1072,
+      "changed_lines": 1180,
+      "commits": 8,
+      "deletions": 108,
+      "net": 964
+    },
+    "TOML": {
+      "additions": 962,
+      "changed_lines": 1558,
+      "commits": 37,
+      "deletions": 596,
+      "net": 366
+    },
+    "TypeScript": {
+      "additions": 694800,
+      "changed_lines": 959536,
+      "commits": 1079,
+      "deletions": 264736,
+      "net": 430064
+    },
+    "XML": {
+      "additions": 15,
+      "changed_lines": 15,
+      "commits": 1,
+      "deletions": 0,
+      "net": 15
+    },
+    "YAML": {
+      "additions": 23322,
+      "changed_lines": 32957,
+      "commits": 73,
+      "deletions": 9635,
+      "net": 13687
+    }
+  },
+  "by_repo": {
+    "1AHIF-BOT": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "Illegale_Strassenrennen-Webprojekt": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "InstagramFollowerBot": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "Kriegsmarine_Webprojekt": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "MSRP": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "POS-23-24-Java": {
+      "additions": 577,
+      "by_language": {
+        "Java": {
+          "additions": 577,
+          "changed_lines": 582,
+          "commits": 8,
+          "deletions": 5,
+          "net": 572
+        }
+      },
+      "changed_lines": 582,
+      "commits": 9,
+      "deletions": 5,
+      "net": 572
+    },
+    "Project-CB": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "Valorant-Webprojekt": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "adapter-lab": {
+      "additions": 13884,
+      "by_language": {
+        "HTML": {
+          "additions": 1,
+          "changed_lines": 1,
+          "commits": 1,
+          "deletions": 0,
+          "net": 1
+        },
+        "Python": {
+          "additions": 13427,
+          "changed_lines": 13510,
+          "commits": 43,
+          "deletions": 83,
+          "net": 13344
+        },
+        "TOML": {
+          "additions": 39,
+          "changed_lines": 39,
+          "commits": 3,
+          "deletions": 0,
+          "net": 39
+        },
+        "YAML": {
+          "additions": 417,
+          "changed_lines": 425,
+          "commits": 13,
+          "deletions": 8,
+          "net": 409
+        }
+      },
+      "changed_lines": 13975,
+      "commits": 123,
+      "deletions": 91,
+      "net": 13793
+    },
+    "ai-video": {
+      "additions": 10065,
+      "by_language": {
+        "Python": {
+          "additions": 9713,
+          "changed_lines": 10042,
+          "commits": 3,
+          "deletions": 329,
+          "net": 9384
+        },
+        "TypeScript": {
+          "additions": 352,
+          "changed_lines": 352,
+          "commits": 1,
+          "deletions": 0,
+          "net": 352
+        }
+      },
+      "changed_lines": 10394,
+      "commits": 4,
+      "deletions": 329,
+      "net": 9736
+    },
+    "asai": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 7,
+      "deletions": 0,
+      "net": 0
+    },
+    "aucta": {
+      "additions": 23073,
+      "by_language": {
+        "CSS": {
+          "additions": 175,
+          "changed_lines": 323,
+          "commits": 7,
+          "deletions": 148,
+          "net": 27
+        },
+        "JavaScript": {
+          "additions": 94,
+          "changed_lines": 152,
+          "commits": 7,
+          "deletions": 58,
+          "net": 36
+        },
+        "SQL": {
+          "additions": 107,
+          "changed_lines": 111,
+          "commits": 4,
+          "deletions": 4,
+          "net": 103
+        },
+        "TypeScript": {
+          "additions": 22659,
+          "changed_lines": 27941,
+          "commits": 79,
+          "deletions": 5282,
+          "net": 17377
+        },
+        "YAML": {
+          "additions": 38,
+          "changed_lines": 38,
+          "commits": 1,
+          "deletions": 0,
+          "net": 38
+        }
+      },
+      "changed_lines": 28565,
+      "commits": 207,
+      "deletions": 5492,
+      "net": 17581
+    },
+    "brz-chatbot": {
+      "additions": 792,
+      "by_language": {
+        "TypeScript": {
+          "additions": 792,
+          "changed_lines": 1326,
+          "commits": 5,
+          "deletions": 534,
+          "net": 258
+        }
+      },
+      "changed_lines": 1326,
+      "commits": 5,
+      "deletions": 534,
+      "net": 258
+    },
+    "catchi": {
+      "additions": 22707,
+      "by_language": {
+        "CSS": {
+          "additions": 203,
+          "changed_lines": 229,
+          "commits": 4,
+          "deletions": 26,
+          "net": 177
+        },
+        "JavaScript": {
+          "additions": 21,
+          "changed_lines": 21,
+          "commits": 1,
+          "deletions": 0,
+          "net": 21
+        },
+        "TypeScript": {
+          "additions": 22483,
+          "changed_lines": 22879,
+          "commits": 11,
+          "deletions": 396,
+          "net": 22087
+        }
+      },
+      "changed_lines": 23129,
+      "commits": 15,
+      "deletions": 422,
+      "net": 22285
+    },
+    "clawguard": {
+      "additions": 20256,
+      "by_language": {
+        "CSS": {
+          "additions": 550,
+          "changed_lines": 915,
+          "commits": 8,
+          "deletions": 365,
+          "net": 185
+        },
+        "JavaScript": {
+          "additions": 46,
+          "changed_lines": 67,
+          "commits": 3,
+          "deletions": 21,
+          "net": 25
+        },
+        "TypeScript": {
+          "additions": 19660,
+          "changed_lines": 33237,
+          "commits": 43,
+          "deletions": 13577,
+          "net": 6083
+        }
+      },
+      "changed_lines": 34219,
+      "commits": 100,
+      "deletions": 13963,
+      "net": 6293
+    },
+    "codex-hackathon": {
+      "additions": 34527,
+      "by_language": {
+        "CSS": {
+          "additions": 153,
+          "changed_lines": 306,
+          "commits": 3,
+          "deletions": 153,
+          "net": 0
+        },
+        "JavaScript": {
+          "additions": 53,
+          "changed_lines": 82,
+          "commits": 3,
+          "deletions": 29,
+          "net": 24
+        },
+        "SQL": {
+          "additions": 118,
+          "changed_lines": 118,
+          "commits": 3,
+          "deletions": 0,
+          "net": 118
+        },
+        "Shell": {
+          "additions": 666,
+          "changed_lines": 709,
+          "commits": 10,
+          "deletions": 43,
+          "net": 623
+        },
+        "Swift": {
+          "additions": 1043,
+          "changed_lines": 1151,
+          "commits": 7,
+          "deletions": 108,
+          "net": 935
+        },
+        "TypeScript": {
+          "additions": 32494,
+          "changed_lines": 42597,
+          "commits": 95,
+          "deletions": 10103,
+          "net": 22391
+        }
+      },
+      "changed_lines": 44963,
+      "commits": 206,
+      "deletions": 10436,
+      "net": 24091
+    },
+    "cursor-austria": {
+      "additions": 2222,
+      "by_language": {
+        "CSS": {
+          "additions": 139,
+          "changed_lines": 152,
+          "commits": 2,
+          "deletions": 13,
+          "net": 126
+        },
+        "JavaScript": {
+          "additions": 25,
+          "changed_lines": 25,
+          "commits": 1,
+          "deletions": 0,
+          "net": 25
+        },
+        "TypeScript": {
+          "additions": 2058,
+          "changed_lines": 2122,
+          "commits": 3,
+          "deletions": 64,
+          "net": 1994
+        }
+      },
+      "changed_lines": 2299,
+      "commits": 6,
+      "deletions": 77,
+      "net": 2145
+    },
+    "cursor-vienna-discord": {
+      "additions": 6931,
+      "by_language": {
+        "SQL": {
+          "additions": 237,
+          "changed_lines": 237,
+          "commits": 1,
+          "deletions": 0,
+          "net": 237
+        },
+        "TypeScript": {
+          "additions": 6651,
+          "changed_lines": 6975,
+          "commits": 3,
+          "deletions": 324,
+          "net": 6327
+        },
+        "YAML": {
+          "additions": 43,
+          "changed_lines": 67,
+          "commits": 4,
+          "deletions": 24,
+          "net": 19
+        }
+      },
+      "changed_lines": 7279,
+      "commits": 10,
+      "deletions": 348,
+      "net": 6583
+    },
+    "datagvat-mcp": {
+      "additions": 97264,
+      "by_language": {
+        "CSS": {
+          "additions": 409,
+          "changed_lines": 656,
+          "commits": 16,
+          "deletions": 247,
+          "net": 162
+        },
+        "JavaScript": {
+          "additions": 850,
+          "changed_lines": 1670,
+          "commits": 22,
+          "deletions": 820,
+          "net": 30
+        },
+        "Python": {
+          "additions": 10311,
+          "changed_lines": 12909,
+          "commits": 50,
+          "deletions": 2598,
+          "net": 7713
+        },
+        "SQL": {
+          "additions": 463,
+          "changed_lines": 926,
+          "commits": 9,
+          "deletions": 463,
+          "net": 0
+        },
+        "Shell": {
+          "additions": 71,
+          "changed_lines": 71,
+          "commits": 1,
+          "deletions": 0,
+          "net": 71
+        },
+        "TOML": {
+          "additions": 168,
+          "changed_lines": 235,
+          "commits": 18,
+          "deletions": 67,
+          "net": 101
+        },
+        "TypeScript": {
+          "additions": 78064,
+          "changed_lines": 128630,
+          "commits": 218,
+          "deletions": 50566,
+          "net": 27498
+        },
+        "YAML": {
+          "additions": 6928,
+          "changed_lines": 11916,
+          "commits": 20,
+          "deletions": 4988,
+          "net": 1940
+        }
+      },
+      "changed_lines": 157013,
+      "commits": 744,
+      "deletions": 59749,
+      "net": 37515
+    },
+    "daytona-generative-ui": {
+      "additions": 135437,
+      "by_language": {
+        "CSS": {
+          "additions": 767,
+          "changed_lines": 1208,
+          "commits": 8,
+          "deletions": 441,
+          "net": 326
+        },
+        "JavaScript": {
+          "additions": 1452,
+          "changed_lines": 2421,
+          "commits": 6,
+          "deletions": 969,
+          "net": 483
+        },
+        "SQL": {
+          "additions": 477,
+          "changed_lines": 813,
+          "commits": 7,
+          "deletions": 336,
+          "net": 141
+        },
+        "TypeScript": {
+          "additions": 128263,
+          "changed_lines": 226703,
+          "commits": 13,
+          "deletions": 98440,
+          "net": 29823
+        },
+        "YAML": {
+          "additions": 4478,
+          "changed_lines": 8858,
+          "commits": 4,
+          "deletions": 4380,
+          "net": 98
+        }
+      },
+      "changed_lines": 240003,
+      "commits": 17,
+      "deletions": 104566,
+      "net": 30871
+    },
+    "diplomarbeit-ideen": {
+      "additions": 26503,
+      "by_language": {
+        "CSS": {
+          "additions": 500,
+          "changed_lines": 500,
+          "commits": 1,
+          "deletions": 0,
+          "net": 500
+        },
+        "JavaScript": {
+          "additions": 483,
+          "changed_lines": 483,
+          "commits": 1,
+          "deletions": 0,
+          "net": 483
+        },
+        "Python": {
+          "additions": 1086,
+          "changed_lines": 1086,
+          "commits": 2,
+          "deletions": 0,
+          "net": 1086
+        },
+        "SQL": {
+          "additions": 67,
+          "changed_lines": 67,
+          "commits": 1,
+          "deletions": 0,
+          "net": 67
+        },
+        "TypeScript": {
+          "additions": 24268,
+          "changed_lines": 24718,
+          "commits": 6,
+          "deletions": 450,
+          "net": 23818
+        },
+        "YAML": {
+          "additions": 99,
+          "changed_lines": 99,
+          "commits": 1,
+          "deletions": 0,
+          "net": 99
+        }
+      },
+      "changed_lines": 26953,
+      "commits": 17,
+      "deletions": 450,
+      "net": 26053
+    },
+    "diplomarbeit-os": {
+      "additions": 107137,
+      "by_language": {
+        "CSS": {
+          "additions": 706,
+          "changed_lines": 712,
+          "commits": 9,
+          "deletions": 6,
+          "net": 700
+        },
+        "JavaScript": {
+          "additions": 15203,
+          "changed_lines": 15450,
+          "commits": 57,
+          "deletions": 247,
+          "net": 14956
+        },
+        "SQL": {
+          "additions": 1386,
+          "changed_lines": 1392,
+          "commits": 16,
+          "deletions": 6,
+          "net": 1380
+        },
+        "TypeScript": {
+          "additions": 89842,
+          "changed_lines": 92771,
+          "commits": 248,
+          "deletions": 2929,
+          "net": 86913
+        }
+      },
+      "changed_lines": 110325,
+      "commits": 608,
+      "deletions": 3188,
+      "net": 103949
+    },
+    "ewor-skill": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 2,
+      "deletions": 0,
+      "net": 0
+    },
+    "hacknation": {
+      "additions": 45026,
+      "by_language": {
+        "CSS": {
+          "additions": 1209,
+          "changed_lines": 2289,
+          "commits": 8,
+          "deletions": 1080,
+          "net": 129
+        },
+        "JavaScript": {
+          "additions": 504,
+          "changed_lines": 525,
+          "commits": 3,
+          "deletions": 21,
+          "net": 483
+        },
+        "Python": {
+          "additions": 419,
+          "changed_lines": 419,
+          "commits": 2,
+          "deletions": 0,
+          "net": 419
+        },
+        "SQL": {
+          "additions": 141,
+          "changed_lines": 141,
+          "commits": 1,
+          "deletions": 0,
+          "net": 141
+        },
+        "TypeScript": {
+          "additions": 42655,
+          "changed_lines": 52200,
+          "commits": 23,
+          "deletions": 9545,
+          "net": 33110
+        },
+        "YAML": {
+          "additions": 98,
+          "changed_lines": 98,
+          "commits": 1,
+          "deletions": 0,
+          "net": 98
+        }
+      },
+      "changed_lines": 55672,
+      "commits": 44,
+      "deletions": 10646,
+      "net": 34380
+    },
+    "hacknation-app": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "hacknation-landing": {
+      "additions": 18509,
+      "by_language": {
+        "CSS": {
+          "additions": 771,
+          "changed_lines": 771,
+          "commits": 1,
+          "deletions": 0,
+          "net": 771
+        },
+        "JavaScript": {
+          "additions": 61,
+          "changed_lines": 61,
+          "commits": 1,
+          "deletions": 0,
+          "net": 61
+        },
+        "TypeScript": {
+          "additions": 17677,
+          "changed_lines": 17677,
+          "commits": 1,
+          "deletions": 0,
+          "net": 17677
+        }
+      },
+      "changed_lines": 18509,
+      "commits": 2,
+      "deletions": 0,
+      "net": 18509
+    },
+    "hacknation-venture": {
+      "additions": 1153,
+      "by_language": {
+        "CSS": {
+          "additions": 252,
+          "changed_lines": 379,
+          "commits": 3,
+          "deletions": 127,
+          "net": 125
+        },
+        "JavaScript": {
+          "additions": 25,
+          "changed_lines": 25,
+          "commits": 1,
+          "deletions": 0,
+          "net": 25
+        },
+        "TypeScript": {
+          "additions": 876,
+          "changed_lines": 936,
+          "commits": 3,
+          "deletions": 60,
+          "net": 816
+        }
+      },
+      "changed_lines": 1340,
+      "commits": 4,
+      "deletions": 187,
+      "net": 966
+    },
+    "hacknation-web": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "hands-on-ai": {
+      "additions": 6747,
+      "by_language": {
+        "CSS": {
+          "additions": 130,
+          "changed_lines": 130,
+          "commits": 1,
+          "deletions": 0,
+          "net": 130
+        },
+        "JavaScript": {
+          "additions": 25,
+          "changed_lines": 25,
+          "commits": 1,
+          "deletions": 0,
+          "net": 25
+        },
+        "Python": {
+          "additions": 1790,
+          "changed_lines": 1872,
+          "commits": 3,
+          "deletions": 82,
+          "net": 1708
+        },
+        "TypeScript": {
+          "additions": 4802,
+          "changed_lines": 4822,
+          "commits": 2,
+          "deletions": 20,
+          "net": 4782
+        }
+      },
+      "changed_lines": 6849,
+      "commits": 4,
+      "deletions": 102,
+      "net": 6645
+    },
+    "htl-donaustadt-chatbot": {
+      "additions": 56,
+      "by_language": {
+        "TypeScript": {
+          "additions": 56,
+          "changed_lines": 93,
+          "commits": 14,
+          "deletions": 37,
+          "net": 19
+        }
+      },
+      "changed_lines": 93,
+      "commits": 14,
+      "deletions": 37,
+      "net": 19
+    },
+    "html-starter": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "ifg-agentic": {
+      "additions": 108065,
+      "by_language": {
+        "CSS": {
+          "additions": 516,
+          "changed_lines": 712,
+          "commits": 7,
+          "deletions": 196,
+          "net": 320
+        },
+        "JavaScript": {
+          "additions": 974,
+          "changed_lines": 982,
+          "commits": 3,
+          "deletions": 8,
+          "net": 966
+        },
+        "Python": {
+          "additions": 146,
+          "changed_lines": 146,
+          "commits": 2,
+          "deletions": 0,
+          "net": 146
+        },
+        "SQL": {
+          "additions": 284,
+          "changed_lines": 284,
+          "commits": 4,
+          "deletions": 0,
+          "net": 284
+        },
+        "TypeScript": {
+          "additions": 95694,
+          "changed_lines": 123777,
+          "commits": 36,
+          "deletions": 28083,
+          "net": 67611
+        },
+        "YAML": {
+          "additions": 10451,
+          "changed_lines": 10451,
+          "commits": 3,
+          "deletions": 0,
+          "net": 10451
+        }
+      },
+      "changed_lines": 136352,
+      "commits": 40,
+      "deletions": 28287,
+      "net": 79778
+    },
+    "interior-3d": {
+      "additions": 2042,
+      "by_language": {
+        "Python": {
+          "additions": 1911,
+          "changed_lines": 1921,
+          "commits": 5,
+          "deletions": 10,
+          "net": 1901
+        },
+        "YAML": {
+          "additions": 131,
+          "changed_lines": 141,
+          "commits": 8,
+          "deletions": 10,
+          "net": 121
+        }
+      },
+      "changed_lines": 2062,
+      "commits": 11,
+      "deletions": 20,
+      "net": 2022
+    },
+    "interiorly": {
+      "additions": 15872,
+      "by_language": {
+        "CSS": {
+          "additions": 2102,
+          "changed_lines": 2878,
+          "commits": 2,
+          "deletions": 776,
+          "net": 1326
+        },
+        "HTML": {
+          "additions": 0,
+          "changed_lines": 17,
+          "commits": 1,
+          "deletions": 17,
+          "net": -17
+        },
+        "JavaScript": {
+          "additions": 1,
+          "changed_lines": 11,
+          "commits": 1,
+          "deletions": 10,
+          "net": -9
+        },
+        "TypeScript": {
+          "additions": 13769,
+          "changed_lines": 25023,
+          "commits": 6,
+          "deletions": 11254,
+          "net": 2515
+        }
+      },
+      "changed_lines": 27929,
+      "commits": 7,
+      "deletions": 12057,
+      "net": 3815
+    },
+    "interiorly-dashboard": {
+      "additions": 4835,
+      "by_language": {
+        "CSS": {
+          "additions": 51,
+          "changed_lines": 74,
+          "commits": 1,
+          "deletions": 23,
+          "net": 28
+        },
+        "JavaScript": {
+          "additions": 5,
+          "changed_lines": 6,
+          "commits": 1,
+          "deletions": 1,
+          "net": 4
+        },
+        "SQL": {
+          "additions": 95,
+          "changed_lines": 95,
+          "commits": 1,
+          "deletions": 0,
+          "net": 95
+        },
+        "TypeScript": {
+          "additions": 4684,
+          "changed_lines": 4799,
+          "commits": 1,
+          "deletions": 115,
+          "net": 4569
+        }
+      },
+      "changed_lines": 4974,
+      "commits": 1,
+      "deletions": 139,
+      "net": 4696
+    },
+    "interiorly-pitch": {
+      "additions": 2683,
+      "by_language": {
+        "TypeScript": {
+          "additions": 2683,
+          "changed_lines": 3528,
+          "commits": 14,
+          "deletions": 845,
+          "net": 1838
+        }
+      },
+      "changed_lines": 3528,
+      "commits": 14,
+      "deletions": 845,
+      "net": 1838
+    },
+    "interiorly-preview": {
+      "additions": 393,
+      "by_language": {
+        "TypeScript": {
+          "additions": 393,
+          "changed_lines": 576,
+          "commits": 6,
+          "deletions": 183,
+          "net": 210
+        }
+      },
+      "changed_lines": 576,
+      "commits": 6,
+      "deletions": 183,
+      "net": 210
+    },
+    "interiorly-promo-fake": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "interiorly_changelog": {
+      "additions": 1168,
+      "by_language": {
+        "CSS": {
+          "additions": 155,
+          "changed_lines": 155,
+          "commits": 1,
+          "deletions": 0,
+          "net": 155
+        },
+        "JavaScript": {
+          "additions": 21,
+          "changed_lines": 21,
+          "commits": 1,
+          "deletions": 0,
+          "net": 21
+        },
+        "TypeScript": {
+          "additions": 992,
+          "changed_lines": 996,
+          "commits": 3,
+          "deletions": 4,
+          "net": 988
+        }
+      },
+      "changed_lines": 1172,
+      "commits": 6,
+      "deletions": 4,
+      "net": 1164
+    },
+    "interiorly_landingpage": {
+      "additions": 8336,
+      "by_language": {
+        "CSS": {
+          "additions": 302,
+          "changed_lines": 302,
+          "commits": 1,
+          "deletions": 0,
+          "net": 302
+        },
+        "JavaScript": {
+          "additions": 21,
+          "changed_lines": 21,
+          "commits": 1,
+          "deletions": 0,
+          "net": 21
+        },
+        "TypeScript": {
+          "additions": 8013,
+          "changed_lines": 8055,
+          "commits": 2,
+          "deletions": 42,
+          "net": 7971
+        }
+      },
+      "changed_lines": 8378,
+      "commits": 2,
+      "deletions": 42,
+      "net": 8294
+    },
+    "jku-assignments": {
+      "additions": 11920,
+      "by_language": {
+        "Python": {
+          "additions": 10429,
+          "changed_lines": 10429,
+          "commits": 1,
+          "deletions": 0,
+          "net": 10429
+        },
+        "TypeScript": {
+          "additions": 1473,
+          "changed_lines": 1524,
+          "commits": 5,
+          "deletions": 51,
+          "net": 1422
+        },
+        "XML": {
+          "additions": 15,
+          "changed_lines": 15,
+          "commits": 1,
+          "deletions": 0,
+          "net": 15
+        },
+        "YAML": {
+          "additions": 3,
+          "changed_lines": 6,
+          "commits": 2,
+          "deletions": 3,
+          "net": 0
+        }
+      },
+      "changed_lines": 11974,
+      "commits": 9,
+      "deletions": 54,
+      "net": 11866
+    },
+    "jku-current-topics-report": {
+      "additions": 2719,
+      "by_language": {
+        "Python": {
+          "additions": 2700,
+          "changed_lines": 3129,
+          "commits": 3,
+          "deletions": 429,
+          "net": 2271
+        },
+        "TOML": {
+          "additions": 19,
+          "changed_lines": 19,
+          "commits": 3,
+          "deletions": 0,
+          "net": 19
+        }
+      },
+      "changed_lines": 3148,
+      "commits": 4,
+      "deletions": 429,
+      "net": 2290
+    },
+    "jku-encyclopedia": {
+      "additions": 34176,
+      "by_language": {
+        "Python": {
+          "additions": 33923,
+          "changed_lines": 39811,
+          "commits": 157,
+          "deletions": 5888,
+          "net": 28035
+        },
+        "Shell": {
+          "additions": 102,
+          "changed_lines": 114,
+          "commits": 2,
+          "deletions": 12,
+          "net": 90
+        },
+        "TOML": {
+          "additions": 104,
+          "changed_lines": 110,
+          "commits": 4,
+          "deletions": 6,
+          "net": 98
+        },
+        "YAML": {
+          "additions": 47,
+          "changed_lines": 61,
+          "commits": 5,
+          "deletions": 14,
+          "net": 33
+        }
+      },
+      "changed_lines": 40096,
+      "commits": 376,
+      "deletions": 5920,
+      "net": 28256
+    },
+    "jku-python": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 3,
+      "deletions": 0,
+      "net": 0
+    },
+    "julian-at": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "mlpc-2026-task3": {
+      "additions": 14323,
+      "by_language": {
+        "CSS": {
+          "additions": 281,
+          "changed_lines": 463,
+          "commits": 4,
+          "deletions": 182,
+          "net": 99
+        },
+        "JavaScript": {
+          "additions": 28,
+          "changed_lines": 42,
+          "commits": 3,
+          "deletions": 14,
+          "net": 14
+        },
+        "Python": {
+          "additions": 1429,
+          "changed_lines": 1560,
+          "commits": 3,
+          "deletions": 131,
+          "net": 1298
+        },
+        "TypeScript": {
+          "additions": 12585,
+          "changed_lines": 17353,
+          "commits": 4,
+          "deletions": 4768,
+          "net": 7817
+        }
+      },
+      "changed_lines": 19418,
+      "commits": 5,
+      "deletions": 5095,
+      "net": 9228
+    },
+    "mlpc-exam": {
+      "additions": 6581,
+      "by_language": {
+        "CSS": {
+          "additions": 237,
+          "changed_lines": 344,
+          "commits": 2,
+          "deletions": 107,
+          "net": 130
+        },
+        "JavaScript": {
+          "additions": 25,
+          "changed_lines": 25,
+          "commits": 1,
+          "deletions": 0,
+          "net": 25
+        },
+        "Python": {
+          "additions": 1453,
+          "changed_lines": 1453,
+          "commits": 1,
+          "deletions": 0,
+          "net": 1453
+        },
+        "TypeScript": {
+          "additions": 4866,
+          "changed_lines": 4937,
+          "commits": 5,
+          "deletions": 71,
+          "net": 4795
+        }
+      },
+      "changed_lines": 6759,
+      "commits": 5,
+      "deletions": 178,
+      "net": 6403
+    },
+    "mlpc_task_4": {
+      "additions": 3859,
+      "by_language": {
+        "Python": {
+          "additions": 3846,
+          "changed_lines": 4010,
+          "commits": 17,
+          "deletions": 164,
+          "net": 3682
+        },
+        "TOML": {
+          "additions": 13,
+          "changed_lines": 13,
+          "commits": 1,
+          "deletions": 0,
+          "net": 13
+        }
+      },
+      "changed_lines": 4023,
+      "commits": 31,
+      "deletions": 164,
+      "net": 3695
+    },
+    "mystahd": {
+      "additions": 192,
+      "by_language": {
+        "CSS": {
+          "additions": 2,
+          "changed_lines": 25,
+          "commits": 1,
+          "deletions": 23,
+          "net": -21
+        },
+        "TypeScript": {
+          "additions": 190,
+          "changed_lines": 241,
+          "commits": 1,
+          "deletions": 51,
+          "net": 139
+        }
+      },
+      "changed_lines": 266,
+      "commits": 1,
+      "deletions": 74,
+      "net": 118
+    },
+    "next-todo": {
+      "additions": 713,
+      "by_language": {
+        "CSS": {
+          "additions": 48,
+          "changed_lines": 71,
+          "commits": 2,
+          "deletions": 23,
+          "net": 25
+        },
+        "JavaScript": {
+          "additions": 12,
+          "changed_lines": 12,
+          "commits": 1,
+          "deletions": 0,
+          "net": 12
+        },
+        "TypeScript": {
+          "additions": 653,
+          "changed_lines": 761,
+          "commits": 2,
+          "deletions": 108,
+          "net": 545
+        }
+      },
+      "changed_lines": 844,
+      "commits": 3,
+      "deletions": 131,
+      "net": 582
+    },
+    "openai-build-week": {
+      "additions": 13581,
+      "by_language": {
+        "JavaScript": {
+          "additions": 1021,
+          "changed_lines": 1023,
+          "commits": 4,
+          "deletions": 2,
+          "net": 1019
+        },
+        "Python": {
+          "additions": 12309,
+          "changed_lines": 20927,
+          "commits": 12,
+          "deletions": 8618,
+          "net": 3691
+        },
+        "Shell": {
+          "additions": 16,
+          "changed_lines": 32,
+          "commits": 4,
+          "deletions": 16,
+          "net": 0
+        },
+        "Swift": {
+          "additions": 29,
+          "changed_lines": 29,
+          "commits": 1,
+          "deletions": 0,
+          "net": 29
+        },
+        "TOML": {
+          "additions": 4,
+          "changed_lines": 8,
+          "commits": 2,
+          "deletions": 4,
+          "net": 0
+        },
+        "YAML": {
+          "additions": 202,
+          "changed_lines": 394,
+          "commits": 4,
+          "deletions": 192,
+          "net": 10
+        }
+      },
+      "changed_lines": 22413,
+      "commits": 35,
+      "deletions": 8832,
+      "net": 4749
+    },
+    "portfolio": {
+      "additions": 17200,
+      "by_language": {
+        "CSS": {
+          "additions": 755,
+          "changed_lines": 1218,
+          "commits": 10,
+          "deletions": 463,
+          "net": 292
+        },
+        "JavaScript": {
+          "additions": 81,
+          "changed_lines": 154,
+          "commits": 5,
+          "deletions": 73,
+          "net": 8
+        },
+        "TypeScript": {
+          "additions": 16364,
+          "changed_lines": 26016,
+          "commits": 80,
+          "deletions": 9652,
+          "net": 6712
+        }
+      },
+      "changed_lines": 27388,
+      "commits": 89,
+      "deletions": 10188,
+      "net": 7012
+    },
+    "qdrant-hackathon": {
+      "additions": 29075,
+      "by_language": {
+        "CSS": {
+          "additions": 356,
+          "changed_lines": 477,
+          "commits": 5,
+          "deletions": 121,
+          "net": 235
+        },
+        "JavaScript": {
+          "additions": 5,
+          "changed_lines": 5,
+          "commits": 1,
+          "deletions": 0,
+          "net": 5
+        },
+        "Python": {
+          "additions": 2478,
+          "changed_lines": 3021,
+          "commits": 4,
+          "deletions": 543,
+          "net": 1935
+        },
+        "SQL": {
+          "additions": 78,
+          "changed_lines": 78,
+          "commits": 1,
+          "deletions": 0,
+          "net": 78
+        },
+        "TOML": {
+          "additions": 55,
+          "changed_lines": 72,
+          "commits": 2,
+          "deletions": 17,
+          "net": 38
+        },
+        "TypeScript": {
+          "additions": 26103,
+          "changed_lines": 39818,
+          "commits": 52,
+          "deletions": 13715,
+          "net": 12388
+        }
+      },
+      "changed_lines": 43471,
+      "commits": 85,
+      "deletions": 14396,
+      "net": 14679
+    },
+    "start-hackathon": {
+      "additions": 7273,
+      "by_language": {
+        "CSS": {
+          "additions": 348,
+          "changed_lines": 531,
+          "commits": 8,
+          "deletions": 183,
+          "net": 165
+        },
+        "JavaScript": {
+          "additions": 243,
+          "changed_lines": 449,
+          "commits": 3,
+          "deletions": 206,
+          "net": 37
+        },
+        "Shell": {
+          "additions": 88,
+          "changed_lines": 176,
+          "commits": 2,
+          "deletions": 88,
+          "net": 0
+        },
+        "TOML": {
+          "additions": 476,
+          "changed_lines": 952,
+          "commits": 2,
+          "deletions": 476,
+          "net": 0
+        },
+        "TypeScript": {
+          "additions": 5843,
+          "changed_lines": 8069,
+          "commits": 42,
+          "deletions": 2226,
+          "net": 3617
+        },
+        "YAML": {
+          "additions": 275,
+          "changed_lines": 291,
+          "commits": 4,
+          "deletions": 16,
+          "net": 259
+        }
+      },
+      "changed_lines": 10468,
+      "commits": 54,
+      "deletions": 3195,
+      "net": 4078
+    },
+    "synth-ui": {
+      "additions": 291,
+      "by_language": {
+        "TypeScript": {
+          "additions": 291,
+          "changed_lines": 465,
+          "commits": 10,
+          "deletions": 174,
+          "net": 117
+        }
+      },
+      "changed_lines": 465,
+      "commits": 17,
+      "deletions": 174,
+      "net": 117
+    },
+    "synth-ui-training": {
+      "additions": 22,
+      "by_language": {
+        "YAML": {
+          "additions": 22,
+          "changed_lines": 22,
+          "commits": 1,
+          "deletions": 0,
+          "net": 22
+        }
+      },
+      "changed_lines": 22,
+      "commits": 1,
+      "deletions": 0,
+      "net": 22
+    },
+    "tdot_chatbot": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "untis-lehrer-extension": {
+      "additions": 0,
+      "by_language": {},
+      "changed_lines": 0,
+      "commits": 0,
+      "deletions": 0,
+      "net": 0
+    },
+    "young_ai_leaders_linz": {
+      "additions": 4566,
+      "by_language": {
+        "CSS": {
+          "additions": 346,
+          "changed_lines": 373,
+          "commits": 4,
+          "deletions": 27,
+          "net": 319
+        },
+        "JavaScript": {
+          "additions": 98,
+          "changed_lines": 107,
+          "commits": 4,
+          "deletions": 9,
+          "net": 89
+        },
+        "TypeScript": {
+          "additions": 4069,
+          "changed_lines": 5113,
+          "commits": 36,
+          "deletions": 1044,
+          "net": 3025
+        },
+        "YAML": {
+          "additions": 53,
+          "changed_lines": 53,
+          "commits": 1,
+          "deletions": 0,
+          "net": 53
+        }
+      },
+      "changed_lines": 5646,
+      "commits": 43,
+      "deletions": 1080,
+      "net": 3486
+    },
+    "zero_one_hack_01": {
+      "additions": 5527,
+      "by_language": {
+        "CSS": {
+          "additions": 177,
+          "changed_lines": 178,
+          "commits": 4,
+          "deletions": 1,
+          "net": 176
+        },
+        "JavaScript": {
+          "additions": 78,
+          "changed_lines": 78,
+          "commits": 2,
+          "deletions": 0,
+          "net": 78
+        },
+        "Python": {
+          "additions": 2668,
+          "changed_lines": 3269,
+          "commits": 5,
+          "deletions": 601,
+          "net": 2067
+        },
+        "TOML": {
+          "additions": 84,
+          "changed_lines": 110,
+          "commits": 2,
+          "deletions": 26,
+          "net": 58
+        },
+        "TypeScript": {
+          "additions": 2483,
+          "changed_lines": 2506,
+          "commits": 6,
+          "deletions": 23,
+          "net": 2460
+        },
+        "YAML": {
+          "additions": 37,
+          "changed_lines": 37,
+          "commits": 1,
+          "deletions": 0,
+          "net": 37
+        }
+      },
+      "changed_lines": 6178,
+      "commits": 22,
+      "deletions": 651,
+      "net": 4876
+    }
+  },
+  "failures": {},
+  "filter_report": {
+    "binary": 970,
+    "extension": 9867,
+    "gitignored": 219,
+    "lockfile": 252,
+    "sensitive_path": 67,
+    "symlink": 4,
+    "too_large": 47
+  },
+  "generated_at": "2026-07-16T14:15:45+00:00",
+  "matched_emails": [
+    "julian.schmidt1005@gmail.com"
+  ],
+  "over_time": {
+    "month": {
+      "2023-09": {
+        "additions": 577,
+        "changed_lines": 582,
+        "commits": 9,
+        "deletions": 5,
+        "net": 572
+      },
+      "2023-11": {
+        "additions": 50,
+        "changed_lines": 83,
+        "commits": 12,
+        "deletions": 33,
+        "net": 17
+      },
+      "2023-12": {
+        "additions": 6,
+        "changed_lines": 10,
+        "commits": 2,
+        "deletions": 4,
+        "net": 2
+      },
+      "2024-01": {
+        "additions": 0,
+        "changed_lines": 1,
+        "commits": 1,
+        "deletions": 1,
+        "net": -1
+      },
+      "2024-02": {
+        "additions": 4950,
+        "changed_lines": 5216,
+        "commits": 6,
+        "deletions": 266,
+        "net": 4684
+      },
+      "2024-03": {
+        "additions": 192,
+        "changed_lines": 266,
+        "commits": 1,
+        "deletions": 74,
+        "net": 118
+      },
+      "2024-04": {
+        "additions": 729,
+        "changed_lines": 844,
+        "commits": 6,
+        "deletions": 115,
+        "net": 614
+      },
+      "2024-05": {
+        "additions": 2825,
+        "changed_lines": 4016,
+        "commits": 10,
+        "deletions": 1191,
+        "net": 1634
+      },
+      "2024-06": {
+        "additions": 713,
+        "changed_lines": 844,
+        "commits": 3,
+        "deletions": 131,
+        "net": 582
+      },
+      "2024-10": {
+        "additions": 313,
+        "changed_lines": 487,
+        "commits": 16,
+        "deletions": 174,
+        "net": 139
+      },
+      "2024-11": {
+        "additions": 199,
+        "changed_lines": 327,
+        "commits": 5,
+        "deletions": 128,
+        "net": 71
+      },
+      "2025-01": {
+        "additions": 3461,
+        "changed_lines": 4034,
+        "commits": 5,
+        "deletions": 573,
+        "net": 2888
+      },
+      "2025-02": {
+        "additions": 6114,
+        "changed_lines": 7159,
+        "commits": 25,
+        "deletions": 1045,
+        "net": 5069
+      },
+      "2025-03": {
+        "additions": 8379,
+        "changed_lines": 8456,
+        "commits": 3,
+        "deletions": 77,
+        "net": 8302
+      },
+      "2025-04": {
+        "additions": 12368,
+        "changed_lines": 23817,
+        "commits": 1,
+        "deletions": 11449,
+        "net": 919
+      },
+      "2025-07": {
+        "additions": 111391,
+        "changed_lines": 121355,
+        "commits": 22,
+        "deletions": 9964,
+        "net": 101427
+      },
+      "2025-08": {
+        "additions": 113737,
+        "changed_lines": 171150,
+        "commits": 37,
+        "deletions": 57413,
+        "net": 56324
+      },
+      "2025-09": {
+        "additions": 27142,
+        "changed_lines": 41519,
+        "commits": 78,
+        "deletions": 14377,
+        "net": 12765
+      },
+      "2025-10": {
+        "additions": 45685,
+        "changed_lines": 111057,
+        "commits": 39,
+        "deletions": 65372,
+        "net": -19687
+      },
+      "2025-11": {
+        "additions": 10820,
+        "changed_lines": 12893,
+        "commits": 11,
+        "deletions": 2073,
+        "net": 8747
+      },
+      "2025-12": {
+        "additions": 3262,
+        "changed_lines": 11993,
+        "commits": 5,
+        "deletions": 8731,
+        "net": -5469
+      },
+      "2026-01": {
+        "additions": 50006,
+        "changed_lines": 76480,
+        "commits": 569,
+        "deletions": 26474,
+        "net": 23532
+      },
+      "2026-02": {
+        "additions": 124825,
+        "changed_lines": 156691,
+        "commits": 274,
+        "deletions": 31866,
+        "net": 92959
+      },
+      "2026-03": {
+        "additions": 58801,
+        "changed_lines": 88242,
+        "commits": 490,
+        "deletions": 29441,
+        "net": 29360
+      },
+      "2026-04": {
+        "additions": 55952,
+        "changed_lines": 76232,
+        "commits": 326,
+        "deletions": 20280,
+        "net": 35672
+      },
+      "2026-05": {
+        "additions": 45016,
+        "changed_lines": 52057,
+        "commits": 294,
+        "deletions": 7041,
+        "net": 37975
+      },
+      "2026-06": {
+        "additions": 141758,
+        "changed_lines": 146093,
+        "commits": 631,
+        "deletions": 4335,
+        "net": 137423
+      },
+      "2026-07": {
+        "additions": 39007,
+        "changed_lines": 49134,
+        "commits": 137,
+        "deletions": 10127,
+        "net": 28880
+      }
+    },
+    "year": {
+      "2023": {
+        "additions": 633,
+        "changed_lines": 675,
+        "commits": 23,
+        "deletions": 42,
+        "net": 591
+      },
+      "2024": {
+        "additions": 9921,
+        "changed_lines": 12001,
+        "commits": 48,
+        "deletions": 2080,
+        "net": 7841
+      },
+      "2025": {
+        "additions": 342359,
+        "changed_lines": 513433,
+        "commits": 226,
+        "deletions": 171074,
+        "net": 171285
+      },
+      "2026": {
+        "additions": 515365,
+        "changed_lines": 644929,
+        "commits": 2721,
+        "deletions": 129564,
+        "net": 385801
+      }
+    }
+  },
+  "overall": {
+    "additions": 868278,
+    "changed_lines": 1171038,
+    "commits": 3018,
+    "deletions": 302760,
+    "net": 565518
+  },
+  "repositories_discovered": 60,
+  "repositories_processed": 60,
+  "sources": {
+    "config": "config.yaml",
+    "git_command": "git log --all --date=iso-strict --numstat --find-renames",
+    "repository_root": "/Users/julianschmidt/train-corpus/code-corpus/repos"
+  }
+}

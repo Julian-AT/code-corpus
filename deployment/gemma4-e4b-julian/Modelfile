@@ -1,0 +1,4 @@
+FROM gemma4:e4b
+ADAPTER /Users/julianschmidt/train-corpus/code-corpus/deployment/gemma4-e4b-julian/adapter.gguf
+PARAMETER temperature 0
+PARAMETER num_ctx 32768

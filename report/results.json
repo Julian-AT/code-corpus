@@ -1,0 +1,182 @@
+{
+  "evaluations": [
+    {
+      "model": {
+        "family": "Gemma 4 E2B",
+        "model_id": "mlx-community/gemma-4-e2b-4bit",
+        "name": "gemma-4-e2b-4bit",
+        "note": "Verified MLX-VLM 4-bit conversion of the Gemma 4 E2B base checkpoint.",
+        "optimization": "MLX native",
+        "quantization_bits": 4,
+        "target_device": "Apple Silicon edge",
+        "trainer": "mlx-vlm"
+      },
+      "reason": "Training has not completed.",
+      "run_id": "gemma-4-e2b-4bit-raw-max",
+      "sources": {
+        "dataset": "datasets/raw-max/statistics.json",
+        "plan": "runs/gemma-4-e2b-4bit-raw-max/plan.json"
+      },
+      "status": "pending",
+      "variant": "raw-max"
+    },
+    {
+      "model": {
+        "family": "Gemma 4 E2B",
+        "model_id": "mlx-community/gemma-4-e2b-4bit",
+        "name": "gemma-4-e2b-4bit",
+        "note": "Verified MLX-VLM 4-bit conversion of the Gemma 4 E2B base checkpoint.",
+        "optimization": "MLX native",
+        "quantization_bits": 4,
+        "target_device": "Apple Silicon edge",
+        "trainer": "mlx-vlm"
+      },
+      "reason": "Training has not completed.",
+      "run_id": "gemma-4-e2b-4bit-quality",
+      "sources": {
+        "dataset": "datasets/quality/statistics.json",
+        "plan": "runs/gemma-4-e2b-4bit-quality/plan.json"
+      },
+      "status": "pending",
+      "variant": "quality"
+    },
+    {
+      "model": {
+        "family": "Gemma 4 E2B",
+        "model_id": "mlx-community/gemma-4-e2b-5bit",
+        "name": "gemma-4-e2b-5bit",
+        "note": "Verified MLX-VLM 5-bit conversion of the Gemma 4 E2B base checkpoint.",
+        "optimization": "MLX native",
+        "quantization_bits": 5,
+        "target_device": "Apple Silicon edge",
+        "trainer": "mlx-vlm"
+      },
+      "reason": "Training has not completed.",
+      "run_id": "gemma-4-e2b-5bit-raw-max",
+      "sources": {
+        "dataset": "datasets/raw-max/statistics.json",
+        "plan": "runs/gemma-4-e2b-5bit-raw-max/plan.json"
+      },
+      "status": "pending",
+      "variant": "raw-max"
+    },
+    {
+      "model": {
+        "family": "Gemma 4 E2B",
+        "model_id": "mlx-community/gemma-4-e2b-5bit",
+        "name": "gemma-4-e2b-5bit",
+        "note": "Verified MLX-VLM 5-bit conversion of the Gemma 4 E2B base checkpoint.",
+        "optimization": "MLX native",
+        "quantization_bits": 5,
+        "target_device": "Apple Silicon edge",
+        "trainer": "mlx-vlm"
+      },
+      "reason": "Training has not completed.",
+      "run_id": "gemma-4-e2b-5bit-quality",
+      "sources": {
+        "dataset": "datasets/quality/statistics.json",
+        "plan": "runs/gemma-4-e2b-5bit-quality/plan.json"
+      },
+      "status": "pending",
+      "variant": "quality"
+    },
+    {
+      "model": {
+        "family": "Gemma 4 E4B",
+        "model_id": "mlx-community/gemma-4-e4b-4bit",
+        "name": "gemma-4-e4b-4bit",
+        "note": "Verified MLX-VLM 4-bit conversion of the Gemma 4 E4B base checkpoint.",
+        "optimization": "MLX native",
+        "quantization_bits": 4,
+        "target_device": "Apple Silicon edge",
+        "trainer": "mlx-vlm"
+      },
+      "reason": "Training has not completed.",
+      "run_id": "gemma-4-e4b-4bit-raw-max",
+      "sources": {
+        "dataset": "datasets/raw-max/statistics.json",
+        "plan": "runs/gemma-4-e4b-4bit-raw-max/plan.json"
+      },
+      "status": "pending",
+      "variant": "raw-max"
+    },
+    {
+      "model": {
+        "family": "Gemma 4 E4B",
+        "model_id": "mlx-community/gemma-4-e4b-4bit",
+        "name": "gemma-4-e4b-4bit",
+        "note": "Verified MLX-VLM 4-bit conversion of the Gemma 4 E4B base checkpoint.",
+        "optimization": "MLX native",
+        "quantization_bits": 4,
+        "target_device": "Apple Silicon edge",
+        "trainer": "mlx-vlm"
+      },
+      "reason": "Training has not completed.",
+      "run_id": "gemma-4-e4b-4bit-quality",
+      "sources": {
+        "dataset": "datasets/quality/statistics.json",
+        "plan": "runs/gemma-4-e4b-4bit-quality/plan.json"
+      },
+      "status": "pending",
+      "variant": "quality"
+    },
+    {
+      "model": {
+        "family": "Gemma 4 E4B",
+        "model_id": "mlx-community/gemma-4-e4b-5bit",
+        "name": "gemma-4-e4b-5bit",
+        "note": "Verified MLX-VLM 5-bit conversion of the Gemma 4 E4B base checkpoint.",
+        "optimization": "MLX native",
+        "quantization_bits": 5,
+        "target_device": "Apple Silicon edge",
+        "trainer": "mlx-vlm"
+      },
+      "reason": "Training has not completed.",
+      "run_id": "gemma-4-e4b-5bit-raw-max",
+      "sources": {
+        "dataset": "datasets/raw-max/statistics.json",
+        "plan": "runs/gemma-4-e4b-5bit-raw-max/plan.json"
+      },
+      "status": "pending",
+      "variant": "raw-max"
+    },
+    {
+      "model": {
+        "family": "Gemma 4 E4B",
+        "model_id": "mlx-community/gemma-4-e4b-5bit",
+        "name": "gemma-4-e4b-5bit",
+        "note": "Verified MLX-VLM 5-bit conversion of the Gemma 4 E4B base checkpoint.",
+        "optimization": "MLX native",
+        "quantization_bits": 5,
+        "target_device": "Apple Silicon edge",
+        "trainer": "mlx-vlm"
+      },
+      "reason": "Training has not completed.",
+      "run_id": "gemma-4-e4b-5bit-quality",
+      "sources": {
+        "dataset": "datasets/quality/statistics.json",
+        "plan": "runs/gemma-4-e4b-5bit-quality/plan.json"
+      },
+      "status": "pending",
+      "variant": "quality"
+    }
+  ],
+  "generated_at": "2026-07-16T12:52:12+00:00",
+  "settings": {
+    "batch_size": 1,
+    "max_new_tokens": 32,
+    "max_samples": 16,
+    "max_seq_length": 1024,
+    "seed": 42,
+    "timed_runs": 3,
+    "warmup_runs": 1
+  },
+  "source_files": [
+    "config.yaml",
+    "runs/sweep.json",
+    "datasets/quality/statistics.json",
+    "datasets/raw-max/statistics.json",
+    "stats/stats.json"
+  ],
+  "status": "partial"
+}

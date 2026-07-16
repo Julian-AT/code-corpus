@@ -1,0 +1,228 @@
+project:
+  dataset_license: other
+  dataset_languages:
+    - en
+  seed: 42
+
+paths:
+  repos: repos
+  stats: stats
+  datasets: datasets
+  runs: runs
+  report: report
+  deployment: deployment
+
+fetch:
+  include_private: true
+  include_forks: false
+  include_archived: false
+  since_year: 1970
+  limit: 1000
+
+stats:
+  emails: []
+  max_repos: null
+  chart_dpi: 200
+
+dataset:
+  variants:
+    - raw-max
+  max_rows: 1000000
+  max_file_bytes: 1048576
+  chunk_tokens: 896
+  chunk_overlap_tokens: 64
+  near_dedup_threshold: 0.85
+  minhash_permutations: 128
+  shingle_tokens: 5
+  validation_ratio: 0.10
+  min_validation_repos: 3
+  sensitive_globs:
+    - ".env*"
+    - "*.key"
+    - "*.pem"
+    - "*.p12"
+    - "*.pfx"
+    - "credentials*.json"
+    - "id_rsa*"
+    - "id_ed25519*"
+    - "secrets.*"
+  extensions:
+    .bash: Shell
+    .c: C
+    .cc: C++
+    .clj: Clojure
+    .cljs: Clojure
+    .cpp: C++
+    .cs: C#
+    .css: CSS
+    .dart: Dart
+    .ex: Elixir
+    .exs: Elixir
+    .erl: Erlang
+    .fs: F#
+    .fsx: F#
+    .go: Go
+    .gradle: Groovy
+    .graphql: GraphQL
+    .h: C
+    .hcl: HCL
+    .hs: Haskell
+    .hpp: C++
+    .html: HTML
+    .java: Java
+    .js: JavaScript
+    .jsx: JavaScript
+    .kt: Kotlin
+    .kts: Kotlin
+    .lua: Lua
+    .m: Objective-C
+    .mm: Objective-C++
+    .mjs: JavaScript
+    .php: PHP
+    .pl: Perl
+    .ps1: PowerShell
+    .proto: Protocol Buffer
+    .py: Python
+    .r: R
+    .rb: Ruby
+    .rkt: Racket
+    .rs: Rust
+    .scala: Scala
+    .sh: Shell
+    .sol: Solidity
+    .sql: SQL
+    .svelte: Svelte
+    .swift: Swift
+    .tf: Terraform
+    .toml: TOML
+    .ts: TypeScript
+    .tsx: TypeScript
+    .vue: Vue
+    .xml: XML
+    .yaml: YAML
+    .yml: YAML
+    .zig: Zig
+  excluded_directories:
+    - .build
+    - .cache
+    - .git
+    - .gradle
+    - .hg
+    - .mypy_cache
+    - .next
+    - .nuxt
+    - .pytest_cache
+    - .ruff_cache
+    - .svn
+    - .tox
+    - .venv
+    - __pycache__
+    - build
+    - coverage
+    - dist
+    - DerivedData
+    - node_modules
+    - out
+    - Pods
+    - target
+    - venv
+  vendored_generated_directories:
+    - generated
+    - third-party
+    - third_party
+    - vendor
+    - vendors
+  excluded_filenames:
+    - Cargo.lock
+    - Package.resolved
+    - Podfile.lock
+    - Gemfile.lock
+    - Pipfile.lock
+    - bun.lock
+    - bun.lockb
+    - composer.lock
+    - flake.lock
+    - go.sum
+    - mix.lock
+    - npm-shrinkwrap.json
+    - package-lock.json
+    - packages.lock.json
+    - pnpm-lock.yaml
+    - poetry.lock
+    - pubspec.lock
+    - uv.lock
+    - yarn.lock
+    - .terraform.lock.hcl
+  generated_globs:
+    - "*.designer.cs"
+    - "*.g.dart"
+    - "*_pb2.py"
+    - "*_pb2_grpc.py"
+  quality:
+    drop_tests: true
+    min_history_commits: 2
+    min_lifetime_days: 30
+    min_score: 2
+    history_weight: 1
+    lifetime_weight: 1
+    personal_weight: 2
+
+training:
+  variants:
+    - raw-max
+  batch_size: 1
+  epochs: 1
+  iterations: 600
+  smoke_iterations: 1
+  max_seq_length: 1024
+  learning_rate: 0.00001
+  gradient_checkpointing: true
+  gradient_accumulation_steps: 4
+  lora_rank: 8
+  lora_alpha: 16
+  lora_dropout: 0.0
+  prompt_fraction: 0.5
+  validation_batches: 10
+  steps_per_report: 10
+  steps_per_eval: 500
+  save_every: 1000
+  seed: 42
+  models:
+    - name: gemma-4-e4b-it-4bit
+      family: Gemma 4 E4B
+      model_id: unsloth/gemma-4-E4B-it-UD-MLX-4bit
+      upstream_model_id: google/gemma-4-E4B-it
+      revision: f29de68cb284ca208446e647b339569935025ef3
+      ollama_base: gemma4:e4b
+      trainer: mlx-vlm
+      quantization_bits: 4
+      optimization: MLX native QLoRA
+      target_device: Apple Silicon edge
+      note: Instruction-tuned E4B checkpoint pinned to the same upstream lineage as Ollama gemma4:e4b.
+
+evaluation:
+  max_samples: 16
+  max_new_tokens: 32
+  max_seq_length: 1024
+  warmup_runs: 1
+  timed_runs: 3
+  batch_size: 1
+  seed: 42
+  chart_dpi: 200
+
+benchmarks:
+  data: benchmarks/public-benchmarks.json
+
+deployment:
+  ollama_base: gemma4:e4b
+  ollama_model: gemma4-e4b-julian:latest
+  system_prompt_path: deployment/system-prompt.txt
+  ollama_base_size_gb: 9.6
+  minimum_free_disk_gb: 6
+  maximum_peak_memory_gb: 22
+  minimum_decode_tps: 20
+  maximum_ttft_seconds: 5
+  codex_context_window: 32768
+  llama_cpp_path: .cache/llama.cpp
+  llama_cpp_repository: https://github.com/ggml-org/llama.cpp.git
+  llama_cpp_revision: b15ca938ad00aa6b3ee6c2edda7363fd02826b18

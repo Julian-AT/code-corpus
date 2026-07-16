@@ -1,0 +1,1027 @@
+{
+  "excluded": {
+    "archived": 0,
+    "fork": 0,
+    "older": 0,
+    "private": 0
+  },
+  "generated_at": "2026-07-16T14:11:20+00:00",
+  "listed": 60,
+  "owner": "Julian-AT",
+  "repositories": [
+    {
+      "diskUsage": 3221,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/openai-build-week",
+      "name": "openai-build-week",
+      "nameWithOwner": "Julian-AT/openai-build-week",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2026-07-16T12:43:28Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/openai-build-week"
+    },
+    {
+      "diskUsage": 97360,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/codex-hackathon",
+      "name": "codex-hackathon",
+      "nameWithOwner": "Julian-AT/codex-hackathon",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-07-16T10:57:14Z",
+      "status": "existing",
+      "url": "https://github.com/Julian-AT/codex-hackathon"
+    },
+    {
+      "diskUsage": 72317,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/hands-on-ai",
+      "name": "hands-on-ai",
+      "nameWithOwner": "Julian-AT/hands-on-ai",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-07-08T09:18:57Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/hands-on-ai"
+    },
+    {
+      "diskUsage": 619,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/diplomarbeit-ideen",
+      "name": "diplomarbeit-ideen",
+      "nameWithOwner": "Julian-AT/diplomarbeit-ideen",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-06-30T23:50:28Z",
+      "status": "existing",
+      "url": "https://github.com/Julian-AT/diplomarbeit-ideen"
+    },
+    {
+      "diskUsage": 113517,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/portfolio",
+      "name": "portfolio",
+      "nameWithOwner": "Julian-AT/portfolio",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-06-30T12:13:55Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/portfolio"
+    },
+    {
+      "diskUsage": 4710,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/diplomarbeit-os",
+      "name": "diplomarbeit-os",
+      "nameWithOwner": "Julian-AT/diplomarbeit-os",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-06-28T14:20:46Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/diplomarbeit-os"
+    },
+    {
+      "diskUsage": 1520,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/adapter-lab",
+      "name": "adapter-lab",
+      "nameWithOwner": "Julian-AT/adapter-lab",
+      "primaryLanguage": {
+        "name": "HTML"
+      },
+      "primaryLanguageName": "HTML",
+      "pushedAt": "2026-06-27T11:02:01Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/adapter-lab"
+    },
+    {
+      "diskUsage": 2962,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/mlpc-exam",
+      "name": "mlpc-exam",
+      "nameWithOwner": "Julian-AT/mlpc-exam",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2026-06-18T13:35:32Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/mlpc-exam"
+    },
+    {
+      "diskUsage": 80397,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/start-hackathon",
+      "name": "start-hackathon",
+      "nameWithOwner": "Julian-AT/start-hackathon",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-06-06T08:19:58Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/start-hackathon"
+    },
+    {
+      "diskUsage": 19494,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/zero_one_hack_01",
+      "name": "zero_one_hack_01",
+      "nameWithOwner": "Julian-AT/zero_one_hack_01",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2026-05-31T11:34:39Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/zero_one_hack_01"
+    },
+    {
+      "diskUsage": 1316,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/mlpc_task_4",
+      "name": "mlpc_task_4",
+      "nameWithOwner": "Julian-AT/mlpc_task_4",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2026-05-28T21:59:07Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/mlpc_task_4"
+    },
+    {
+      "diskUsage": 288,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/jku-assignments",
+      "name": "jku-assignments",
+      "nameWithOwner": "Julian-AT/jku-assignments",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2026-05-16T11:51:17Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/jku-assignments"
+    },
+    {
+      "diskUsage": 27355,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/young_ai_leaders_linz",
+      "name": "young_ai_leaders_linz",
+      "nameWithOwner": "Julian-AT/young_ai_leaders_linz",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-05-10T16:08:51Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/young_ai_leaders_linz"
+    },
+    {
+      "diskUsage": 4,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/html-starter",
+      "name": "html-starter",
+      "nameWithOwner": "Julian-AT/html-starter",
+      "primaryLanguage": {
+        "name": "HTML"
+      },
+      "primaryLanguageName": "HTML",
+      "pushedAt": "2026-05-07T20:21:31Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/html-starter"
+    },
+    {
+      "diskUsage": 27454,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/mlpc-2026-task3",
+      "name": "mlpc-2026-task3",
+      "nameWithOwner": "Julian-AT/mlpc-2026-task3",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-04-19T21:05:58Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/mlpc-2026-task3"
+    },
+    {
+      "diskUsage": 1390,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/aucta",
+      "name": "aucta",
+      "nameWithOwner": "Julian-AT/aucta",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-04-11T20:41:44Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/aucta"
+    },
+    {
+      "diskUsage": 7364,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/clawguard",
+      "name": "clawguard",
+      "nameWithOwner": "Julian-AT/clawguard",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-03-30T10:23:10Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/clawguard"
+    },
+    {
+      "diskUsage": 39084,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/datagvat-mcp",
+      "name": "datagvat-mcp",
+      "nameWithOwner": "Julian-AT/datagvat-mcp",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2026-03-28T04:02:11Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/datagvat-mcp"
+    },
+    {
+      "diskUsage": 2361,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/jku-encyclopedia",
+      "name": "jku-encyclopedia",
+      "nameWithOwner": "Julian-AT/jku-encyclopedia",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2026-03-25T18:25:27Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/jku-encyclopedia"
+    },
+    {
+      "diskUsage": 64699,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/ewor-skill",
+      "name": "ewor-skill",
+      "nameWithOwner": "Julian-AT/ewor-skill",
+      "primaryLanguage": null,
+      "primaryLanguageName": "unknown",
+      "pushedAt": "2026-03-24T22:26:19Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/ewor-skill"
+    },
+    {
+      "diskUsage": 3792,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/hacknation-web",
+      "name": "hacknation-web",
+      "nameWithOwner": "Julian-AT/hacknation-web",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-03-18T21:25:42Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/hacknation-web"
+    },
+    {
+      "diskUsage": 630,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/hacknation-app",
+      "name": "hacknation-app",
+      "nameWithOwner": "Julian-AT/hacknation-app",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-03-18T15:37:57Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/hacknation-app"
+    },
+    {
+      "diskUsage": 445,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/hacknation-venture",
+      "name": "hacknation-venture",
+      "nameWithOwner": "Julian-AT/hacknation-venture",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-03-15T22:09:03Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/hacknation-venture"
+    },
+    {
+      "diskUsage": 267,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/cursor-austria",
+      "name": "cursor-austria",
+      "nameWithOwner": "Julian-AT/cursor-austria",
+      "primaryLanguage": {
+        "name": "HTML"
+      },
+      "primaryLanguageName": "HTML",
+      "pushedAt": "2026-03-05T14:00:34Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/cursor-austria"
+    },
+    {
+      "diskUsage": 175,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/cursor-vienna-discord",
+      "name": "cursor-vienna-discord",
+      "nameWithOwner": "Julian-AT/cursor-vienna-discord",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-02-19T13:02:41Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/cursor-vienna-discord"
+    },
+    {
+      "diskUsage": 1850,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/ai-video",
+      "name": "ai-video",
+      "nameWithOwner": "Julian-AT/ai-video",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2026-02-18T11:21:41Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/ai-video"
+    },
+    {
+      "diskUsage": 91513,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/hacknation",
+      "name": "hacknation",
+      "nameWithOwner": "Julian-AT/hacknation",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-02-09T21:24:59Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/hacknation"
+    },
+    {
+      "diskUsage": 1910,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/hacknation-landing",
+      "name": "hacknation-landing",
+      "nameWithOwner": "Julian-AT/hacknation-landing",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2026-02-08T02:57:33Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/hacknation-landing"
+    },
+    {
+      "diskUsage": 145,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/jku-current-topics-report",
+      "name": "jku-current-topics-report",
+      "nameWithOwner": "Julian-AT/jku-current-topics-report",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2026-01-27T18:50:15Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/jku-current-topics-report"
+    },
+    {
+      "diskUsage": 62,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/asai",
+      "name": "asai",
+      "nameWithOwner": "Julian-AT/asai",
+      "primaryLanguage": null,
+      "primaryLanguageName": "unknown",
+      "pushedAt": "2026-01-27T17:35:19Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/asai"
+    },
+    {
+      "diskUsage": 22615,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/ifg-agentic",
+      "name": "ifg-agentic",
+      "nameWithOwner": "Julian-AT/ifg-agentic",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2025-11-06T12:25:41Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/ifg-agentic"
+    },
+    {
+      "diskUsage": 0,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/jku-python",
+      "name": "jku-python",
+      "nameWithOwner": "Julian-AT/jku-python",
+      "primaryLanguage": null,
+      "primaryLanguageName": "unknown",
+      "pushedAt": "2025-10-29T13:44:59Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/jku-python"
+    },
+    {
+      "diskUsage": 95502,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/qdrant-hackathon",
+      "name": "qdrant-hackathon",
+      "nameWithOwner": "Julian-AT/qdrant-hackathon",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2025-10-27T19:59:15Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/qdrant-hackathon"
+    },
+    {
+      "diskUsage": 33,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/interior-3d",
+      "name": "interior-3d",
+      "nameWithOwner": "Julian-AT/interior-3d",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2025-10-23T18:36:53Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/interior-3d"
+    },
+    {
+      "diskUsage": 24816,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/daytona-generative-ui",
+      "name": "daytona-generative-ui",
+      "nameWithOwner": "Julian-AT/daytona-generative-ui",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2025-10-10T22:00:00Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/daytona-generative-ui"
+    },
+    {
+      "diskUsage": 224839,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/interiorly_changelog",
+      "name": "interiorly_changelog",
+      "nameWithOwner": "Julian-AT/interiorly_changelog",
+      "primaryLanguage": {
+        "name": "MDX"
+      },
+      "primaryLanguageName": "MDX",
+      "pushedAt": "2025-10-04T18:24:30Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/interiorly_changelog"
+    },
+    {
+      "diskUsage": 1320,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/catchi",
+      "name": "catchi",
+      "nameWithOwner": "Julian-AT/catchi",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2025-07-15T09:39:22Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/catchi"
+    },
+    {
+      "diskUsage": 4723,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/interiorly",
+      "name": "interiorly",
+      "nameWithOwner": "Julian-AT/interiorly",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2025-05-13T17:30:08Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/interiorly"
+    },
+    {
+      "diskUsage": 89732,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/synth-ui",
+      "name": "synth-ui",
+      "nameWithOwner": "Julian-AT/synth-ui",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2025-04-30T14:05:18Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/synth-ui"
+    },
+    {
+      "diskUsage": 243,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/interiorly-promo-fake",
+      "name": "interiorly-promo-fake",
+      "nameWithOwner": "Julian-AT/interiorly-promo-fake",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2025-03-30T20:22:01Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/interiorly-promo-fake"
+    },
+    {
+      "diskUsage": 2290,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/interiorly_landingpage",
+      "name": "interiorly_landingpage",
+      "nameWithOwner": "Julian-AT/interiorly_landingpage",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2025-03-28T11:34:06Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/interiorly_landingpage"
+    },
+    {
+      "diskUsage": 60,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/untis-lehrer-extension",
+      "name": "untis-lehrer-extension",
+      "nameWithOwner": "Julian-AT/untis-lehrer-extension",
+      "primaryLanguage": {
+        "name": "JavaScript"
+      },
+      "primaryLanguageName": "JavaScript",
+      "pushedAt": "2025-03-07T07:50:58Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/untis-lehrer-extension"
+    },
+    {
+      "diskUsage": 375,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/tdot_chatbot",
+      "name": "tdot_chatbot",
+      "nameWithOwner": "Julian-AT/tdot_chatbot",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2025-01-24T09:38:46Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/tdot_chatbot"
+    },
+    {
+      "diskUsage": 34787,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/interiorly-pitch",
+      "name": "interiorly-pitch",
+      "nameWithOwner": "Julian-AT/interiorly-pitch",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2024-11-29T01:17:09Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/interiorly-pitch"
+    },
+    {
+      "diskUsage": 49,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/julian-at",
+      "name": "julian-at",
+      "nameWithOwner": "Julian-AT/julian-at",
+      "primaryLanguage": null,
+      "primaryLanguageName": "unknown",
+      "pushedAt": "2024-11-03T20:44:25Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/julian-at"
+    },
+    {
+      "diskUsage": 1211,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/synth-ui-training",
+      "name": "synth-ui-training",
+      "nameWithOwner": "Julian-AT/synth-ui-training",
+      "primaryLanguage": {
+        "name": "Python"
+      },
+      "primaryLanguageName": "Python",
+      "pushedAt": "2024-10-23T17:05:45Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/synth-ui-training"
+    },
+    {
+      "diskUsage": 619,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/interiorly-preview",
+      "name": "interiorly-preview",
+      "nameWithOwner": "Julian-AT/interiorly-preview",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2024-06-24T17:51:41Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/interiorly-preview"
+    },
+    {
+      "diskUsage": 40555,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/next-todo",
+      "name": "next-todo",
+      "nameWithOwner": "Julian-AT/next-todo",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2024-06-14T10:44:38Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/next-todo"
+    },
+    {
+      "diskUsage": 3250,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/brz-chatbot",
+      "name": "brz-chatbot",
+      "nameWithOwner": "Julian-AT/brz-chatbot",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2024-06-06T05:16:22Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/brz-chatbot"
+    },
+    {
+      "diskUsage": 18556,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/mystahd",
+      "name": "mystahd",
+      "nameWithOwner": "Julian-AT/mystahd",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2024-04-20T20:32:41Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/mystahd"
+    },
+    {
+      "diskUsage": 150,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/interiorly-dashboard",
+      "name": "interiorly-dashboard",
+      "nameWithOwner": "Julian-AT/interiorly-dashboard",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2024-02-22T11:55:26Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/interiorly-dashboard"
+    },
+    {
+      "diskUsage": 1918,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/htl-donaustadt-chatbot",
+      "name": "htl-donaustadt-chatbot",
+      "nameWithOwner": "Julian-AT/htl-donaustadt-chatbot",
+      "primaryLanguage": {
+        "name": "TypeScript"
+      },
+      "primaryLanguageName": "TypeScript",
+      "pushedAt": "2023-12-04T10:17:24Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/htl-donaustadt-chatbot"
+    },
+    {
+      "diskUsage": 15,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": false,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/POS-23-24-Java",
+      "name": "POS-23-24-Java",
+      "nameWithOwner": "Julian-AT/POS-23-24-Java",
+      "primaryLanguage": {
+        "name": "Java"
+      },
+      "primaryLanguageName": "Java",
+      "pushedAt": "2023-09-11T10:24:15Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/POS-23-24-Java"
+    },
+    {
+      "diskUsage": 0,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/MSRP",
+      "name": "MSRP",
+      "nameWithOwner": "Julian-AT/MSRP",
+      "primaryLanguage": null,
+      "primaryLanguageName": "unknown",
+      "pushedAt": "2022-03-24T15:55:52Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/MSRP"
+    },
+    {
+      "diskUsage": 1,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/Project-CB",
+      "name": "Project-CB",
+      "nameWithOwner": "Julian-AT/Project-CB",
+      "primaryLanguage": null,
+      "primaryLanguageName": "unknown",
+      "pushedAt": "2022-03-09T16:48:35Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/Project-CB"
+    },
+    {
+      "diskUsage": 6227,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/Valorant-Webprojekt",
+      "name": "Valorant-Webprojekt",
+      "nameWithOwner": "Julian-AT/Valorant-Webprojekt",
+      "primaryLanguage": {
+        "name": "HTML"
+      },
+      "primaryLanguageName": "HTML",
+      "pushedAt": "2022-01-17T04:37:37Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/Valorant-Webprojekt"
+    },
+    {
+      "diskUsage": 26895,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/Kriegsmarine_Webprojekt",
+      "name": "Kriegsmarine_Webprojekt",
+      "nameWithOwner": "Julian-AT/Kriegsmarine_Webprojekt",
+      "primaryLanguage": {
+        "name": "HTML"
+      },
+      "primaryLanguageName": "HTML",
+      "pushedAt": "2022-01-17T03:02:03Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/Kriegsmarine_Webprojekt"
+    },
+    {
+      "diskUsage": 6139,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/Illegale_Strassenrennen-Webprojekt",
+      "name": "Illegale_Strassenrennen-Webprojekt",
+      "nameWithOwner": "Julian-AT/Illegale_Strassenrennen-Webprojekt",
+      "primaryLanguage": {
+        "name": "HTML"
+      },
+      "primaryLanguageName": "HTML",
+      "pushedAt": "2022-01-17T00:10:58Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/Illegale_Strassenrennen-Webprojekt"
+    },
+    {
+      "diskUsage": 0,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/InstagramFollowerBot",
+      "name": "InstagramFollowerBot",
+      "nameWithOwner": "Julian-AT/InstagramFollowerBot",
+      "primaryLanguage": null,
+      "primaryLanguageName": "unknown",
+      "pushedAt": "2021-07-30T00:20:21Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/InstagramFollowerBot"
+    },
+    {
+      "diskUsage": 1827,
+      "error": null,
+      "isArchived": false,
+      "isFork": false,
+      "isPrivate": true,
+      "localPath": "/Users/julianschmidt/train-corpus/code-corpus/repos/1AHIF-BOT",
+      "name": "1AHIF-BOT",
+      "nameWithOwner": "Julian-AT/1AHIF-BOT",
+      "primaryLanguage": {
+        "name": "JavaScript"
+      },
+      "primaryLanguageName": "JavaScript",
+      "pushedAt": "2020-09-26T23:25:26Z",
+      "status": "cloned",
+      "url": "https://github.com/Julian-AT/1AHIF-BOT"
+    }
+  ],
+  "selected": 60,
+  "settings": {
+    "include_archived": false,
+    "include_forks": false,
+    "include_private": true,
+    "limit": 1000,
+    "since_year": 1970
+  }
+}
