@@ -26,25 +26,25 @@ export function MobileMenu({ className }: { className?: string }) {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        aria-label="Open navigation"
-        className={cn("rounded-md text-ink", className)}
+        aria-label="Open menu"
+        className={cn("lg:hidden", className)}
       >
-        <MenuIcon className="h-10 w-10" />
+        <MenuIcon className="h-10 w-10 text-ink" />
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="w-[320px] max-w-[88vw] border-l border-rule bg-frost px-6 py-8"
+        className="w-[300px] max-w-[85vw] bg-cream px-6 py-8"
       >
-        <SheetTitle className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-ink">
-          Report navigation
+        <SheetTitle className="px-1 font-sans text-[13px] font-semibold uppercase tracking-wide text-muted-ink">
+          Navigation
         </SheetTitle>
-        <nav aria-label="Mobile" className="mt-7 flex flex-col">
+        <nav aria-label="Mobile" className="mt-6 flex flex-col gap-1">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="border-b border-rule py-3.5 text-[15px] font-medium text-ink-soft transition-colors hover:text-cobalt"
+              className="rounded-lg px-3 py-3 font-sans text-[16px] text-ink-soft transition-colors hover:bg-ink/5 hover:text-ink"
             >
               {item.label}
             </a>
@@ -53,11 +53,12 @@ export function MobileMenu({ className }: { className?: string }) {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="View Julian Schmidt on GitHub"
             onClick={() => setOpen(false)}
-            className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-ink px-4 text-sm font-semibold text-white"
+            className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-ink-soft px-4 font-sans text-[16px] text-ink-soft transition-opacity hover:opacity-90"
           >
-            <GitHubIcon className="h-4 w-4" />
-            Julian on GitHub
+            <GitHubIcon className="h-5 w-5" />
+            GitHub
           </a>
         </nav>
       </SheetContent>

@@ -12,13 +12,7 @@ const articleJsonLd = {
   description: ARTICLE.description,
   datePublished: ARTICLE.datePublished,
   dateModified: ARTICLE.dateModified,
-  author: {
-    "@type": "Person",
-    name: "Julian Schmidt",
-    url: "https://julianschmidt.cv",
-    sameAs: ["https://github.com/Julian-AT"],
-  },
-  about: ["Gemma 4", "MLX LoRA", "Ollama", "personal code corpus"],
+  author: ARTICLE.authors.map((name) => ({ "@type": "Person", name })),
   mainEntityOfPage: SITE_URL,
 };
 
@@ -31,11 +25,13 @@ export default function Home() {
       />
       <SiteHeader />
       <main id="main-content">
-        <ArticleHero />
-        <div className="report-shell mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <div className="flex items-start gap-10 xl:gap-16">
-            <TableOfContents sections={[...TOC_SECTIONS]} />
-            <article className="min-w-0 flex-1 pb-24 pt-14 lg:pt-20">
+        <div className="mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-16">
+          <ArticleHero />
+          <div className="flex">
+            <div className="w-0 shrink-0">
+              <TableOfContents sections={[...TOC_SECTIONS]} />
+            </div>
+            <article className="mt-12 min-w-0 flex-1 pb-8">
               <Article />
             </article>
           </div>

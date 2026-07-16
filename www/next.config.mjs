@@ -10,6 +10,11 @@ const nextConfig = {
         hostname: "www.julianschmidt.cv",
         pathname: "/_next/image",
       },
+      {
+        protocol: "https",
+        hostname: "media.licdn.com",
+        pathname: "/dms/image/**",
+      },
     ],
   },
   turbopack: {

@@ -1,10 +1,12 @@
-export const PROSE_MAX_WIDTH = "max-w-[760px]";
-export const FIGURE_MAX_WIDTH = "max-w-[1040px]";
+export const PROSE_MAX_WIDTH = "max-w-[775px]";
+export const FIGURE_MAX_WIDTH = "max-w-[820px]";
 
 export const GITHUB_URL = "https://github.com/Julian-AT";
 export const PORTFOLIO_URL = "https://julianschmidt.cv";
 export const PROFILE_IMAGE_URL =
   "https://www.julianschmidt.cv/_next/image?url=%2Fassets%2Fimages%2Fprofile.jpg&w=96&q=90&dpl=dpl_GZP5i46do69MAXsSiNbok81iUWt7";
+export const HERO_IMAGE_URL =
+  "https://media.licdn.com/dms/image/v2/D5612AQEv0hpRCYHXqA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1709146661824?e=2147483647&v=beta&t=ZlcB0jh0eNVZ-IOMbv7KVGjsUsyI3DxR_6DCxxwxIl0";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 

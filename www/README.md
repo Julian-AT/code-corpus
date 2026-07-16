@@ -40,11 +40,13 @@ The page remains a Server Component. Client JavaScript is limited to the table o
 ## Content and visual architecture
 
 - `src/content/report.mdx` contains the long-form narrative, evidence tables, and figure placement.
-- `src/components/report-visuals.tsx` contains the evidence chain, dataset histogram, verification scorecard, and scoped status callouts.
+- `src/components/report-visuals.tsx` contains the dataset histogram, verification scorecard, and scoped status callouts using the same monochrome primitives as the original report.
 - `src/lib/constants.ts` is the single source for publication metadata, section navigation, Julian's links, and the two external editorial image URLs.
 - `public/images/` contains publication-safe copies of the generated aggregate charts from `../stats/charts/`. It must never contain raw code, dataset rows, adapter weights, local paths, or secrets.
 
-The header and footer use Julian Schmidt's portrait while retaining the original report layout. Its source is allow-listed in `next.config.mjs` for Next.js image optimization.
+The visual source of truth is the original Attention Seekers implementation at `../repos/zero_one_hack_01/www`. This report retains its exact cream and ink palette, Geist typography, 68px header, centered editorial hero, 775px reading column, 820px figures, table treatment, sticky table of contents, code blocks, and footer structure. Only the subject matter, navigation labels, Julian Schmidt identity, portrait, and hero artwork are substituted.
+
+The portrait and supplied LoRA hero image are allow-listed in `next.config.mjs` for Next.js image optimization.
 
 ## Development
 

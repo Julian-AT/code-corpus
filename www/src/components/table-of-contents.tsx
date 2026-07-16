@@ -8,15 +8,16 @@ interface Section {
   label: string;
 }
 
-const SCROLL_THRESHOLD = 124;
+const SCROLL_THRESHOLD = 130;
 
 export function TableOfContents({ sections }: { sections: Section[] }) {
-  const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
+  const [activeId, setActiveId] = useState<string>(sections[0]?.id ?? "");
 
   useEffect(() => {
     if (sections.length === 0) return;
 
     let frame = 0;
+
     const updateActive = () => {
       frame = 0;
       let current = sections[0]?.id ?? "";
@@ -42,31 +43,33 @@ export function TableOfContents({ sections }: { sections: Section[] }) {
     };
   }, [sections]);
 
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+    setActiveId(id);
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
-    <aside className="table-of-contents sticky top-24 hidden w-[190px] shrink-0 self-start py-20 xl:block">
-      <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.17em] text-muted-ink">
-        On this page
-      </p>
-      <nav aria-label="Table of contents" className="border-l border-rule">
-        {sections.map(({ id, label }) => {
-          const isActive = activeId === id;
-          return (
-            <a
-              key={id}
-              href={`#${id}`}
-              aria-current={isActive ? "location" : undefined}
-              className={cn(
-                "relative block py-2.5 pl-4 text-[12px] leading-4 transition-colors",
-                isActive
-                  ? "font-semibold text-cobalt before:absolute before:-left-px before:inset-y-1 before:w-0.5 before:bg-cobalt"
-                  : "text-muted-ink hover:text-ink",
-              )}
-            >
-              {label}
-            </a>
-          );
-        })}
-      </nav>
+    <aside className="sticky top-[92px] mt-10 hidden w-[172px] flex-col self-start xl:flex">
+      {sections.map(({ id, label }) => {
+        const isActive = activeId === id;
+        return (
+          <a
+            key={id}
+            href={`#${id}`}
+            aria-current={isActive ? "true" : undefined}
+            onClick={(event) => handleClick(event, id)}
+            className={cn(
+              "w-full border-b border-spacing-0.5 py-3 text-left font-sans text-[12px] font-medium leading-[14.4px] tracking-[0.15px] transition-colors duration-150",
+              isActive ? "font-bold text-ink" : "text-muted-ink hover:text-ink",
+            )}
+          >
+            {label}
+          </a>
+        );
+      })}
     </aside>
   );
 }

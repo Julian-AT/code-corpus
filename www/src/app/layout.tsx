@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
-import { ARTICLE, SITE_URL } from "@/lib/constants";
+import { ARTICLE, HERO_IMAGE_URL, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,18 +32,27 @@ export const metadata: Metadata = {
     publishedTime: ARTICLE.datePublished,
     modifiedTime: ARTICLE.dateModified,
     authors: ["Julian Schmidt"],
+    images: [
+      {
+        url: HERO_IMAGE_URL,
+        width: 1247,
+        height: 528,
+        alt: ARTICLE.title,
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: ARTICLE.title,
     description: ARTICLE.description,
+    images: [HERO_IMAGE_URL],
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#f3f7f8",
+  themeColor: "#faf9f5",
 };
 
 export default function RootLayout({

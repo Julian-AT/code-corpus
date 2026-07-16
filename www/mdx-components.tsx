@@ -24,7 +24,7 @@ function MdxLink({
       {...(isExternal
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}
-      className="font-medium text-cobalt underline decoration-cobalt/30 underline-offset-4 transition-colors hover:decoration-cobalt"
+      className="underline decoration-[1.36px] underline-offset-[3.06px] transition-opacity hover:opacity-70"
     >
       {children}
     </a>
@@ -34,22 +34,16 @@ function MdxLink({
 const components: MDXComponents = {
   p: ({ children }) => (
     <div className={`mx-auto w-full ${PROSE_MAX_WIDTH}`}>
-      <p className="mb-5 font-serif text-[18px] leading-[1.68] text-ink-soft [overflow-wrap:anywhere]">
+      <p className="mb-4 font-serif text-[17px] leading-[1.55] text-ink [overflow-wrap:anywhere]">
         {children}
       </p>
     </div>
   ),
   h2: ({ children, id }) => (
     <div className={`mx-auto w-full ${PROSE_MAX_WIDTH}`}>
-      <div className="mt-24 flex items-center gap-3 border-t border-rule pt-7">
-        <span className="h-2 w-2 rounded-full bg-cobalt" />
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-ink">
-          Report section
-        </span>
-      </div>
       <h2
         id={id}
-        className="mb-8 mt-5 scroll-mt-28 text-[36px] font-semibold leading-[1.06] tracking-[-0.045em] text-ink sm:text-[46px]"
+        className="mb-8 mt-16 scroll-mt-28 font-sans text-[32px] font-semibold leading-[1.2] text-ink"
       >
         {children}
       </h2>
@@ -59,7 +53,7 @@ const components: MDXComponents = {
     <div className={`mx-auto w-full ${PROSE_MAX_WIDTH}`}>
       <h3
         id={id}
-        className="mb-4 mt-12 scroll-mt-28 text-[24px] font-semibold leading-[1.18] tracking-[-0.025em] text-ink sm:text-[28px]"
+        className="mb-2 mt-8 scroll-mt-28 font-sans text-[25px] font-semibold leading-[1.2] text-ink"
       >
         {children}
       </h3>
@@ -69,7 +63,7 @@ const components: MDXComponents = {
     <div className={`mx-auto w-full ${PROSE_MAX_WIDTH}`}>
       <h4
         id={id}
-        className="mb-3 mt-9 scroll-mt-28 font-mono text-[13px] font-semibold uppercase tracking-[0.1em] text-cobalt"
+        className="mb-2 mt-8 scroll-mt-28 font-sans text-[19px] font-semibold leading-[1.2] text-ink"
       >
         {children}
       </h4>
@@ -78,31 +72,26 @@ const components: MDXComponents = {
   a: MdxLink,
   ul: ({ children }) => (
     <div className={`mx-auto w-full ${PROSE_MAX_WIDTH}`}>
-      <ul className="mb-6 space-y-3 pl-5 font-serif text-[18px] leading-[1.55] text-ink-soft marker:text-cobalt">
+      <ul className="mb-4 list-disc pl-5 font-serif text-[17px] leading-[1.4] text-ink">
         {children}
       </ul>
     </div>
   ),
   ol: ({ children }) => (
     <div className={`mx-auto w-full ${PROSE_MAX_WIDTH}`}>
-      <ol className="mb-6 list-decimal space-y-3 pl-5 font-serif text-[18px] leading-[1.55] text-ink-soft marker:font-mono marker:text-cobalt">
+      <ol className="mb-4 list-decimal pl-5 font-serif text-[17px] leading-[1.4] text-ink">
         {children}
       </ol>
     </div>
   ),
-  li: ({ children }) => <li className="pl-1 [overflow-wrap:anywhere]">{children}</li>,
-  strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
+  li: ({ children }) => (
+    <li className="mb-3 [overflow-wrap:anywhere]">{children}</li>
+  ),
+  strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
   code: ({ children }) => (
-    <code className="rounded-md bg-panel px-1.5 py-0.5 font-mono text-[0.86em] text-ink [overflow-wrap:anywhere]">
+    <code className="rounded bg-code-bg px-1.5 py-0.5 font-mono text-[15px] text-ink [overflow-wrap:anywhere]">
       {children}
     </code>
-  ),
-  blockquote: ({ children }) => (
-    <div className={`mx-auto w-full ${PROSE_MAX_WIDTH}`}>
-      <blockquote className="my-8 border-l-2 border-copper pl-5 font-serif text-xl italic leading-8 text-ink">
-        {children}
-      </blockquote>
-    </div>
   ),
   Figure,
   CitationBlock,

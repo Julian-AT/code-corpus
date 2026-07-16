@@ -82,6 +82,7 @@ class BuildSettings:
     dataset_license: str
     dataset_languages: tuple[str, ...]
     min_validation_repos: int = 1
+    hub_repo_id: str = "JulianAT/personal-codex-model"
 
 
 @dataclass(frozen=True)
@@ -109,7 +110,9 @@ SECRET_PATTERNS = (
     ),
     (
         "jwt",
-        re.compile(r"(?<![A-Za-z0-9_-])eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}"),
+        re.compile(
+            r"(?<![A-Za-z0-9_-])eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}"
+        ),
     ),
 )
 
@@ -304,9 +307,8 @@ def settings_for(
         quality=quality,
         dataset_license=str(config_value(config, "project.dataset_license", "other")),
         dataset_languages=tuple(config_value(config, "project.dataset_languages", ["en"])),
-        min_validation_repos=int(
-            config_value(config, "dataset.min_validation_repos", 1)
-        ),
+        min_validation_repos=int(config_value(config, "dataset.min_validation_repos", 1)),
+        hub_repo_id=str(config_value(config, "hub.repo_id", "JulianAT/personal-codex-model")),
     )
 
 
@@ -627,10 +629,15 @@ def write_artifacts(
         {"name": name, "dtype": str(feature.dtype)} for name, feature in FEATURES.items()
     ]
     metadata = {
+        "pretty_name": f"Personal Code Corpus ({settings.variant})",
         "license": settings.dataset_license,
         "language": list(settings.dataset_languages),
+        "annotations_creators": ["no-annotation"],
+        "language_creators": ["found"],
+        "source_datasets": ["original"],
         "size_categories": [size_category(len(rows))],
         "task_categories": ["text-generation"],
+        "tags": ["code", "source-code", "code-completion", "deduplicated", "datasets"],
         "configs": [
             {
                 "config_name": "default",
@@ -667,7 +674,7 @@ def write_artifacts(
         "generated_at": utc_now(),
         "variant": settings.variant,
         "sources": {
-            "repository_root": str(settings.repository_root),
+            "repository_root": "local repository checkouts (not published)",
             "config": "config.yaml",
         },
         "parameters": {
@@ -755,6 +762,10 @@ This is a repo-walked style/volume corpus, **not a curated accepted-state datase
 files present in local repository checkouts when the builder ran. It does not establish that every
 chunk is correct, reviewed, authored exclusively by one person, or suitable as a preferred answer.
 
+The corpus is intended for code-language modeling, code completion, and controlled personalization
+experiments. It must not be used to infer repository ownership, software quality, security, or the
+identity of an author.
+
 ## Dataset summary
 
 - Rows: {len(rows):,}
@@ -764,6 +775,23 @@ chunk is correct, reviewed, authored exclusively by one person, or suitable as a
 - Split: deterministic repository-level train/valid assignment; a repository never crosses splits
 - Hash: SHA-256 of the emitted chunk text
 - Token counts: deterministic tokenizer-independent lexical estimates used for approximate chunking
+
+## Load the dataset
+
+```python
+from datasets import load_dataset
+
+dataset = load_dataset("{settings.hub_repo_id}")
+```
+
+Each row has the following stable schema:
+
+- `text`: source-code chunk used as the completion field
+- `repo`, `path`: source provenance within the local corpus
+- `language`: language inferred from the file extension
+- `sha`: SHA-256 of the emitted `text`
+- `chunk_index`: zero-based chunk position within the source file
+- `n_tokens`: tokenizer-independent lexical token estimate
 
 `raw-max` is bounded by code that actually exists after filtering. A claim of several million rows
 is only credible when the source repositories contain enough retained code; `--max-rows` is a
@@ -788,12 +816,23 @@ inspect the artifacts before publishing. MinHash is approximate, lexical token c
 token counts, current checkouts omit deleted historical code, and repository-level splitting can
 produce an empty validation split when fewer than two repositories contribute rows.
 
-## Files
+This corpus can contain insecure, incomplete, duplicated, outdated, or otherwise low-quality code.
+It is not a benchmark and has no correctness labels. The secret scanner uses a conservative set of
+high-confidence patterns and is not proof that the corpus is free of private or identifying data.
+
+## Reproducibility and audit
+
+`statistics.json` records row counts, split assignments, language distribution, filter decisions,
+deduplication totals, and build parameters. Splits are deterministic for the recorded seed. Source
+repository checkouts and the builder configuration are deliberately not included in the Hub repo.
+
+## Hub files
 
 - `data/*.parquet`: Hugging Face loader source
-- `arrow/`: `DatasetDict.save_to_disk` representation
-- `train.jsonl`, `valid.jsonl`: completion records; the runner links only non-empty MLX-LM splits
 - `dataset_infos.json`, `statistics.json`: schema, counts, filters, and dedup audit
+
+The local build also creates Arrow and JSONL representations for training. They are intentionally
+excluded from Hub publication because they duplicate the Parquet data.
 """
 
 

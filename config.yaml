@@ -1,8 +1,14 @@
 project:
   dataset_license: other
   dataset_languages:
-    - en
+    - code
   seed: 42
+
+hub:
+  repo_id: JulianAT/personal-codex-model
+  variant: raw-max
+  private: false
+  allow_private_sources: true
 
 paths:
   repos: repos

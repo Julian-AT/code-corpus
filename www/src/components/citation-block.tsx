@@ -19,23 +19,18 @@ export function CitationBlock({ code }: { code: string }) {
 
   return (
     <div
-      className={`relative mx-auto my-8 w-full ${PROSE_MAX_WIDTH} overflow-hidden rounded-2xl border border-code-border bg-code-bg px-5 pb-6 pt-14 shadow-[0_18px_50px_rgba(17,35,45,0.12)] sm:px-7`}
+      className={`relative mx-auto my-6 w-full ${PROSE_MAX_WIDTH} overflow-hidden rounded-xl border border-code-border bg-code-bg pb-6 pl-8 pr-4 pt-8`}
     >
-      <div className="absolute inset-x-0 top-0 flex h-10 items-center justify-between border-b border-code-border px-4">
-        <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-code-ink/45">
-          terminal
-        </span>
-        <button
-          type="button"
-          onClick={onCopy}
-          aria-label="Copy command"
-          className="copy-control inline-flex min-h-8 items-center gap-1.5 rounded-md px-2 font-mono text-[10px] text-code-ink/65 transition-colors hover:bg-white/5 hover:text-code-ink"
-        >
-          <CopyIcon className="h-[15px] w-[11px]" />
-          {copied ? "Copied" : "Copy"}
-        </button>
-      </div>
-      <pre className="overflow-x-auto whitespace-pre font-mono text-[13px] leading-6 text-code-ink">
+      <button
+        type="button"
+        onClick={onCopy}
+        aria-label="Copy code"
+        className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded px-1.5 py-0.5 font-sans text-[13px] text-ink-soft transition-colors hover:bg-ink/5"
+      >
+        <CopyIcon className="h-[15px] w-[11px]" />
+        {copied ? "Copied" : "Copy code"}
+      </button>
+      <pre className="overflow-x-auto whitespace-pre-wrap [overflow-wrap:anywhere] font-mono text-[16px] leading-[20px] text-ink">
         {code}
       </pre>
     </div>

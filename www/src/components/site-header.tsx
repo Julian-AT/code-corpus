@@ -3,60 +3,58 @@ import Link from "next/link";
 import { GitHubIcon } from "@/components/icons";
 import { MobileMenu } from "@/components/mobile-menu";
 import { GITHUB_URL, PROFILE_IMAGE_URL } from "@/lib/constants";
+import { Button } from "./ui/button";
 
 export function SiteHeader() {
   return (
-    <header className="site-navigation sticky top-0 z-50 border-b border-rule/80 bg-frost/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-[9999] mx-auto h-[68px] max-w-[1300px] bg-cream">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:rounded-md focus:bg-ink focus:px-3 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-3 focus:py-2 focus:text-cream focus:outline-none"
       >
         Skip to main content
       </a>
-      <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+      <a
+        href="#footer"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-40 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-3 focus:py-2 focus:text-cream focus:outline-none"
+      >
+        Skip to footer
+      </a>
+
+      <div className="flex h-full w-full items-center justify-between px-5 lg:px-8">
         <Link
           href="/"
-          aria-label="Julian local model report home"
-          className="flex items-center gap-3 text-ink"
+          aria-label="Julian Schmidt home"
+          className="flex items-center gap-2.5 text-ink"
         >
           <Image
             src={PROFILE_IMAGE_URL}
+            alt="Julian Schmidt"
             width={96}
             height={96}
-            sizes="32px"
-            alt="Julian Schmidt"
-            className="h-8 w-8 rounded-full border border-ink/10 object-cover shadow-sm"
+            priority
+            sizes="28px"
+            className="h-7 w-7 rounded-full object-cover"
           />
-          <span>
-            <span className="block text-sm font-semibold leading-none tracking-[-0.02em]">
-              Julian Schmidt
-            </span>
-            <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.16em] text-muted-ink">
-              Gemma 4 E4B · MLX · Ollama
-            </span>
+          <span className="font-sans text-[16px] font-semibold tracking-tight">
+            Julian Schmidt
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
-          <a href="#corpus-provenance" className="text-sm text-ink-soft hover:text-ink">
-            Corpus
-          </a>
-          <a href="#verified-deployment" className="text-sm text-ink-soft hover:text-ink">
-            Verification
-          </a>
-          <a href="#reproducibility" className="text-sm text-ink-soft hover:text-ink">
-            Run locally
-          </a>
+        <div className="hidden items-center lg:flex">
           <a
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center gap-2 rounded-full border border-ink/20 px-4 text-sm font-semibold text-ink transition-colors hover:border-ink/50 hover:bg-white"
+            aria-label="View Julian Schmidt on GitHub"
+            tabIndex={-1}
           >
-            <GitHubIcon className="h-4 w-4" />
-            Julian on GitHub
+            <Button className="inline-flex items-center gap-2 border-ink-soft px-4 py-2 hover:cursor-pointer hover:opacity-70">
+              <GitHubIcon className="h-5 w-5" />
+              GitHub Repository
+            </Button>
           </a>
-        </nav>
+        </div>
 
         <MobileMenu className="lg:hidden" />
       </div>

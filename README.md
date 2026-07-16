@@ -52,6 +52,29 @@ then performs exact SHA-256 and MinHash near-deduplication. Splits are determini
 no repository contributes to both train and validation. Every generated dataset includes a
 `datasets.load_dataset(...)` self-test in `statistics.json`.
 
+## Publish the dataset to Hugging Face
+
+The configured Hub target is `JulianAT/personal-codex-model`. Publication stages only the dataset card,
+Parquet shards, schema metadata, and a sanitized statistics audit; local Arrow/JSONL duplicates and
+absolute paths are not uploaded. It validates the card and schema, scans every staged row for the
+same high-confidence secret patterns as the builder, then reloads the remote dataset after upload.
+
+This repository is intentionally public even though the configured corpus includes retained rows
+from private GitHub repositories. That exceptional opt-in is recorded as
+`hub.allow_private_sources: true`; without it, the publisher refuses a public upload.
+
+```bash
+# Validate the exact Hub payload without changing remote state
+uv run python publish_dataset.py --dry-run
+
+# Create/update the public dataset repo and verify the result
+uv run python publish_dataset.py
+```
+
+The generated dataset card declares Hugging Face metadata for code language, text generation,
+dataset size, source-code modality, completion use, deduplication, and the `datasets` library so the
+Hub can recognize and index the relevant tags automatically.
+
 Run the small E4B gate before a long job:
 
 ```bash
