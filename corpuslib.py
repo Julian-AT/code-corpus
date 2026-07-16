@@ -165,6 +165,7 @@ class FilterDecision:
 @dataclass(frozen=True)
 class FilterRules:
     extensions: Mapping[str, str]
+    filenames: Mapping[str, str]
     excluded_directories: frozenset[str]
     vendored_generated_directories: frozenset[str]
     excluded_filenames: frozenset[str]
@@ -184,6 +185,12 @@ class FilterRules:
         if not isinstance(configured, Mapping):
             raise SystemExit("dataset.extensions must be a mapping")
         normalized = {str(key).casefold(): str(value) for key, value in configured.items()}
+        configured_filenames = config_value(config, "dataset.filenames", {})
+        if not isinstance(configured_filenames, Mapping):
+            raise SystemExit("dataset.filenames must be a mapping")
+        normalized_filenames = {
+            str(key).casefold(): str(value) for key, value in configured_filenames.items()
+        }
         if extensions:
             selected = {
                 extension.casefold() if extension.startswith(".") else f".{extension.casefold()}"
@@ -193,12 +200,14 @@ class FilterRules:
             if unknown:
                 raise SystemExit(f"Unknown configured extensions: {', '.join(sorted(unknown))}")
             normalized = {key: value for key, value in normalized.items() if key in selected}
+            normalized_filenames = {}
         configured_bytes = int(config_value(config, "dataset.max_file_bytes", 1_048_576))
         resolved_bytes = max_file_bytes if max_file_bytes is not None else configured_bytes
         if resolved_bytes <= 0:
             raise SystemExit("dataset.max_file_bytes must be greater than zero")
         return cls(
             extensions=normalized,
+            filenames=normalized_filenames,
             excluded_directories=frozenset(
                 str(value).casefold()
                 for value in config_value(config, "dataset.excluded_directories", [])
@@ -239,7 +248,7 @@ class FilterRules:
         if size is not None and size > self.max_file_bytes:
             return FilterDecision(False, "too_large")
         suffix = relative_path.suffix.casefold()
-        language = self.extensions.get(suffix)
+        language = self.filenames.get(name, self.extensions.get(suffix))
         if language is None:
             return FilterDecision(False, "extension")
         return FilterDecision(True, "kept", language)

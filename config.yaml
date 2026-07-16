@@ -58,6 +58,7 @@ dataset:
     .cc: C++
     .clj: Clojure
     .cljs: Clojure
+    .cjs: JavaScript
     .cpp: C++
     .cs: C#
     .css: CSS
@@ -77,17 +78,23 @@ dataset:
     .html: HTML
     .java: Java
     .js: JavaScript
+    .json: JSON
+    .jsonc: JSON
     .jsx: JavaScript
     .kt: Kotlin
     .kts: Kotlin
     .lua: Lua
     .m: Objective-C
+    .md: Markdown
+    .mdx: MDX
     .mm: Objective-C++
     .mjs: JavaScript
+    .mts: TypeScript
     .php: PHP
     .pl: Perl
     .ps1: PowerShell
     .proto: Protocol Buffer
+    .prisma: Prisma
     .py: Python
     .r: R
     .rb: Ruby
@@ -95,19 +102,38 @@ dataset:
     .rs: Rust
     .scala: Scala
     .sh: Shell
+    .sbatch: Shell
+    .slurm: Shell
     .sol: Solidity
     .sql: SQL
     .svelte: Svelte
     .swift: Swift
     .tf: Terraform
+    .tex: TeX
     .toml: TOML
     .ts: TypeScript
+    .cts: TypeScript
     .tsx: TypeScript
+    .txt: Text
     .vue: Vue
     .xml: XML
+    .xsd: XML Schema
     .yaml: YAML
     .yml: YAML
     .zig: Zig
+  filenames:
+    CMakeLists.txt: CMake
+    Containerfile: Dockerfile
+    Dockerfile: Dockerfile
+    Gemfile: Ruby
+    GNUmakefile: Makefile
+    Jenkinsfile: Groovy
+    Justfile: Just
+    Makefile: Makefile
+    Podfile: Ruby
+    Procfile: Procfile
+    Rakefile: Ruby
+    Vagrantfile: Ruby
   excluded_directories:
     - .build
     - .cache

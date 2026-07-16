@@ -14,6 +14,8 @@ def test_filter_rules_exclude_required_paths() -> None:
     assert rules.decide(Path("keys/service.key"), 10).reason == "sensitive_path"
     assert rules.decide(Path("src/blob.png"), 10).reason == "extension"
     assert rules.decide(Path("src/main.py"), 10).keep
+    assert rules.decide(Path("README.md"), 10).language == "Markdown"
+    assert rules.decide(Path("docker/Dockerfile"), 10).language == "Dockerfile"
 
 
 def test_test_path_detection() -> None:

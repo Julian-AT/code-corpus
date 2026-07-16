@@ -34,7 +34,7 @@ const columns: FooterColumn[] = [
     links: [
       { label: "GitHub", href: GITHUB_URL },
       { label: "Portfolio", href: PORTFOLIO_URL },
-      { label: "Limits and status", href: "#limits-and-status" },
+      { label: "Evaluation scope", href: "#evaluation-scope" },
     ],
   },
 ];
@@ -63,8 +63,8 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="max-w-xs text-[14px] leading-relaxed text-cream/70">
-              A source-traceable record of a private code corpus, a local LoRA
-              adapter, and its verified Ollama and Codex deployment.
+              I engineered a source-traceable code corpus, a local LoRA adapter,
+              and a verified Ollama and Codex deployment.
             </p>
             <a
               href={GITHUB_URL}

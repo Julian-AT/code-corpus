@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Julian Schmidt",
   },
   description: ARTICLE.description,
-  applicationName: "Julian local model report",
+  applicationName: "Private coding model engineering report",
   authors: [{ name: "Julian Schmidt", url: "https://julianschmidt.cv" }],
   creator: "Julian Schmidt",
   keywords: [

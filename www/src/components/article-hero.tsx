@@ -10,7 +10,7 @@ export function ArticleHero() {
     <header className="mt-12 flex flex-col items-center gap-8 text-center">
       <div className="flex flex-col items-center gap-8 text-center">
         <p className="font-sans text-[15px] font-bold leading-[21px] text-ink">
-          Personal model engineering · Apple Silicon
+          Applied AI systems · Apple Silicon
         </p>
         <h1 className="max-w-4xl text-balance font-sans text-[32px] font-bold leading-[1.1] text-ink lg:text-[52px] lg:leading-[57.2px]">
           {ARTICLE.title}

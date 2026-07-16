@@ -7,6 +7,7 @@ from build_dataset import (
     chunk_source,
     collect_rows,
     detected_secret_kind,
+    line_statistics,
     write_artifacts,
 )
 from corpuslib import FilterRules, load_config, repository_split
@@ -43,6 +44,12 @@ def test_chunk_source_overlaps_lexical_tokens() -> None:
 
     assert [count for _, count in chunks] == [4, 3]
     assert chunks[1][0].startswith("delta")
+
+
+def test_line_statistics_counts_emitted_and_nonblank_lines() -> None:
+    rows = [{"text": "one\n\ntwo\n"}, {"text": "three"}]
+
+    assert line_statistics(rows) == {"total": 4, "nonblank": 3}
 
 
 def test_repository_split_never_crosses_repositories() -> None:

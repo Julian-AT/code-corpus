@@ -552,6 +552,16 @@ def token_histogram(rows: Sequence[dict[str, Any]]) -> dict[str, int]:
     return dict(counts)
 
 
+def line_statistics(rows: Sequence[dict[str, Any]]) -> dict[str, int]:
+    total = 0
+    nonblank = 0
+    for row in rows:
+        lines = str(row["text"]).splitlines()
+        total += len(lines)
+        nonblank += sum(bool(line.strip()) for line in lines)
+    return {"total": total, "nonblank": nonblank}
+
+
 def size_category(rows: int) -> str:
     if rows < 1_000:
         return "n<1K"
@@ -694,6 +704,9 @@ def write_artifacts(
             "total": sum(int(row["n_tokens"]) for row in rows),
             "histogram": token_histogram(rows),
         },
+        "lines": line_statistics(rows),
+        "utf8_bytes": sum(len(str(row["text"]).encode("utf-8")) for row in rows),
+        "source_files": len({(str(row["repo"]), str(row["path"])) for row in rows}),
         "by_language": dict(sorted(Counter(str(row["language"]) for row in rows).items())),
         "by_repo": dict(sorted(Counter(str(row["repo"]) for row in rows).items())),
         "repo_split": dict(sorted(assignments.items())),
@@ -733,6 +746,9 @@ def dataset_card(
     audit: Mapping[str, Any],
     metadata: Mapping[str, Any],
 ) -> str:
+    lines = line_statistics(rows)
+    utf8_mib = sum(len(str(row["text"]).encode("utf-8")) for row in rows) / (1024 * 1024)
+    source_files = len({(str(row["repo"]), str(row["path"])) for row in rows})
     frontmatter = yaml.safe_dump(
         dict(metadata),
         sort_keys=False,
@@ -769,6 +785,9 @@ identity of an author.
 ## Dataset summary
 
 - Rows: {len(rows):,}
+- Emitted lines: {lines["total"]:,} ({lines["nonblank"]:,} nonblank)
+- UTF-8 source text: {utf8_mib:,.1f} MiB
+- Source files with retained chunks: {source_files:,}
 - Repositories with retained rows: {audit["repositories_with_rows"]:,}
 - Completion field: `text`
 - Provenance fields: `repo`, `path`, `language`, `sha`, `chunk_index`, `n_tokens`
@@ -792,6 +811,9 @@ Each row has the following stable schema:
 - `sha`: SHA-256 of the emitted `text`
 - `chunk_index`: zero-based chunk position within the source file
 - `n_tokens`: tokenizer-independent lexical token estimate
+
+Line and byte totals describe emitted chunks. Chunk overlap can repeat boundary text, so these are
+training-corpus volume measurements rather than unique repository lines of code.
 
 `raw-max` is bounded by code that actually exists after filtering. A claim of several million rows
 is only credible when the source repositories contain enough retained code; `--max-rows` is a

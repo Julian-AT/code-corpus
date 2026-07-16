@@ -11,9 +11,9 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const ARTICLE = {
-  title: "A local coding model with a paper trail",
+  title: "Engineering a Private, Source-Traceable Coding Model",
   description:
-    "A source-traceable report on turning Julian Schmidt's repository history into a filtered code corpus, a Gemma 4 E4B LoRA adapter, and a verified local Ollama model for Codex.",
+    "How I built a private code-corpus pipeline, adapted Gemma 4 E4B with MLX LoRA, and verified an offline Ollama and Codex deployment on Apple Silicon.",
   datePublished: "2026-07-16",
   dateModified: "2026-07-16",
   authors: ["Julian Schmidt"],
@@ -27,5 +27,5 @@ export const TOC_SECTIONS = [
   { id: "verified-deployment", label: "Verified deployment" },
   { id: "personalization", label: "Personalization" },
   { id: "reproducibility", label: "Reproducibility" },
-  { id: "limits-and-status", label: "Limits and status" },
+  { id: "evaluation-scope", label: "Evaluation scope" },
 ] as const;
