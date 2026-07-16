@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Sheet,
   SheetContent,
@@ -20,8 +21,10 @@ const navItems = [
 ] as const;
 
 export function MobileMenu({ className }: { className?: string }) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         aria-label="Open navigation"
         className={cn("rounded-md text-ink", className)}
@@ -40,6 +43,7 @@ export function MobileMenu({ className }: { className?: string }) {
             <a
               key={item.label}
               href={item.href}
+              onClick={() => setOpen(false)}
               className="border-b border-rule py-3.5 text-[15px] font-medium text-ink-soft transition-colors hover:text-cobalt"
             >
               {item.label}
@@ -49,6 +53,7 @@ export function MobileMenu({ className }: { className?: string }) {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
             className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-ink px-4 text-sm font-semibold text-white"
           >
             <GitHubIcon className="h-4 w-4" />

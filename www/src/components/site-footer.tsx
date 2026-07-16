@@ -1,6 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
-import { GitHubIcon, Logomark } from "@/components/icons";
-import { GITHUB_URL, PORTFOLIO_URL } from "@/lib/constants";
+import { GitHubIcon } from "@/components/icons";
+import {
+  GITHUB_URL,
+  PORTFOLIO_URL,
+  PROFILE_IMAGE_URL,
+} from "@/lib/constants";
 
 const columns = [
   {
@@ -24,7 +29,7 @@ const columns = [
     links: [
       { label: "GitHub", href: GITHUB_URL },
       { label: "Portfolio", href: PORTFOLIO_URL },
-      { label: "Limits and status", href: "#limitations" },
+      { label: "Limits and status", href: "#limits-and-status" },
     ],
   },
 ] as const;
@@ -39,8 +44,15 @@ export function SiteFooter() {
             aria-label="Julian local model report home"
             className="inline-flex items-center gap-3"
           >
-            <Logomark className="h-9 w-9 text-signal" />
-            <span className="text-base font-semibold">Local model report</span>
+            <Image
+              src={PROFILE_IMAGE_URL}
+              width={96}
+              height={96}
+              sizes="36px"
+              alt="Julian Schmidt"
+              className="h-9 w-9 rounded-full border border-white/20 object-cover"
+            />
+            <span className="text-base font-semibold">Julian Schmidt</span>
           </Link>
           <p className="mt-6 max-w-sm font-serif text-[17px] leading-7 text-white/65">
             A source-traceable record of a private code corpus, a local LoRA

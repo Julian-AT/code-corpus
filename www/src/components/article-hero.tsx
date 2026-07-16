@@ -16,9 +16,9 @@ export function ArticleHero() {
             A local coding model with a paper trail.
           </h1>
           <p className="mt-8 max-w-2xl font-serif text-[20px] leading-[1.55] text-white/76 sm:text-[22px]">
-            Sixty repositories became a filtered, source-traceable code corpus,
-            then a Gemma 4 E4B LoRA adapter, then a local Ollama model that Codex
-            could call, edit with, and test.
+            Sixty repositories were audited; 53 contributed to a filtered,
+            source-traceable code corpus, then a Gemma 4 E4B LoRA adapter, then a
+            local Ollama model that Codex could call, edit with, and test.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a

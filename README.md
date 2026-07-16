@@ -112,6 +112,19 @@ quantitative chart marks.
 - `report/charts/offline-deployment-headroom.{png,svg}`: threshold-normalized Ollama margins
 - `stats/STATS.md` and `stats/charts/`: contribution history and corpus provenance
 
+## Web report
+
+`www/` is the publication layer for the project. It presents the source-traceable corpus, training, conversion, and deployment record as a responsive Next.js report while keeping private repositories, dataset rows, weights, and local paths out of the rendered page. Its narrative deliberately distinguishes the completed one-step compatibility adapter from the interrupted selection run and the unrun production training.
+
+```bash
+cd www
+bun install
+bun run check
+bun run dev
+```
+
+The web report's maintenance guide and evidence map are documented in [`www/README.md`](www/README.md). Set `NEXT_PUBLIC_SITE_URL` before deployment so canonical and structured metadata use the public origin.
+
 The public benchmark manifest keeps organization, evaluator context, benchmark version, unit, and
 URL on every observation. It deliberately avoids averaging unrelated benchmarks into a synthetic
 score.

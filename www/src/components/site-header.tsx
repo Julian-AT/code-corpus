@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
-import { GitHubIcon, Logomark } from "@/components/icons";
+import { GitHubIcon } from "@/components/icons";
 import { MobileMenu } from "@/components/mobile-menu";
-import { GITHUB_URL } from "@/lib/constants";
+import { GITHUB_URL, PROFILE_IMAGE_URL } from "@/lib/constants";
 
 export function SiteHeader() {
   return (
@@ -18,10 +19,17 @@ export function SiteHeader() {
           aria-label="Julian local model report home"
           className="flex items-center gap-3 text-ink"
         >
-          <Logomark className="h-8 w-8" />
+          <Image
+            src={PROFILE_IMAGE_URL}
+            width={96}
+            height={96}
+            sizes="32px"
+            alt="Julian Schmidt"
+            className="h-8 w-8 rounded-full border border-ink/10 object-cover shadow-sm"
+          />
           <span>
             <span className="block text-sm font-semibold leading-none tracking-[-0.02em]">
-              Local model report
+              Julian Schmidt
             </span>
             <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.16em] text-muted-ink">
               Gemma 4 E4B · MLX · Ollama

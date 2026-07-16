@@ -3,6 +3,8 @@ export const FIGURE_MAX_WIDTH = "max-w-[1040px]";
 
 export const GITHUB_URL = "https://github.com/Julian-AT";
 export const PORTFOLIO_URL = "https://julianschmidt.cv";
+export const PROFILE_IMAGE_URL =
+  "https://www.julianschmidt.cv/_next/image?url=%2Fassets%2Fimages%2Fprofile.jpg&w=96&q=90&dpl=dpl_GZP5i46do69MAXsSiNbok81iUWt7";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -23,5 +25,5 @@ export const TOC_SECTIONS = [
   { id: "verified-deployment", label: "Verified deployment" },
   { id: "personalization", label: "Personalization" },
   { id: "reproducibility", label: "Reproducibility" },
-  { id: "limitations", label: "Limits and status" },
+  { id: "limits-and-status", label: "Limits and status" },
 ] as const;

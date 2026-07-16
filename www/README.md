@@ -37,6 +37,15 @@ The site is a presentation layer. These files remain authoritative:
 
 The page remains a Server Component. Client JavaScript is limited to the table of contents, copy controls, and mobile navigation.
 
+## Content and visual architecture
+
+- `src/content/report.mdx` contains the long-form narrative, evidence tables, and figure placement.
+- `src/components/report-visuals.tsx` contains the evidence chain, dataset histogram, verification scorecard, and scoped status callouts.
+- `src/lib/constants.ts` is the single source for publication metadata, section navigation, Julian's links, and the two external editorial image URLs.
+- `public/images/` contains publication-safe copies of the generated aggregate charts from `../stats/charts/`. It must never contain raw code, dataset rows, adapter weights, local paths, or secrets.
+
+The header and footer use Julian Schmidt's portrait while retaining the original report layout. Its source is allow-listed in `next.config.mjs` for Next.js image optimization.
+
 ## Development
 
 ```bash
@@ -59,3 +68,13 @@ The command runs ESLint, TypeScript, and a production build. Set `NEXT_PUBLIC_SI
 The narrative lives in `src/content/report.mdx`. Shared metrics and metadata live in `src/lib/constants.ts`; report-specific visualizations live in `src/components/report-visuals.tsx`.
 
 When upstream evidence changes, update the displayed values from the canonical source files above and rerun `bun run check`. Never replace a pending or interrupted result with an estimate.
+
+Use this maintenance sequence:
+
+1. Regenerate the parent project's statistics, dataset manifest, training record, and deployment verification.
+2. Compare the report's prose and visual constants against the canonical JSON files.
+3. Copy only aggregate, publication-safe charts into `public/images/` and record accurate dimensions in the MDX figure.
+4. Check every section link, table caption, threshold, unit, and completion-status statement.
+5. Run `bun run check`, then inspect desktop and mobile renders before publishing.
+
+The default canonical URL is `http://localhost:3000`. Set `NEXT_PUBLIC_SITE_URL` in the deployment environment so metadata, JSON-LD, `robots.txt`, and `sitemap.xml` point to the production origin.
